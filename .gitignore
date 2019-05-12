@@ -6,6 +6,7 @@
 *.lo
 *.o
 *.obj
+*.log
 
 # Precompiled Headers
 *.gch
@@ -15,6 +16,9 @@
 *.so
 *.dylib
 *.dll
+*.pdb
+*.idb
+*.tlog
 
 # Fortran module files
 *.mod
@@ -33,3 +37,5 @@
 
 /.vs/*
 /Symbols/*
+/RevelationsEngine/x64/*
+/RevelationsEngine/Debug/*
