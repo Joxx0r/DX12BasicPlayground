@@ -1,0 +1,13 @@
+﻿  RevEngineMain.cpp
+c:\users\joxx0r\documents\visual studio 2017\projects\revelationsengine\revelationsengine\revenginemain.cpp(76): warning C4302: 'type cast': truncation from 'LPSTR' to 'WORD'
+c:\users\joxx0r\documents\visual studio 2017\projects\revelationsengine\revelationsengine\revenginemain.cpp(85): warning C4838: conversion from 'const unsigned int' to 'LONG' requires a narrowing conversion
+c:\users\joxx0r\documents\visual studio 2017\projects\revelationsengine\revelationsengine\revenginemain.cpp(426): warning C4838: conversion from 'UINT32' to 'LONG' requires a narrowing conversion
+  Generating Code...
+  Compiling...
+  RevelationsEngine.cpp
+  RevModel.cpp
+c:\users\joxx0r\documents\visual studio 2017\projects\revelationsengine\revelationsengine\revmodel.cpp(37): warning C4305: 'argument': truncation from 'double' to 'float'
+c:\users\joxx0r\documents\visual studio 2017\projects\revelationsengine\revelationsengine\revmodel.cpp(154): warning C4305: 'argument': truncation from 'double' to 'float'
+  Generating Code...
+  RevelationsEngine.vcxproj -> C:\Users\Joxx0r\documents\visual studio 2017\Projects\RevelationsEngine\Debug\RevelationsEngine.exe
+  RevelationsEngine.vcxproj -> C:\Users\Joxx0r\documents\visual studio 2017\Projects\RevelationsEngine\Debug\RevelationsEngine.pdb (Partial PDB)

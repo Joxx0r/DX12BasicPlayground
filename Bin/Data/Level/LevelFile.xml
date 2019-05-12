@@ -1,0 +1,17 @@
+<Level>
+	<GameInstances path = "Data\\GAME\\Levels\\Level Files\\Level4\\Level4GameInstances.xml"/>
+	<EnemyInstances path = "Data\\GAME\\Levels\\Level Files\\Level4\\Level4EnemyInstances.xml"/>
+	<Rooms path = "Data\\GAME\\Levels\\Level Files\\Level4\\Level4RoomsAndPortals.xml" />
+	<LuaFile path = "Data\\GameScripts\\base\\LevelFour.lua" />
+	<Lights path="Data\GAME\Levels\Level Files\Level4\Level4LightInstances.xml"/>
+	<Nodes path="Data\GAME\Levels\Level Files\Level4\Level4NodePaths.xml" /> 
+	<Lights path="Data\\GAME\\Levels\\Level Files\\Level4\\Level4LightInstances.xml" />
+	<loadingSprite path = "Data\GRA_Graphics\Sprites\storyScreens\loadScreen_3-4.dds" posX = "0" posY = "0"/>
+	<Player xPos = "0" yPos = "5" zPos = "0"/>
+	<Ambient Path="Data\\GAME\\Levels\\Level Files\\Level4\\SaveAmbientFour.txt"/>
+</Level>
+
+
+
+
+

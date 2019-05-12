@@ -1,0 +1,6 @@
+nrOfAnims: 3
+
+run: "Data\GRA_Graphics\Models\Monster_PH\crawMove.dae"  loop : 1
+attack:  "Data\GRA_Graphics\Models\Monster_PH\crawlattack.dae" loop : 1
+death:  "Data\GRA_Graphics\Models\Monster_PH\crawlDeath.dae" loop : 0
+

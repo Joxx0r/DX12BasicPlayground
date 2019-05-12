@@ -1,0 +1,5 @@
+nrOfAnims: 1
+
+open:"Data\GRA_Graphics\Models\Door01\Door01_Open.dae" loop : 0
+
+

@@ -1,0 +1,37 @@
+
+General lighting terms:
+
+L = Light vector from the surface
+N = normal on the surface
+V = Normal on the point in the direction towards viewer
+H = Half vector, microfacet approximiatin
+
+#1 Diffuse lightining
+-> Absorbation and then reflected globally across all.
+   -> No view dependancy(its spread all across)
+   -> Albeldo * light color (l dot n)
+   	-> The irridance ( amount of light that hits the object ) is important as if you hit it with an angle vs straight forwards leads to different amount of irradiance hitting the object
+
+#2 Specular lighting
+-> Physical pheonom(Fresnel)
+-> Each material have a refraction (Amount of specular usage).
+	-> In our code called substance.
+-> Its view depdant, where more of the light directly reflects at the impact point of light (the one we are attempting to render)
+	-> Example:
+		-> Looking down straight down on water (no specular lightining almost), you see the stones.
+		-> Look at horizon, you see a bunch of specular lighthtning and less of the diffuse lightning part.
+	-> Materials judge the amount of specular reflectence (substance)
+		-> Metals reflect a lot and have high specular intensity.
+-> Schlik is used to approximate specular best:
+
+-> Roughness
+	-> Materials have different sets, we need to model this.
+		-> We use a thing called Microfacets
+		-> Need to figure out how many microfacets reflect into us.
+		-> For this we use a halfway vector. Its the H = normalize(L + V).
+		-> We calculate the angle between H and N to determine the amount of microfacets that look towards the viewer.
+			-> Smaller 0 means more microfacets.	
+		-> Formula for distrubution
+			-> ρ(θh)	=	cosm(θh)
+			M being the roughness. (Depedant on the amount of roughnes)
+		-> We use normalization equation

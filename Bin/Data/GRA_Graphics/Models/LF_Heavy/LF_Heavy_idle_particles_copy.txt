@@ -1,0 +1,1 @@
+0 2 1 1.2 4 5.07 "Data\GRA_Shaders\ParticleFiles\LF_Heavy_AttackFire.xml" " HeavyAttackFire" 0.9  0.663099  0.492892  0.563345  0  0.7526  -0.658478  -0.748532  0.436636  0.499048 0 3 1 0 4 0 "Data\GRA_Shaders\ParticleFiles\OnDeathExplosion.xml" "OnDeathExplosion" 0.1  0.663099  0.492892  0.563345  0  0.7526  -0.658478  -0.748532  0.436636  0.499048 
