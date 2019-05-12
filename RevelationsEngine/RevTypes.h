@@ -127,12 +127,12 @@ struct RevModelData
 	D3D12_INDEX_BUFFER_VIEW IndexBufferView()const;
 };
 
-struct RevDebugSnapshotData
+struct RevFrameSnapshotData
 {
+	RevVector3 m_cameraLocation;
+	RevVector2 m_mouseDelta;
 	float m_deltaTime = 0.0f;
-	float m_x = 0.0f;
-	float m_y = 0.0f;
-	float m_z = 0.0f;
+	float m_fps = -1.0f;
 };
 
 struct RevDescriptorInitializationData

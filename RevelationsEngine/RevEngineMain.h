@@ -45,7 +45,10 @@ public:
 
 	void FlushCommandQueue();
 	void DrawInternal(float deltaTime);
+
 	void UpdateInteral(float deltaTime);
+	void UpdateFrameSnapshotData(float deltaTime);
+
 	void LoadWorldInternal(const char* path);
 	void ReloadWorldInteral();
 
@@ -94,10 +97,11 @@ public:
 	class RevWorld* m_activeWorld = nullptr;
 	class RevUIManager* m_uiManager = nullptr;
 
-	struct RevDebugSnapshotData* m_debugData = nullptr;
+	struct RevFrameSnapshotData* m_snapshotData = nullptr;
 
 	std::vector<struct RevFrameResource*> m_frameResource;
 	UINT m_currentFrameResourceIndex = 0;
 
 	struct ID3D12DescriptorHeap* m_cbvHeap = nullptr;
+
 };

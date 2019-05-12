@@ -6,6 +6,10 @@
 #include "RevUtils.h"
 #include "RevModelManager.h"
 
+#if USE_IMGUI
+#include "imgui/imgui.h"
+#endif
+
 void RevEngineFunctions::CreateSRVRTVDescriptorHeap(
 		const struct RevDescriptorInitializationData& initializationData, 
 		struct RevDescriptorRuntimeData* out)
@@ -204,9 +208,9 @@ class RevCamera* RevEngineFunctions::FindCamera()
 	return RevEngineMain::s_instance->m_camera;
 }
 
-struct RevDebugSnapshotData* RevEngineFunctions::FindDebugSnapshotData()
+struct RevFrameSnapshotData* RevEngineFunctions::FindEngineRuntimeSnapshotData()
 {
-	return RevEngineMain::s_instance->m_debugData;
+	return RevEngineMain::s_instance->m_snapshotData;
 }
 
 float RevEngineFunctions::GetAspectRatio()
@@ -214,6 +218,22 @@ float RevEngineFunctions::GetAspectRatio()
 	return (float)RevEngineMain::s_instance->m_currentWindowWidth / (float)RevEngineMain::s_instance->m_currentWindowHeight;
 }
 
+
+RevVector2 RevEngineFunctions::GetMouseDelta(bool reset /*= true*/)
+{
+	RevVector2 returnVector = {};
+
+#if USE_IMGUI
+	ImVec2 vector2 = ImGui::GetMouseDragDelta();
+	returnVector.m_v[0] = vector2.x;
+	returnVector.m_v[1] = vector2.y;
+	if (reset)
+	{
+		ImGui::ResetMouseDragDelta();
+	}
+#endif
+	return returnVector;
+}
 
 void RevEngineFunctions::RequestEditorAction(RevEditorActions editorAction)
 {

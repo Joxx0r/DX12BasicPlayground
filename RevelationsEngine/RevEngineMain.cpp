@@ -126,7 +126,7 @@ void RevEngineMain::InitializeInternal(const RevInitializationData& initializati
 
 
 
-	m_debugData = new RevDebugSnapshotData();
+	m_snapshotData = new RevFrameSnapshotData();
 	m_renderManager = new RevRenderManager();
 	m_renderManager->Initialize();
 
@@ -323,6 +323,7 @@ void RevEngineMain::DrawInternal(float deltaTime)
 	m_camera->UpdateLocation(deltaTime);
 #endif
 
+	
 	RevFrameResource* frameResource = m_frameResource[m_currentFrameResourceIndex];
 	// Wait until the GPU has completed commands up to this fence point.
 	if (m_fence->GetCompletedValue() < frameResource->Fence)
@@ -441,8 +442,25 @@ void RevEngineMain::DrawInternal(float deltaTime)
 
 void RevEngineMain::UpdateInteral(float deltaTime)
 {
-	m_debugData->m_deltaTime = deltaTime;
+	UpdateFrameSnapshotData(deltaTime);
+
 	m_editor->Update(deltaTime, m_windowHandle);
+}
+
+void RevEngineMain::UpdateFrameSnapshotData(float deltaTime)
+{
+	m_snapshotData->m_deltaTime = deltaTime;
+	static float accumFrame = 0.0f;
+	accumFrame += deltaTime;
+	//framerate
+	{
+		if (accumFrame >= 1.0f || m_snapshotData->m_fps == -1.0f)
+		{
+			m_snapshotData->m_fps = 1 / deltaTime;
+			accumFrame = 0.0f;
+		}
+	}
+
 }
 
 void RevEngineMain::LoadWorldInternal(const char* path)

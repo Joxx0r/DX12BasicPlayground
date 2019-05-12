@@ -130,10 +130,8 @@ void RevCamera::UpdateLocation(float deltaTime)
 	
 	m_view.SetLocation(currentLocation);
 
-	RevDebugSnapshotData* data = RevEngineFunctions::FindDebugSnapshotData();
-	data->m_x = currentLocation.X();
-	data->m_y = currentLocation.Y();
-	data->m_z = currentLocation.Z();
+	RevFrameSnapshotData* data = RevEngineFunctions::FindEngineRuntimeSnapshotData();
+	data->m_cameraLocation = currentLocation;
 
 #else
 	extern bool GBlockGameInput;
@@ -173,9 +171,9 @@ void RevCamera::UpdateLocation(float deltaTime)
 		}
 	}
 
-	RevEngineMain::FindDebugSnapshotData()->m_x = m_x;
-	RevEngineMain::FindDebugSnapshotData()->m_y = m_y;
-	RevEngineMain::FindDebugSnapshotData()->m_z = m_z;
+	data->m_cameraLocation.m_v[0] = m_x;
+	data->m_cameraLocation.m_v[1] = m_y;
+	data->m_cameraLocation.m_v[2] = m_z;
 
 	UpdateD3DView();
 #endif

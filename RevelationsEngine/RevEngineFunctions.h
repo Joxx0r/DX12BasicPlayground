@@ -23,11 +23,12 @@ public:
 	static class RevShaderManager* FindRevShaderManager();
 	static class RevCamera* FindCamera();
 
-	static struct RevDebugSnapshotData* FindDebugSnapshotData();
+	static struct RevFrameSnapshotData* FindEngineRuntimeSnapshotData();
 	static struct RevFrameResource* FindFrameResource(INT32 frameIndex);
 	static class RevModelManager* FindModelManager();
 	static void FlushCommandQueue();
 	static float GetAspectRatio();
+	static RevVector2 GetMouseDelta(bool reset = true);
 
 	static void RequestEditorAction(RevEditorActions editorAction);
 	

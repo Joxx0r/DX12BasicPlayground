@@ -26,7 +26,7 @@
 
 #define USE_ASSIMP 0
 #define DO_LOAING_BINARY 1
-
+#define USE_IMGUI 1
 
 #define REV_PI 3.1415927f
 #define REV_INV_PI 1 / REV_PI
