@@ -1,20 +1,34 @@
-*.psess
-*.vsp
-*.log
-*.err
-*.wrn
-*.suo
-*.sdf
-*.user
-*.i
-*.vspscc
-*.opensdf
-*.opendb
-*.ipch
-*.cache
-*.tlog
-*.lastbuildstate
-*.ilk
-*.VC.db
-*.nupkg
-.vs
+# Prerequisites
+*.d
+
+# Compiled Object files
+*.slo
+*.lo
+*.o
+*.obj
+
+# Precompiled Headers
+*.gch
+*.pch
+
+# Compiled Dynamic libraries
+*.so
+*.dylib
+*.dll
+
+# Fortran module files
+*.mod
+*.smod
+
+# Compiled Static libraries
+*.lai
+*.la
+*.a
+*.lib
+
+# Executables
+*.exe
+*.out
+*.app
+
+/vs/*
