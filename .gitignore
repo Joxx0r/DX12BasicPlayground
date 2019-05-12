@@ -16,9 +16,6 @@
 *.so
 *.dylib
 *.dll
-*.pdb
-*.idb
-*.tlog
 
 # Fortran module files
 *.mod
@@ -34,6 +31,13 @@
 *.exe
 *.out
 *.app
+
+# Others
+*.pdb
+*.idb
+*.tlog
+*.ilk
+
 
 /.vs/*
 /Symbols/*
