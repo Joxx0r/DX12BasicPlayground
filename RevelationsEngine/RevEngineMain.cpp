@@ -323,7 +323,6 @@ void RevEngineMain::DrawInternal(float deltaTime)
 	m_camera->UpdateLocation(deltaTime);
 #endif
 
-	
 	RevFrameResource* frameResource = m_frameResource[m_currentFrameResourceIndex];
 	// Wait until the GPU has completed commands up to this fence point.
 	if (m_fence->GetCompletedValue() < frameResource->Fence)
@@ -435,9 +434,6 @@ void RevEngineMain::DrawInternal(float deltaTime)
 	// are on the GPU timeline, the new fence point won't be set until the GPU finishes
 	// processing all the commands prior to this Signal().
 	RevThrowIfFailed(m_commandQueue->Signal(m_fence, m_currentFence));
-	
-	FlushCommandQueue();
-
 }
 
 void RevEngineMain::UpdateInteral(float deltaTime)
