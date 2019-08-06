@@ -135,6 +135,11 @@ struct RevFrameSnapshotData
 	float m_fps = -1.0f;
 };
 
+struct RevEngineGlobalData
+{
+	UINT m_amountOfModelsToSpawn = 1; 
+};
+
 struct RevDescriptorInitializationData
 {
 	struct RevHeapCreation
