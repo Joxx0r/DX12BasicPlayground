@@ -60,13 +60,15 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 
 	QueryPerformanceFrequency(&frequency);
 	QueryPerformanceCounter(&start);
-	float targetFrameRate = 60.0f;
-	float invFrameRate = 1 / targetFrameRate;
+	double targetFrameRate = 60;
+	double invFrameRate = 1 / targetFrameRate;
+	double frameHolder = 0;
 	while (GApplicationIsRunning)
 	{
 		QueryPerformanceCounter(&end);
-		float t = ((float)end.QuadPart - (float)start.QuadPart) / (float)frequency.QuadPart;
+		double t = ((double)end.QuadPart - (double)start.QuadPart) / (double)frequency.QuadPart;
 		start = end;
+		frameHolder += t;
 
 		if (PeekMessage(&msg, 0, 0, 0, PM_REMOVE))
 		{
@@ -74,9 +76,17 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			DispatchMessage(&msg);
 		}
 
+		if (frameHolder >= invFrameRate)
+		{
+			frameHolder = max(frameHolder - invFrameRate, 0.0f);
+		}
+		else
+		{
+			continue;
+		}
 
-		RevEngineMain::Update(t);
-		RevEngineMain::Draw(t);
+		RevEngineMain::Update(invFrameRate);
+		RevEngineMain::Draw(invFrameRate);
 
 		if ((GetKeyState(VK_ESCAPE) >> 15) != 0)
 		{

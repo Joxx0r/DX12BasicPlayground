@@ -437,7 +437,7 @@ void RevEngineMain::DrawInternal(float deltaTime)
 	RevThrowIfFailed(m_commandQueue->Signal(m_fence, m_currentFence));
 	
 	FlushCommandQueue();
-	return;
+
 }
 
 void RevEngineMain::UpdateInteral(float deltaTime)

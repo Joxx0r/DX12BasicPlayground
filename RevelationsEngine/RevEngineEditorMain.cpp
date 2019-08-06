@@ -88,8 +88,6 @@ void RevEngineEditorMain::Update(float deltaTime, void* hwnd)
 	io.DisplaySize = ImVec2((float)(rect.right - rect.left), (float)(rect.bottom - rect.top));
 
 	// Setup time step
-	INT64 current_time;
-	QueryPerformanceCounter((LARGE_INTEGER *)&current_time);
 	io.DeltaTime = deltaTime;
 
 	// Read keyboard modifiers inputs
@@ -103,7 +101,7 @@ void RevEngineEditorMain::Update(float deltaTime, void* hwnd)
 	// Start the frame
 	ImGui::NewFrame();
 
-
+	
 	static float f = 0.0f;
 	
 	if (ImGui::BeginMainMenuBar())
