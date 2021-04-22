@@ -18,20 +18,22 @@ void RevInstance::Initialize(const RevMatrix& transform, UINT index, const char*
 {
 	m_cbufferIndex = index;
 	m_world = transform;
-	m_model = RevModelManager::FindModel(modelPath);
-	assert(m_model->m_model);
+	m_modelHandle = RevModelManager::FindModel(modelPath)->m_handle;
+	assert(m_modelHandle != UINT_MAX);
 }
 
 void RevInstance::Update(struct RevFrameResource* resource, float deltaTime)
 {
 	m_deltaTime += deltaTime *GAnimationRateScale;
-	if (m_model->m_model->m_type == RevModelType::Animated)
+	RevModel* entry = RevModelManager::FindModelByHandle(m_modelHandle);
+	assert(entry);
+	if (entry->m_type == RevModelType::Animated)
 	{
 		ObjectConstantsAnimated objConstants;
 		objConstants.WorldViewProj = m_world.Transpose();
 
-		RevAnimationUpdateData updateData(&objConstants.m_bones[0], m_model->m_model->m_modelData->m_bones, m_deltaTime);
-		RevEngineFunctions::RequestAnimationUpdate(updateData, m_model->m_model->m_modelData->m_animationInstances[0]);
+		RevAnimationUpdateData updateData(&objConstants.m_bones[0],entry->m_modelData->m_bones, m_deltaTime);
+		RevEngineFunctions::RequestAnimationUpdate(updateData, entry->m_modelData->m_animationInstances[0]);
 		for (UINT index = 0; index < ARRAYSIZE(objConstants.m_bones); index++)
 		{
 			objConstants.m_bones[index] = objConstants.m_bones[index].Transpose();
@@ -50,5 +52,7 @@ void RevInstance::Update(struct RevFrameResource* resource, float deltaTime)
 void RevInstance::Draw(RevModelFrameRender& param)
 {
 	param.m_startIndex = m_cbufferIndex;
-	m_model->m_model->Draw(param);
+	RevModel* entry = RevModelManager::FindModelByHandle(m_modelHandle);
+	assert(entry);
+	entry->Draw(param);
 }
