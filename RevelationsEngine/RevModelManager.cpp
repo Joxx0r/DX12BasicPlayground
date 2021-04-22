@@ -19,7 +19,7 @@ RevModelEntry* RevModelManager::FindModel(const char* fileName)
 
 RevModel* RevModelManager::FindModelByHandle(UINT handle)
 {
-	if(RevModelManager* manager = GetModelManager())
+	if(RevModelManager* manager = RevEngineFunctions::FindModelManager())
 	{
 		UINT modelindex = 0;
 		for (modelindex; modelindex < AMOUNT_OF_MODELS_ALLOC; modelindex++)
