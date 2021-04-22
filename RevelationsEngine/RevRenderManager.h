@@ -9,7 +9,7 @@ public:
 		struct RevModelFrameRender& renderEntry);
 	void CopyFinalResultToBackBuffer(ID3D12Resource* outResource);
 
-	class RevRendererScene* m_scene = nullptr;
+	class RevScene* m_scene = nullptr;
 
 	struct RevDescriptorRuntimeData* m_heapData = nullptr;
 };

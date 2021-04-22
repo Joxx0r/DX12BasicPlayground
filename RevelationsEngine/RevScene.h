@@ -11,10 +11,10 @@ enum class RevRenderSRVOffsetType
 	
 };
 
-class RevRendererScene
+class RevScene
 {
 public:
-	RevRendererScene() {};
+	RevScene() {};
 
 
 	void Initialize();

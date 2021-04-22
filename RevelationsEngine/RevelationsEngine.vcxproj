@@ -175,7 +175,7 @@
     <ClInclude Include="RevEngineFunctions.h" />
     <ClInclude Include="RevEnums.h" />
     <ClInclude Include="RevLightManager.h" />
-    <ClInclude Include="RevRendererScene.h" />
+    <ClInclude Include="RevScene.h" />
     <ClInclude Include="RevWorldLoader.h" />
     <ClInclude Include="RevConsole.h" />
     <ClInclude Include="RevEngineEditorMain.h" />
@@ -213,7 +213,7 @@
     <ClCompile Include="RevArchive.cpp" />
     <ClCompile Include="RevEngineFunctions.cpp" />
     <ClCompile Include="RevLightManager.cpp" />
-    <ClCompile Include="RevRendererScene.cpp" />
+    <ClCompile Include="RevScene.cpp" />
     <ClCompile Include="RevWorldLoader.cpp" />
     <ClCompile Include="RevConsole.cpp" />
     <ClCompile Include="RevEngineEditorMain.cpp" />

@@ -1,5 +1,5 @@
 #include "stdafx.h"
-#include "RevRendererScene.h"
+#include "RevScene.h"
 
 #include "d3dcompiler.h"
 #include "RevShadermanager.h"
@@ -9,7 +9,7 @@
 #include "RevUIManager.h"
 #include "RevLightManager.h"
 
-void RevRendererScene::Initialize()
+void RevScene::Initialize()
 {
 	ID3D12GraphicsCommandList* commandList = RevEngineFunctions::FindCommandList();
 	RevThrowIfFailed(commandList->Reset(RevEngineFunctions::FindCommandAllocator(), nullptr));
@@ -106,7 +106,7 @@ void RevRendererScene::Initialize()
 	m_lightManager->Initialize();
 }
 
-void RevRendererScene::PreMainPassRender(struct RevModelFrameRender& renderEntry)
+void RevScene::PreMainPassRender(struct RevModelFrameRender& renderEntry)
 {
 	D3D12_CPU_DESCRIPTOR_HANDLE handle = CD3DX12_CPU_DESCRIPTOR_HANDLE(
 		m_heapData->m_rtvHeap->GetCPUDescriptorHandleForHeapStart());
@@ -141,7 +141,7 @@ void RevRendererScene::PreMainPassRender(struct RevModelFrameRender& renderEntry
 	renderEntry.m_commandList->OMSetRenderTargets(4, &m_heapData->m_rtvHeap->GetCPUDescriptorHandleForHeapStart(), true, &RevEngineFunctions::FindDSVHeap()->GetCPUDescriptorHandleForHeapStart());
 }
 
-void RevRendererScene::DrawPostProcess(struct RevModelFrameRender& renderEntry)
+void RevScene::DrawPostProcess(struct RevModelFrameRender& renderEntry)
 {
 /*	renderEntry.m_commandList->SetPipelineState(m_ssaoPSO);
 
@@ -156,14 +156,14 @@ void RevRendererScene::DrawPostProcess(struct RevModelFrameRender& renderEntry)
 		1, 0, 0, 0);*/
 }
 
-void RevRendererScene::DrawToMainRTVWithoutDepth(struct RevModelFrameRender& renderEntry)
+void RevScene::DrawToMainRTVWithoutDepth(struct RevModelFrameRender& renderEntry)
 {
 	renderEntry.m_commandList->DrawIndexedInstanced(
 		m_modelData->m_indexCount,
 		1, 0, 0, 0);
 }
 
-void RevRendererScene::DrawToMainRTVWithDepth(struct RevModelFrameRender& renderEntry)
+void RevScene::DrawToMainRTVWithDepth(struct RevModelFrameRender& renderEntry)
 {
 	m_lightManager->ManageLights(
 		RevEngineFunctions::FindCamera(),
@@ -172,7 +172,7 @@ void RevRendererScene::DrawToMainRTVWithDepth(struct RevModelFrameRender& render
 		m_heapData);
 }
 
-void RevRendererScene::PostMainPassRender(struct RevModelFrameRender& renderEntry)
+void RevScene::PostMainPassRender(struct RevModelFrameRender& renderEntry)
 {
 	renderEntry.m_commandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(m_heapData->m_resource[0],
 		D3D12_RESOURCE_STATE_RENDER_TARGET, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE));
