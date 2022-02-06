@@ -45,7 +45,6 @@ void RevInstance::Update(struct RevFrameResource* resource, float deltaTime)
 		ObjectConstants objConstants;
 		objConstants.WorldViewProj = m_world.Transpose();
 		resource->m_objectCB->CopyData(m_cbufferIndex, objConstants);
-
 	}
 }
 
