@@ -462,6 +462,11 @@ class RevModelManager* RevEngineFunctions::FindModelManager()
 	return RevEngineMain::s_instance->m_modelManager;
 }
 
+RevUIManager* RevEngineFunctions::FindUIManager()
+{
+	return RevEngineMain::s_instance->m_uiManager;
+}
+
 void RevEngineFunctions::FlushCommandQueue()
 {
 	RevEngineMain::s_instance->FlushCommandQueue();

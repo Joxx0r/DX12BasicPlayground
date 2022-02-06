@@ -5,6 +5,7 @@
 #include "RevEngineMain.h"
 
 #include "RevConsole.h"
+#include "RevUIManager.h"
 #include "RevWorldLoader.h"
 
 bool GUsePropertyEditor = true;
@@ -228,27 +229,24 @@ void RevEngineEditorMain::Update(float deltaTime, void* hwnd)
 
 void RevEngineEditorMain::DrawDebugFrame()
 {
+	
+	RevFrameSnapshotData* snapshotData = RevEngineFunctions::FindEngineRuntimeSnapshotData();
+	snapshotData->m_mouseDelta = RevEngineFunctions::GetMouseDelta();
+	const ImVec2 window_pos = ImVec2(5.0f, 25.0f);
+	const ImVec2 window_pos_pivot = ImVec2(0.0f, 0.0f);
+	ImGui::SetNextWindowPos(window_pos, ImGuiCond_Always, window_pos_pivot);
+	ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.0f, 0.0f, 0.0f, 0.3f)); // Transparent background
+	ImGui::PushFont(RevUIManager::FindFontFromType(RevFontType::DroidSans)->m_smallFont);
+	ImFont font = {};
+	if (ImGui::Begin("DebugData", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings))
 	{
-
-		RevFrameSnapshotData* snapshotData = RevEngineFunctions::FindEngineRuntimeSnapshotData();
-		snapshotData->m_mouseDelta = RevEngineFunctions::GetMouseDelta();
-		RevVector2 deltaMove = RevEngineFunctions::GetMouseDelta();
-		const float DISTANCE = 25.0f;
-		static int corner = 0;
-		ImVec2 window_pos = ImVec2(5.0f, DISTANCE);
-		ImVec2 window_pos_pivot = ImVec2((corner & 1) ? 1.0f : 0.0f, (corner & 2) ? 1.0f : 0.0f);
-		ImGui::SetNextWindowPos(window_pos, ImGuiCond_Always, window_pos_pivot);
-		ImGui::PushStyleColor(ImGuiCol_WindowBg, ImVec4(0.0f, 0.0f, 0.0f, 0.3f)); // Transparent background
-		if (ImGui::Begin("DebugData", nullptr, ImGuiWindowFlags_NoTitleBar | ImGuiWindowFlags_NoResize | ImGuiWindowFlags_AlwaysAutoResize | ImGuiWindowFlags_NoMove | ImGuiWindowFlags_NoSavedSettings))
-		{
-			ImGui::Text("FPS: (%.1f)", snapshotData->m_fps);
-			ImGui::Text("Camera Location: X (%.1f) Y (%.1f) Z (%.1f)", snapshotData->m_cameraLocation.X(), snapshotData->m_cameraLocation.Y(), snapshotData->m_cameraLocation.Z());
-			ImGui::Text("Camera Delta: X (%.1f) Y (%.1f)", snapshotData->m_mouseDelta.X(), snapshotData->m_mouseDelta.Y());
-
-			ImGui::End();
-		}
-		ImGui::PopStyleColor();
+		ImGui::Text("FPS: (%.1f)", snapshotData->m_fps);
+		ImGui::Text("Camera Location: X (%.1f) Y (%.1f) Z (%.1f)", snapshotData->m_cameraLocation.X(), snapshotData->m_cameraLocation.Y(), snapshotData->m_cameraLocation.Z());
+		ImGui::Text("Camera Delta: X (%.1f) Y (%.1f)", snapshotData->m_mouseDelta.X(), snapshotData->m_mouseDelta.Y());
+		ImGui::End();
 	}
+	ImGui::PopStyleColor();
+	ImGui::PopFont();
 }
 
 LRESULT RevEngineEditorMain::ManageWindowsMessage(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)

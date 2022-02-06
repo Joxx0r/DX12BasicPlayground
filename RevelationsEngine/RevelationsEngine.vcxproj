@@ -176,6 +176,7 @@
     <ClInclude Include="RevEnums.h" />
     <ClInclude Include="RevLightManager.h" />
     <ClInclude Include="RevScene.h" />
+    <ClInclude Include="RevUITypes.h" />
     <ClInclude Include="RevWorldLoader.h" />
     <ClInclude Include="RevConsole.h" />
     <ClInclude Include="RevEngineEditorMain.h" />
@@ -214,6 +215,7 @@
     <ClCompile Include="RevEngineFunctions.cpp" />
     <ClCompile Include="RevLightManager.cpp" />
     <ClCompile Include="RevScene.cpp" />
+    <ClCompile Include="RevUITypes.cpp" />
     <ClCompile Include="RevWorldLoader.cpp" />
     <ClCompile Include="RevConsole.cpp" />
     <ClCompile Include="RevEngineEditorMain.cpp" />

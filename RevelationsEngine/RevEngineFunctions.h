@@ -26,6 +26,7 @@ public:
 	static struct RevFrameSnapshotData* FindEngineRuntimeSnapshotData();
 	static struct RevFrameResource* FindFrameResource(INT32 frameIndex);
 	static class RevModelManager* FindModelManager();
+	static class RevUIManager* FindUIManager();
 	static void FlushCommandQueue();
 	static float GetAspectRatio();
 	static RevVector2 GetMouseDelta(bool reset = true);
