@@ -58,12 +58,12 @@ bool RevInputManager::IsContextBlocked(EYInputBlockingContext context)
 
 int RevInputManager::FindBlockingContext(EYInputBlockingContext context)
 {
-    for (unsigned int index =0; index < m_blockingContexts.size(); index++)
+    for (uint32_t index =0; index < m_blockingContexts.size(); index++)
     {
         EYInputBlockingContext blockingContext = m_blockingContexts[index];
         if(context == blockingContext)
         {
-            return static_cast<int>(index);
+            return static_cast<int32_t>(index);
         }
     }
     return -1;

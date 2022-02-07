@@ -21,6 +21,8 @@
 #include <d3d12.h>
 #include <d3dx12.h>
 #include <stdio.h>
+#include <stdint.h>
+
 #include "RevTypes.h"
 #include "RevEngineFunctions.h"
 #include "RevDefines.h"

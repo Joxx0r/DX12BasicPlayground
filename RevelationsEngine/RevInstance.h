@@ -23,11 +23,11 @@ public:
 	void Update(struct RevFrameResource* resource, float deltaTime);
 	void Draw(struct RevModelFrameRender& param);
 
-	UINT m_modelHandle = UINT_MAX;
+	uint32_t m_modelHandle = UINT32_MAX;
 	class RevUploadBuffer<ObjectConstants>* m_objectConstantBuffer = nullptr;
 
 	RevMatrix m_world;
-	UINT m_cbufferIndex = 0;
+	uint32_t m_cbufferIndex = 0;
 
 	float m_deltaTime = 0.0f;
 };

@@ -2,8 +2,8 @@
 
 struct RevPSOInitializationData
 {
-	UINT m_nInputLayout = 0;
-	UINT m_numRenderTargets = 1;
+	uint32_t m_nInputLayout = 0;
+	uint32_t m_numRenderTargets = 1;
 	struct RevShader* m_shader = nullptr;
 	D3D12_INPUT_ELEMENT_DESC* m_inputLayoutData = nullptr;
 	struct ID3D12RootSignature* m_rootSignature = nullptr;
@@ -21,7 +21,7 @@ class RevUtils
 {
 public:
 
-	static UINT CalcConstantBufferByteSize(UINT byteSize)
+	static UINT CalcConstantBufferByteSize(uint32_t byteSize)
 	{
 		// Constant buffers must be a multiple of the minimum hardware
 		// allocation size (usually 256 bytes).  So round up to nearest
@@ -53,20 +53,20 @@ public:
 		struct ID3D12Device* device,
 		struct ID3D12GraphicsCommandList* cmdList,
 		const void* initData,
-		UINT64 byteSize,
+		uint64_t byteSize,
 		struct ID3D12Resource* uploadBuffer);
 
 	static void CreateModelGeometry(
 			void* vData, 
-			UINT nVertex, 
-			UINT vStride, 
+			uint32_t nVertex, 
+			uint32_t vStride, 
 			void* iData,
-			UINT nIndex,
+			uint32_t nIndex,
 			struct RevModelData* outData);
 
 	static void CreateModelRootDescription(
 		CD3DX12_ROOT_PARAMETER* parameter,
-		UINT nParameters,
+		uint32_t nParameters,
 		struct RevModelData* outData);
 
 	static void CreatePSO(

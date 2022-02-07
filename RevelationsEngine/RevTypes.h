@@ -45,14 +45,14 @@ struct RevModelFrameRender
 {
 	struct ID3D12GraphicsCommandList* m_commandList;
 	class RevWorld* m_worldToRender;
-	UINT m_currentRenderFrameResourceIndex;
-	UINT m_amountToRender;
-	UINT m_startIndex;
-	UINT m_width;
-	UINT m_height;
+	uint32_t m_currentRenderFrameResourceIndex;
+	uint32_t m_amountToRender;
+	uint32_t m_startIndex;
+	uint32_t m_width;
+	uint32_t m_height;
 };
 
-enum class RevEditorActions : UINT8
+enum class RevEditorActions : uint8_t
 {
 	SaveModel,
 	MAX
@@ -65,7 +65,7 @@ struct RevBone
 	char m_name[512];
 	RevMatrix m_offsetMatrix;
 	unsigned char m_parentIndex;
-	UINT m_channelIndex;
+	uint32_t m_channelIndex;
 };
 
 

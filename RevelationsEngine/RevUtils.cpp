@@ -14,7 +14,7 @@ ID3DBlob* RevUtils::CompileShader(
 {
 
 
-	UINT compileFlags = 0;
+	uint32_t compileFlags = 0;
 #if defined(DEBUG) || defined(_DEBUG)  
 	compileFlags = D3DCOMPILE_DEBUG | D3DCOMPILE_SKIP_OPTIMIZATION;
 #endif
@@ -58,7 +58,7 @@ struct ID3D12Resource* RevUtils::CreateDefaultBuffer(
 		struct ID3D12Device* device, 
 		struct ID3D12GraphicsCommandList* cmdList, 
 		const void* initData, 
-		UINT64 byteSize, 
+		uint64_t byteSize, 
 		struct ID3D12Resource* uploadBuffer)
 {
 
@@ -109,8 +109,8 @@ struct ID3D12Resource* RevUtils::CreateDefaultBuffer(
 
 void RevUtils::CreateModelGeometry(
 		void* vData, 
-		UINT nVertex, 
-		UINT vStride, 
+		uint32_t nVertex, 
+		uint32_t vStride, 
 		void* iData, 
 		UINT nIndex, 
 		RevModelData* outData)

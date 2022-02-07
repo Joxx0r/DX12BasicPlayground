@@ -113,7 +113,7 @@ public:
 	RevVector3 operator-(const RevVector3& vector) const
 	{
 		RevVector3 returnVector = *this;
-		for (UINT index = 0; index < ARRAYSIZE(m_v); index++)
+		for (uint32_t index = 0; index < ARRAYSIZE(m_v); index++)
 		{
 			returnVector[index] -= vector.m_v[index];
 		}
@@ -132,7 +132,7 @@ public:
 	RevVector3 operator*(float scalar) const
 	{
 		RevVector3 returnVector;
-		for (UINT index = 0; index < ARRAYSIZE(m_v); index++)
+		for (uint32_t index = 0; index < ARRAYSIZE(m_v); index++)
 		{
 			returnVector[index] = m_v[index] * scalar;
 		}
@@ -143,7 +143,7 @@ public:
 	RevVector3 operator/(float scalar) const
 	{
 		RevVector3 returnVector = *this;
-		for (UINT index = 0; index < ARRAYSIZE(m_v); index++)
+		for (uint32_t index = 0; index < ARRAYSIZE(m_v); index++)
 		{
 			returnVector[index] /= scalar;
 		}
@@ -153,7 +153,7 @@ public:
 	RevVector3 operator+(const RevVector3& vector) const
 	{
 		RevVector3 returnVector = *this;
-		for (UINT index = 0; index < ARRAYSIZE(m_v); index++)
+		for (uint32_t index = 0; index < ARRAYSIZE(m_v); index++)
 		{
 			returnVector[index] += vector.m_v[index];
 		}
@@ -282,7 +282,7 @@ public:
 	RevVector operator-(const RevVector& vector)
 	{
 		RevVector returnVector;
-		for (UINT index = 0; index < 3; index++)
+		for (uint32_t index = 0; index < 3; index++)
 		{
 			returnVector.m_v[index] = m_v[index] - vector.m_v[index];
 		}

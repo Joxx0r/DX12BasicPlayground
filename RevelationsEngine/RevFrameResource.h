@@ -79,7 +79,7 @@ struct RevFrameResource
 {
 public:
 
-	RevFrameResource(ID3D12Device* device, UINT passCount, UINT objectCount, UINT materialCount);
+	RevFrameResource(ID3D12Device* device, uint32_t passCount, uint32_t objectCount, uint32_t materialCount);
 	RevFrameResource(const RevFrameResource& rhs) = delete;
 	RevFrameResource& operator=(const RevFrameResource& rhs) = delete;
 	~RevFrameResource() {};

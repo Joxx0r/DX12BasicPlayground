@@ -5,7 +5,7 @@ class RevArchive
 {
 public:
 
-	virtual void Alloc(UINT size)
+	virtual void Alloc(uint32_t size)
 	{
 		unsigned char* newSize = (unsigned char*)malloc(m_currentAllocatedSize + size);
 		if (m_byteArray)
@@ -23,7 +23,7 @@ public:
 		delete m_byteArray;
 	}
 
-	unsigned char* GetMemory(UINT size)
+	unsigned char* GetMemory(uint32_t size)
 	{
 		if (m_memoryPointer + size > (m_currentAllocatedSize))
 		{
@@ -35,12 +35,12 @@ public:
 		return memoryStart;
 	}
 
-	UINT Tell() { return m_memoryPointer;  }
+	uint32_t Tell() { return m_memoryPointer;  }
 
 	virtual bool IsLoading() = 0;
 	virtual bool IsSaving() = 0;
-	virtual void Serialize(void* inputData, UINT size) = 0;
-	virtual void SerializeBinaryData(void** inputData, UINT size) = 0;
+	virtual void Serialize(void* inputData, uint32_t size) = 0;
+	virtual void SerializeBinaryData(void** inputData, uint32_t size) = 0;
 
 
 	template<class T>
@@ -51,11 +51,11 @@ public:
 	template<>
 	void operator<<(std::string& element)
 	{
-		UINT size = (UINT)element.size();
+		uint32_t size = (uint32_t)element.size();
 		*this << size;
 		if (IsSaving())
 		{
-			for (UINT index = 0; index < size; index++)
+			for (uint32_t index = 0; index < size; index++)
 			{
 				char elem = element.at(index);
 				*this << elem;

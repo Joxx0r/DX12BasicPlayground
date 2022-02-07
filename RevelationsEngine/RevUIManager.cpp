@@ -162,12 +162,12 @@ void ImGui_ImplDX12_RenderDrawLists(ImDrawData* _draw_data)
 		D3D12_VERTEX_BUFFER_VIEW vertexBufferView;
 		vertexBufferView.BufferLocation = bufferAddress + readCursor;
 		vertexBufferView.StrideInBytes = sizeof(ImDrawVert);
-		vertexBufferView.SizeInBytes = (UINT)verticesSize;
+		vertexBufferView.SizeInBytes = (uint32_t)verticesSize;
 		readCursor += verticesSize;
 
 		D3D12_INDEX_BUFFER_VIEW indexBufferView;
 		indexBufferView.BufferLocation = bufferAddress + readCursor;
-		indexBufferView.SizeInBytes = (UINT)indicesSize;
+		indexBufferView.SizeInBytes = (uint32_t)indicesSize;
 		indexBufferView.Format = DXGI_FORMAT_R16_UINT;
 		readCursor += indicesSize;
 
@@ -201,13 +201,13 @@ void ImGui_ImplDX12_RenderDrawLists(ImDrawData* _draw_data)
 			}
 			idx_offset += pcmd->ElemCount;
 		}
-		vtx_offset += (UINT)verticesCount;
+		vtx_offset += (uint32_t)verticesCount;
 	}
 }
 
 RevUIManager::~RevUIManager()
 {
-	for(unsigned int index = 0; index < m_fonts.size(); index++)
+	for(uint32_t index = 0; index < m_fonts.size(); index++)
 	{
 		if(m_fonts[index] != nullptr)
 		{
@@ -226,7 +226,7 @@ RevFont* RevUIManager::FindFontFromType(RevFontType type)
 		assert(false && "Unable to get manager");
 		return nullptr;
 	}
-	for(unsigned int index = 0; index < manager->m_fonts.size(); index++ )
+	for(uint32_t index = 0; index < manager->m_fonts.size(); index++ )
 	{
 		RevFont* font = manager->m_fonts[index];
 		if(font != nullptr && font->m_fontType == type)

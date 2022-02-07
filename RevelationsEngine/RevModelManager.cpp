@@ -2,7 +2,7 @@
 #include "RevModelManager.h"
 #include "RevModelLoader.h"
 
-UINT RevModelManager::GModelCounter = 0;
+uint32_t RevModelManager::GModelCounter = 0;
 
 void RevModelManager::Initialize()
 {
@@ -17,11 +17,11 @@ RevModelEntry* RevModelManager::FindModel(const char* fileName)
 	return RevEngineFunctions::FindModelManager()->FindOrCreateModelByPathInternal(fileName);
 }
 
-RevModel* RevModelManager::FindModelByHandle(UINT handle)
+RevModel* RevModelManager::FindModelByHandle(uint32_t handle)
 {
 	if(RevModelManager* manager = RevEngineFunctions::FindModelManager())
 	{
-		UINT modelindex = 0;
+		uint32_t modelindex = 0;
 		for (modelindex; modelindex < AMOUNT_OF_MODELS_ALLOC; modelindex++)
 		{
 			RevModelEntry* model = &manager->m_models[modelindex];
@@ -36,7 +36,7 @@ RevModel* RevModelManager::FindModelByHandle(UINT handle)
 
 RevModelEntry* RevModelManager::FindOrCreateModelByPathInternal(const char* fileName)
 {
-	UINT modelindex = 0;
+	uint32_t modelindex = 0;
 	for (modelindex; modelindex < AMOUNT_OF_MODELS_ALLOC; modelindex++)
 	{
 		RevModelEntry* model = &m_models[modelindex];

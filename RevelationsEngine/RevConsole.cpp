@@ -11,14 +11,14 @@ struct RevEngineConsole
 	ImVector<char*>       History;
 	ImVector<const char*> m_commands;
 	ImVector<char*>       m_items;
-	int                   HistoryPos;    // -1: new line, 0..History.Size-1 browsing history.
+int32_t                   m_historyPos;    // -1: new line, 0..History.Size-1 browsing history.
 	bool                  m_scrollToBottom;
 
 	RevEngineConsole()
 	{
 		ClearLog();
 		memset(m_inputBuffer, 0, sizeof(m_inputBuffer));
-		HistoryPos = -1;
+		m_historyPos = -1;
 		m_commands.push_back("HELP");
 		m_commands.push_back("HISTORY");
 		m_commands.push_back("CLEAR");
@@ -27,7 +27,7 @@ struct RevEngineConsole
 	}
 
 	// Portable helpers
-	static int   StricmpStart(const char* str1, const char* str2);
+	static int32_t  StricmpStart(const char* str1, const char* str2);
 
 	static int   Stricmp(const char* str1, const char* str2) { int d; while ((d = toupper(*str2) - toupper(*str1)) == 0 && *str1) { str1++; str2++; } return d; }
 	static int   Strnicmp(const char* str1, const char* str2, int n) { int d = 0; while (n > 0 && (d = toupper(*str2) - toupper(*str1)) == 0 && *str1) { str1++; str2++; n--; } return d; }
@@ -121,7 +121,7 @@ struct RevEngineConsole
 		AddLog("# %s\n", command_line);
 
 		// Insert into history. First find match and delete it so it can be pushed to the back. This isn't trying to be smart or optimal.
-		HistoryPos = -1;
+		m_historyPos = -1;
 		for (int i = History.Size - 1; i >= 0; i--)
 			if (Stricmp(History[i], command_line) == 0)
 			{
@@ -248,25 +248,25 @@ struct RevEngineConsole
 		case ImGuiInputTextFlags_CallbackHistory:
 		{
 			// Example of HISTORY
-			const int prev_history_pos = HistoryPos;
+			const int prev_history_pos = m_historyPos;
 			if (data->EventKey == ImGuiKey_UpArrow)
 			{
-				if (HistoryPos == -1)
-					HistoryPos = History.Size - 1;
-				else if (HistoryPos > 0)
-					HistoryPos--;
+				if (m_historyPos == -1)
+					m_historyPos = History.Size - 1;
+				else if (m_historyPos > 0)
+					m_historyPos--;
 			}
 			else if (data->EventKey == ImGuiKey_DownArrow)
 			{
-				if (HistoryPos != -1)
-					if (++HistoryPos >= History.Size)
-						HistoryPos = -1;
+				if (m_historyPos != -1)
+					if (++m_historyPos >= History.Size)
+						m_historyPos = -1;
 			}
 
 			// A better implementation would preserve the data on the current input line along with cursor position.
-			if (prev_history_pos != HistoryPos)
+			if (prev_history_pos != m_historyPos)
 			{
-				data->CursorPos = data->SelectionStart = data->SelectionEnd = data->BufTextLen = (int)snprintf(data->Buf, (size_t)data->BufSize, "%s", (HistoryPos >= 0) ? History[HistoryPos] : "");
+				data->CursorPos = data->SelectionStart = data->SelectionEnd = data->BufTextLen = (int)snprintf(data->Buf, (size_t)data->BufSize, "%s", (m_historyPos >= 0) ? History[m_historyPos] : "");
 				data->BufDirty = true;
 			}
 		}
@@ -284,11 +284,11 @@ struct RevEngineConsole
 	}
 };
 
-int RevEngineConsole::StricmpStart(const char* str1, const char* str2)
+int32_t RevEngineConsole::StricmpStart(const char* str1, const char* str2)
 {
 	int d; 
-	unsigned int index = 0;  
-	unsigned int limit = (UINT)strlen(str2) ; 
+	uint32_t index = 0;  
+	uint32_t limit = static_cast<uint32_t>(strlen(str2)) ; 
 	while (index < limit && (d = toupper(*str2) - toupper(*str1)) == 0 && *str1)
 	{ 
 		str1++; 

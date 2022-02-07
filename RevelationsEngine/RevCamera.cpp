@@ -185,7 +185,7 @@ void RevCamera::UpdateRendererData(class RevUploadBuffer<struct PassConstants>* 
 	mMainPassCB.DeltaTime = 0.01f;
 	mMainPassCB.m_debugValue = GTextureSample;
 	
-	UINT32 width, height;
+	uint32_t width, height;
 	RevEngineFunctions::FindWindowWidthHeight(&width, &height);
 	mMainPassCB.m_windowWidth = (float)width;
 	mMainPassCB.m_windowHeight = (float)height;

@@ -61,7 +61,7 @@ void RevEngineMain::Draw(float deltaTime)
 	s_instance->DrawInternal(deltaTime);
 }
 
-void RevEngineMain::Resize(UINT width, UINT height)
+void RevEngineMain::Resize(uint32_t width, uint32_t height)
 {
 	assert(s_instance);
 	s_instance->ResizeInteral(width, height);

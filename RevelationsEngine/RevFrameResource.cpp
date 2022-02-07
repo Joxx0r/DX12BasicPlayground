@@ -2,7 +2,7 @@
 #include "RevFrameResource.h"
 #include "RevUploadBuffer.h"
 
-RevFrameResource::RevFrameResource(ID3D12Device* device, UINT passCount, UINT objectCount, UINT materialCount)
+RevFrameResource::RevFrameResource(ID3D12Device* device, uint32_t passCount, UINT objectCount, UINT materialCount)
 {
 	RevThrowIfFailed(device->CreateCommandAllocator(
 		D3D12_COMMAND_LIST_TYPE_DIRECT,

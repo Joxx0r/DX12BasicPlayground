@@ -14,12 +14,12 @@ RevInstance::RevInstance()
 	m_deltaTime = 0.0f;
 }
 
-void RevInstance::Initialize(const RevMatrix& transform, UINT index, const char* modelPath)
+void RevInstance::Initialize(const RevMatrix& transform, uint32_t index, const char* modelPath)
 {
 	m_cbufferIndex = index;
 	m_world = transform;
 	m_modelHandle = RevModelManager::FindModel(modelPath)->m_handle;
-	assert(m_modelHandle != UINT_MAX);
+	assert(m_modelHandle != UINT32_MAX);
 }
 
 void RevInstance::Update(struct RevFrameResource* resource, float deltaTime)
@@ -34,7 +34,7 @@ void RevInstance::Update(struct RevFrameResource* resource, float deltaTime)
 
 		RevAnimationUpdateData updateData(&objConstants.m_bones[0],entry->m_modelData->m_bones, m_deltaTime);
 		RevEngineFunctions::RequestAnimationUpdate(updateData, entry->m_modelData->m_animationInstances[0]);
-		for (UINT index = 0; index < ARRAYSIZE(objConstants.m_bones); index++)
+		for (uint32_t index = 0; index < ARRAYSIZE(objConstants.m_bones); index++)
 		{
 			objConstants.m_bones[index] = objConstants.m_bones[index].Transpose();
 		}
