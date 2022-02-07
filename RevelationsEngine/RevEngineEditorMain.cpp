@@ -5,6 +5,7 @@
 #include "RevEngineMain.h"
 
 #include "RevConsole.h"
+#include "RevInputManager.h"
 #include "RevUIManager.h"
 #include "RevWorldLoader.h"
 
@@ -52,9 +53,12 @@ LRESULT ImGui_ImplDX12_WndProcHandler(HWND, UINT msg, WPARAM wParam, LPARAM lPar
 			switch (wParam)
 			{
 			case 192:
-				extern bool GBlockGameInput;
-				GBlockGameInput = !GBlockGameInput;
-				RevEngineMain::s_instance->m_editor->m_console->m_visible = !RevEngineMain::s_instance->m_editor->m_console->m_visible;
+				{
+				//toggle the visibility
+				bool consoleNewActiveState = !RevEngineMain::s_instance->m_editor->m_console->m_visible;
+				RevInputManager::RegisterBlockingContext(EYInputBlockingContext::Console, consoleNewActiveState);
+				RevEngineMain::s_instance->m_editor->m_console->m_visible = consoleNewActiveState;
+			}
 				break;
 			default:
 				break;

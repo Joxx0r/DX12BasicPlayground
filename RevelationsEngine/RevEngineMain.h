@@ -96,6 +96,7 @@ public:
 	class RevWorldLoader* m_worldLoader = nullptr;
 	class RevWorld* m_activeWorld = nullptr;
 	class RevUIManager* m_uiManager = nullptr;
+	class RevInputManager* m_inputManager = nullptr;
 
 	struct RevFrameSnapshotData* m_snapshotData = nullptr;
 

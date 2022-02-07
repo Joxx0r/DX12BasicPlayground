@@ -467,6 +467,11 @@ RevUIManager* RevEngineFunctions::FindUIManager()
 	return RevEngineMain::s_instance->m_uiManager;
 }
 
+RevInputManager* RevEngineFunctions::FindInputManager()
+{
+	return RevEngineMain::s_instance->m_inputManager;
+}
+
 void RevEngineFunctions::FlushCommandQueue()
 {
 	RevEngineMain::s_instance->FlushCommandQueue();

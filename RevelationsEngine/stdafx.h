@@ -23,6 +23,7 @@
 #include <stdio.h>
 #include "RevTypes.h"
 #include "RevEngineFunctions.h"
+#include "RevDefines.h"
 
 #define USE_ASSIMP 0
 #define DO_LOAING_BINARY 1

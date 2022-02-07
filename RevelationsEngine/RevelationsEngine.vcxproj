@@ -172,8 +172,10 @@
     <ClInclude Include="rapidxml\rapidxml_iterators.hpp" />
     <ClInclude Include="rapidxml\rapidxml_print.hpp" />
     <ClInclude Include="rapidxml\rapidxml_utils.hpp" />
+    <ClInclude Include="RevDefines.h" />
     <ClInclude Include="RevEngineFunctions.h" />
     <ClInclude Include="RevEnums.h" />
+    <ClInclude Include="RevInputManager.h" />
     <ClInclude Include="RevLightManager.h" />
     <ClInclude Include="RevScene.h" />
     <ClInclude Include="RevUITypes.h" />
@@ -213,6 +215,7 @@
     <ClCompile Include="RevAnimation.cpp" />
     <ClCompile Include="RevArchive.cpp" />
     <ClCompile Include="RevEngineFunctions.cpp" />
+    <ClCompile Include="RevInputManager.cpp" />
     <ClCompile Include="RevLightManager.cpp" />
     <ClCompile Include="RevScene.cpp" />
     <ClCompile Include="RevUITypes.cpp" />

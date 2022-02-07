@@ -9,6 +9,7 @@
 #include "RevCamera.h"
 #include "RevRenderManager.h"
 #include "RevEngineEditorMain.h"
+#include "RevInputManager.h"
 #include "RevWorldLoader.h"
 #include "RevWorld.h"
 #include "RevUIManager.h"
@@ -139,6 +140,8 @@ void RevEngineMain::InitializeInternal(const RevInitializationData& initializati
 	m_uiManager = new RevUIManager();
 	m_uiManager->Initialize(RevEngineMain::s_instance->m_windowHandle);
 
+	m_inputManager = new RevInputManager();
+	
 	LoadWorld("3");
 }
 

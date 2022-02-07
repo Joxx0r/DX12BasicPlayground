@@ -1,6 +1,6 @@
 ﻿#pragma once
 
-class ImFont;
+struct ImFont;
 
 enum class RevFontType
 {
