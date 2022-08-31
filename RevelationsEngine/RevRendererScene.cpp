@@ -102,8 +102,8 @@ void RevRendererScene::Initialize()
 	}
 
 
-	m_lightManager = new RevLightManager();
-	m_lightManager->Initialize();
+	//m_lightManager = new RevLightManager();
+	//m_lightManager->Initialize();
 }
 
 void RevRendererScene::PreMainPassRender(struct RevModelFrameRender& renderEntry)
@@ -165,11 +165,11 @@ void RevRendererScene::DrawToMainRTVWithoutDepth(struct RevModelFrameRender& ren
 
 void RevRendererScene::DrawToMainRTVWithDepth(struct RevModelFrameRender& renderEntry)
 {
-	m_lightManager->ManageLights(
+/*	m_lightManager->ManageLights(
 		RevEngineFunctions::FindCamera(),
 		renderEntry.m_worldToRender,
 		renderEntry,
-		m_heapData);
+		m_heapData);*/
 }
 
 void RevRendererScene::PostMainPassRender(struct RevModelFrameRender& renderEntry)
