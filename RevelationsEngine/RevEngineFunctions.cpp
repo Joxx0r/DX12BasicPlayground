@@ -17,14 +17,14 @@ void RevEngineFunctions::CreateSRVRTVDescriptorHeap(
 
 	struct RevTextureCreationCollectionData
 	{
-		UINT m_numRtvDescriptor = 0;
-		UINT m_numSrvDescriptors = 0;
+		uint32_t m_numRtvDescriptor = 0;
+		uint32_t m_numSrvDescriptors = 0;
 
 		void Calculate(const RevDescriptorInitializationData& initializationData)
 		{
 			m_numRtvDescriptor = 0;
 			m_numSrvDescriptors = 0;
-			for (UINT index = 0; index < initializationData.m_numDescriptorCreation; index++)
+			for (uint32_t index = 0; index < initializationData.m_numDescriptorCreation; index++)
 			{
 				RevDescriptorInitializationData::RevHeapCreation heapCreation = initializationData.m_descrptionCreationData[index];
 				if (heapCreation.m_isRtv)
@@ -85,7 +85,7 @@ void RevEngineFunctions::CreateSRVRTVDescriptorHeap(
 	}
 
 
-	for (UINT index = 0; index < initializationData.m_numDescriptorCreation; index++)
+	for (uint32_t index = 0; index < initializationData.m_numDescriptorCreation; index++)
 	{
 		RevDescriptorInitializationData::RevHeapCreation heapCreation = initializationData.m_descrptionCreationData[index];
 
@@ -161,7 +161,7 @@ struct RevDescriptorHeapIncrementSizeData* RevEngineFunctions::FindIncrementSize
 	return &s_incrementSize;
 }
 
-void RevEngineFunctions::FindWindowWidthHeight(UINT32* outX, UINT32* outY)
+void RevEngineFunctions::FindWindowWidthHeight(uint32_t* outX, uint32_t* outY)
 {
 	assert(outX != nullptr && outY != nullptr);
 	*outX = RevEngineMain::s_instance->m_currentWindowWidth;
@@ -251,7 +251,7 @@ RevMatrix ComputeBoneMatrix(
 	std::vector<RevAnimationChannel>& channels,
 	std::vector<struct RevBone>& bones,
 	float time,
-	UINT boneIndex,
+	uint32_t boneIndex,
 	UINT firstKeyFrameToUse,
 	UINT secondKeyFrameToUse)
 {
@@ -460,6 +460,16 @@ RevFrameResource* RevEngineFunctions::FindFrameResource(INT32 frameIndex)
 class RevModelManager* RevEngineFunctions::FindModelManager()
 {
 	return RevEngineMain::s_instance->m_modelManager;
+}
+
+RevUIManager* RevEngineFunctions::FindUIManager()
+{
+	return RevEngineMain::s_instance->m_uiManager;
+}
+
+RevInputManager* RevEngineFunctions::FindInputManager()
+{
+	return RevEngineMain::s_instance->m_inputManager;
 }
 
 void RevEngineFunctions::FlushCommandQueue()

@@ -16,7 +16,7 @@ bool RevModel::Initialize(RevModelType type)
 	RevPSOInitializationData initializationData = {};
 	initializationData.m_shader = m_modelData->m_shader;
 	initializationData.m_inputLayoutData = m_modelData->m_inputLayout.data();
-	initializationData.m_nInputLayout = (UINT)m_modelData->m_inputLayout.size();
+	initializationData.m_nInputLayout = (uint32_t)m_modelData->m_inputLayout.size();
 	initializationData.m_rootSignature = m_modelData->m_rootSignature;
 	initializationData.m_pso= &m_modelData->m_pso;
 	initializationData.m_numRenderTargets = 4;
@@ -41,7 +41,7 @@ bool RevModel::Initialize(RevModelType type)
 	//
 	CD3DX12_CPU_DESCRIPTOR_HANDLE hDescriptor(m_descriptorHeap->GetCPUDescriptorHandleForHeapStart());
 
-	for (UINT i = 0; i < ARRAYSIZE(resoures); i++)
+	for (uint32_t i = 0; i < ARRAYSIZE(resoures); i++)
 	{
 		ID3D12Resource* resource = resoures[i];
 
@@ -78,13 +78,13 @@ void RevModel::Draw(RevModelFrameRender& renderEntry)
  	renderEntry.m_commandList->IASetIndexBuffer(&m_modelData->IndexBufferView());
  	renderEntry.m_commandList->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 
-	UINT objCBByteSize = m_type == RevModelType::Animated ? RevUtils::CalcConstantBufferByteSize(sizeof(ObjectConstantsAnimated)) : RevUtils::CalcConstantBufferByteSize(sizeof(ObjectConstants));
+	uint32_t objCBByteSize = m_type == RevModelType::Animated ? RevUtils::CalcConstantBufferByteSize(sizeof(ObjectConstantsAnimated)) : RevUtils::CalcConstantBufferByteSize(sizeof(ObjectConstants));
 	auto objectCB = m_type == RevModelType::Animated ? resource->m_animatedObjectCB->Resource() : resource->m_objectCB->Resource();
 	// For each render item...
 	
-	const UINT cbvSrvDescriptorSize = RevEngineFunctions::FindIncrementSizes()->m_cbvSrvUavSize;
-	const UINT endIndex = renderEntry.m_startIndex + renderEntry.m_amountToRender;
-	for (	UINT objectIndex = renderEntry.m_startIndex; 
+	const uint32_t cbvSrvDescriptorSize = RevEngineFunctions::FindIncrementSizes()->m_cbvSrvUavSize;
+	const uint32_t endIndex = renderEntry.m_startIndex + renderEntry.m_amountToRender;
+	for (	uint32_t objectIndex = renderEntry.m_startIndex; 
 			objectIndex < endIndex ; 
 			++objectIndex)
 	{

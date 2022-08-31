@@ -1,21 +1,6 @@
 #pragma once
 
-#define AMOUNT_OF_MAX_INSTANCES 10000
-
-//need to keep in sync with Shaders//color_animiated.hlsl	
-#define REV_MAX_BONES_MODEL 128
-
-#define USE_D3D_MATH 0
-#define USE_MODIFIED_MATH 0
-
-//see https://msdn.microsoft.com/en-us/library/windows/desktop/dd375731(v=vs.85).aspx
-#define REV_VK_W 0x57
-#define REV_VK_S 0x53
-#define REV_VK_A 0x41
-#define REV_VK_D 0x44
-#define REV_VK_E 0x45
-#define REV_VK_Q 0x51
-
+#include "RevDefines.h"
 #include "DirectXMath.h"
 #include <string>
 #include <vector>
@@ -24,8 +9,6 @@
 #include "MathLib\RevMatrix.h"
 #include "MathLib\RevQuat.h"
 #include "RevEnums.h"
-
-
 
 using namespace DirectX;
 
@@ -62,14 +45,14 @@ struct RevModelFrameRender
 {
 	struct ID3D12GraphicsCommandList* m_commandList;
 	class RevWorld* m_worldToRender;
-	UINT m_currentRenderFrameResourceIndex;
-	UINT m_amountToRender;
-	UINT m_startIndex;
-	UINT m_width;
-	UINT m_height;
+	uint32_t m_currentRenderFrameResourceIndex;
+	uint32_t m_amountToRender;
+	uint32_t m_startIndex;
+	uint32_t m_width;
+	uint32_t m_height;
 };
 
-enum class RevEditorActions : UINT8
+enum class RevEditorActions : uint8_t
 {
 	SaveModel,
 	MAX
@@ -82,7 +65,7 @@ struct RevBone
 	char m_name[512];
 	RevMatrix m_offsetMatrix;
 	unsigned char m_parentIndex;
-	UINT m_channelIndex;
+	uint32_t m_channelIndex;
 };
 
 

@@ -6,6 +6,8 @@
 #include "RevEngineMain.h"
 #include <d3d12.h>
 
+#include "RevInputManager.h"
+
 #define MAX_LOADSTRING 100
 
 bool GApplicationIsRunning = false;
@@ -21,10 +23,15 @@ LRESULT CALLBACK WndProc(HWND hWnd, UINT message, WPARAM wParam, LPARAM lParam)
 		// TODO: Add any drawing code that uses hdc here...
 		EndPaint(hWnd, &ps);
 	}
-	break;
 	case WM_DESTROY:
 		PostQuitMessage(0);
 		GApplicationIsRunning = false;
+		break;
+	case WM_ACTIVATEAPP:
+		{
+			RevInputManager::RegisterBlockingContext(EYInputBlockingContext::WindowApplication, !(wParam > 0));
+			return DefWindowProc(hWnd, message, wParam, lParam);
+		}
 		break;
 	default:
 	{

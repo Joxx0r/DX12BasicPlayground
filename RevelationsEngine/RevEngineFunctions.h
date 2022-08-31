@@ -11,7 +11,7 @@ public:
 
 	static struct RevDescriptorHeapIncrementSizeData* FindIncrementSizes();
 
-	static void FindWindowWidthHeight(UINT32* outX, UINT32* outY);
+	static void FindWindowWidthHeight(uint32_t* outX, uint32_t* outY);
 
 	static struct ID3D12Device* FindDevice();
 	static struct ID3D12GraphicsCommandList* FindCommandList();
@@ -26,6 +26,8 @@ public:
 	static struct RevFrameSnapshotData* FindEngineRuntimeSnapshotData();
 	static struct RevFrameResource* FindFrameResource(INT32 frameIndex);
 	static class RevModelManager* FindModelManager();
+	static class RevUIManager* FindUIManager();
+	static class RevInputManager* FindInputManager();
 	static void FlushCommandQueue();
 	static float GetAspectRatio();
 	static RevVector2 GetMouseDelta(bool reset = true);

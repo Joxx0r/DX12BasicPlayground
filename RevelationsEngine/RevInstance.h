@@ -3,7 +3,6 @@
 #include "RevUploadBuffer.h"
 #include "MathLib/RevMatrix.h"
 
-
 struct ObjectConstants
 {
 	RevMatrix WorldViewProj;
@@ -24,11 +23,11 @@ public:
 	void Update(struct RevFrameResource* resource, float deltaTime);
 	void Draw(struct RevModelFrameRender& param);
 
-	struct RevModelEntry* m_model = nullptr;
+	uint32_t m_modelHandle = UINT32_MAX;
 	class RevUploadBuffer<ObjectConstants>* m_objectConstantBuffer = nullptr;
 
 	RevMatrix m_world;
-	UINT m_cbufferIndex = 0;
+	uint32_t m_cbufferIndex = 0;
 
 	float m_deltaTime = 0.0f;
 };

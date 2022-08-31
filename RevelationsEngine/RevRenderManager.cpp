@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include "RevRenderManager.h"
-#include "RevRendererScene.h"
+#include "RevScene.h"
 #include "RevWorld.h"
 #include "DirectXColors.h"
 
 void RevRenderManager::Initialize()
 {
 	ID3D12GraphicsCommandList* commandList = RevEngineFunctions::FindCommandList();
-	m_scene = new RevRendererScene();
+	m_scene = new RevScene();
 	m_scene->Initialize();
 
 	m_heapData = new RevDescriptorRuntimeData();

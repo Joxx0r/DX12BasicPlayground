@@ -162,12 +162,12 @@ void ImGui_ImplDX12_RenderDrawLists(ImDrawData* _draw_data)
 		D3D12_VERTEX_BUFFER_VIEW vertexBufferView;
 		vertexBufferView.BufferLocation = bufferAddress + readCursor;
 		vertexBufferView.StrideInBytes = sizeof(ImDrawVert);
-		vertexBufferView.SizeInBytes = (UINT)verticesSize;
+		vertexBufferView.SizeInBytes = (uint32_t)verticesSize;
 		readCursor += verticesSize;
 
 		D3D12_INDEX_BUFFER_VIEW indexBufferView;
 		indexBufferView.BufferLocation = bufferAddress + readCursor;
-		indexBufferView.SizeInBytes = (UINT)indicesSize;
+		indexBufferView.SizeInBytes = (uint32_t)indicesSize;
 		indexBufferView.Format = DXGI_FORMAT_R16_UINT;
 		readCursor += indicesSize;
 
@@ -201,8 +201,42 @@ void ImGui_ImplDX12_RenderDrawLists(ImDrawData* _draw_data)
 			}
 			idx_offset += pcmd->ElemCount;
 		}
-		vtx_offset += (UINT)verticesCount;
+		vtx_offset += (uint32_t)verticesCount;
 	}
+}
+
+RevUIManager::~RevUIManager()
+{
+	for(uint32_t index = 0; index < m_fonts.size(); index++)
+	{
+		if(m_fonts[index] != nullptr)
+		{
+			m_fonts[index]->Destroy();
+			delete m_fonts[index];
+		}
+	}
+	m_fonts.clear();
+}
+
+RevFont* RevUIManager::FindFontFromType(RevFontType type)
+{
+	RevUIManager* manager = RevEngineFunctions::FindUIManager();
+	if( !manager)
+	{
+		assert(false && "Unable to get manager");
+		return nullptr;
+	}
+	for(uint32_t index = 0; index < manager->m_fonts.size(); index++ )
+	{
+		RevFont* font = manager->m_fonts[index];
+		if(font != nullptr && font->m_fontType == type)
+		{
+			return font;
+		}
+	}
+	
+	assert(false && "Failed finding font for type");
+	return nullptr;
 }
 
 
@@ -215,6 +249,7 @@ void RevUIManager::Initialize(void* hwnd)
 	InitializeUIIO(hwnd);
 	InitializeRootSignature();
 	InitializeShaderInputLayout();
+
 
 	D3D12_RASTERIZER_DESC rasterizerDesc = {};
 	rasterizerDesc.FillMode = D3D12_FILL_MODE_SOLID;
@@ -271,6 +306,9 @@ void RevUIManager::Initialize(void* hwnd)
 	int width, height;
 
 	ImGuiIO& io = ImGui::GetIO();
+	//todo johlander make this a file format that we load.
+	m_fonts.push_back(ConstructFont("Data\\Fonts\\ProggyClean.ttf", RevFontType::ProggyClean));
+	m_fonts.push_back(ConstructFont("Data\\Fonts\\DroidSans.ttf", RevFontType::DroidSans));
 	io.Fonts->GetTexDataAsRGBA32(&pixels, &width, &height);
 
 	// Create fonts texture
@@ -362,6 +400,9 @@ void RevUIManager::Initialize(void* hwnd)
 	ID3D12CommandList* cmdsLists[] = {  commandList };
 	RevEngineFunctions::FindCommandQueue()->ExecuteCommandLists(_countof(cmdsLists), cmdsLists);
 	RevEngineFunctions::FlushCommandQueue();
+
+
+  
 }
 
 void RevUIManager::InitializeShaderInputLayout()
@@ -458,6 +499,24 @@ void RevUIManager::InitializeRootSignature()
 	outBlob->Release();
 }
 
+void RevUIManager::Draw()
+{
+	DrawGameWindow();
+
+	ID3D12GraphicsCommandList* commandList = RevEngineFunctions::FindCommandList();
+	commandList->SetPipelineState(m_modelData->m_pso);
+
+	ID3D12DescriptorHeap* descriptorHeaps[] = { m_srvHeap };
+	commandList->SetDescriptorHeaps(_countof(descriptorHeaps), descriptorHeaps);
+	commandList->SetGraphicsRootSignature(m_modelData->m_rootSignature);
+
+	commandList->SetGraphicsRootDescriptorTable(0,
+		m_srvHeap->GetGPUDescriptorHandleForHeapStart());
+
+	ImGui::Render();
+}
+
+
 void RevUIManager::InitializeUIIO(void* hwnd)
 {
 	ImGuiIO& io = ImGui::GetIO();
@@ -485,23 +544,6 @@ void RevUIManager::InitializeUIIO(void* hwnd)
 	io.ImeWindowHandle = hwnd;
 }
 
-
-void RevUIManager::Draw()
-{
-	DrawGameWindow();
-
-	ID3D12GraphicsCommandList* commandList = RevEngineFunctions::FindCommandList();
-	commandList->SetPipelineState(m_modelData->m_pso);
-
-	ID3D12DescriptorHeap* descriptorHeaps[] = { m_srvHeap };
-	commandList->SetDescriptorHeaps(_countof(descriptorHeaps), descriptorHeaps);
-	commandList->SetGraphicsRootSignature(m_modelData->m_rootSignature);
-
-	commandList->SetGraphicsRootDescriptorTable(0,
-		m_srvHeap->GetGPUDescriptorHandleForHeapStart());
-
-	ImGui::Render();
-}
 
 void RevUIManager::DrawGameWindow()
 {
@@ -607,6 +649,7 @@ void RevUIManager::DrawGameWindow()
 	ImGui::End();
 
 }
+
 void RevUIManager::CopySRV(ID3D12Resource* resource)
 {
 	ID3D12GraphicsCommandList* commandList = RevEngineFunctions::FindCommandList();
@@ -617,5 +660,16 @@ void RevUIManager::CopySRV(ID3D12Resource* resource)
 
 	commandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(m_backBufferResource,
 		D3D12_RESOURCE_STATE_COPY_DEST, D3D12_RESOURCE_STATE_PIXEL_SHADER_RESOURCE));
-
 }
+
+RevFont* RevUIManager::ConstructFont(const char* fileName, RevFontType type)
+{
+	RevFont* font = new RevFont();
+	ImGuiIO& io = ImGui::GetIO();
+	font->m_fontType  = type;
+	font->m_normalFont = io.Fonts->AddFontFromFileTTF(fileName, 13.0f);
+	font->m_bigFont  = io.Fonts->AddFontFromFileTTF(fileName, 20.0f);
+	font->m_smallFont = io.Fonts->AddFontFromFileTTF(fileName, 8.0f);
+	return font;
+}
+

@@ -146,7 +146,7 @@ public:
 	}
 
 
-	float& operator[](UINT index)
+	float& operator[](uint32_t index)
 	{
 		if (index >= 0 || index < 3)
 		{

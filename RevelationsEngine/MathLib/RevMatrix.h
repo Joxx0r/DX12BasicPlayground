@@ -22,7 +22,7 @@
 #define VecShuffle_2323(vec1, vec2)        _mm_movehl_ps(vec2, vec1)
 #define REV_SMALL_NUMBER		(1.e-8f)
 
-enum class RevMatrixAxis : UINT8
+enum class RevMatrixAxis : uint8_t
 {
 	Right,
 	Up,
@@ -644,7 +644,7 @@ public:
 		return m_m[0] + m_m[5] + m_m[10];
 	}
 
-	UINT FindBiggestDiagonalAxis() const
+	uint32_t FindBiggestDiagonalAxis() const
 	{
 		if (m_m[0] > m_m[5] || m_m[0] > m_m[10])
 		{

@@ -1,6 +1,6 @@
 #pragma once
 
-enum class RevLightType : UINT8
+enum class RevLightType : uint8_t
 {
 	PointLight,
 	SpotLight,
@@ -8,7 +8,7 @@ enum class RevLightType : UINT8
 	MAX
 };
 
-enum class RevResourceType : UINT8
+enum class RevResourceType : uint8_t
 {
 	RenderTarget = 1,
 	ShaderResource = 2,
@@ -16,7 +16,7 @@ enum class RevResourceType : UINT8
 	MAX
 };;
 
-enum class RevModelType : UINT8
+enum class RevModelType : uint8_t
 {
 	Normal,
 	Animated,

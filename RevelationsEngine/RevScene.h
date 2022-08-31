@@ -11,10 +11,10 @@ enum class RevRenderSRVOffsetType
 	
 };
 
-class RevRendererScene
+class RevScene
 {
 public:
-	RevRendererScene() {};
+	RevScene() {};
 
 
 	void Initialize();
@@ -29,13 +29,11 @@ public:
 	CD3DX12_CPU_DESCRIPTOR_HANDLE m_srvCPU;
 	CD3DX12_GPU_DESCRIPTOR_HANDLE m_srvGPU;
 
-
 	struct RevDescriptorRuntimeData* m_heapData = nullptr;
-
 	struct ID3D12PipelineState* m_ssaoPSO = nullptr;
 	struct RevShader* m_ssaoShader = nullptr;
 	class RevLightManager* m_lightManager = nullptr;
-
+	
 	ID3D12Resource* m_randomTextureResource = nullptr;
 
 };

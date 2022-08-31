@@ -8,7 +8,7 @@ struct RevShader
 	ID3DBlob* m_vsByteCode;
 	ID3DBlob* m_psByteCode;
 	std::wstring m_name;
-	UINT32 m_initialized : 1;
+	uint32_t m_initialized : 1;
 };
 
 struct RevShaderRequestData

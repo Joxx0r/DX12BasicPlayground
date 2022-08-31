@@ -15,8 +15,8 @@ struct RevInitializationData
 	HINSTANCE m_instance;
 	WNDPROC m_windowHandle;
 
-	unsigned int m_windowWidth;
-	unsigned int m_windowHeight;
+	uint32_t  m_windowWidth;
+	uint32_t  m_windowHeight;
 };
 
 
@@ -29,7 +29,7 @@ public:
 	static RevEngineMain* GetInstance();
 	static void Update(float deltaTime);
 	static void Draw(float deltaTime);
-	static void Resize(UINT width, UINT height);
+	static void Resize(uint32_t width, uint32_t height);
 	static float GetAspectRatio();
 	static XMFLOAT2 GetRenderTargetSize();
 	static LRESULT ManageWindowsMessage(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
@@ -41,7 +41,7 @@ public:
 	void InitializeInternal(const RevInitializationData& initializationData);
 	void CreateEngineWindow(const RevInitializationData& initializationData);
 	void CreateD3D(const RevInitializationData& initializationData);
-	void ResizeInteral(UINT windowWidth, UINT windowHeight);
+	void ResizeInteral(uint32_t windowWidth, uint32_t windowHeight);
 
 	void FlushCommandQueue();
 	void DrawInternal(float deltaTime);
@@ -60,7 +60,7 @@ public:
 
 	static RevEngineMain* s_instance;
 
-	UINT64 m_currentFence = 0;
+	uint64_t m_currentFence = 0;
 	struct ID3D12CommandQueue* m_commandQueue;
 	struct ID3D12CommandAllocator* m_directCmdListAlloc;
 	struct ID3D12GraphicsCommandList* m_commandList;
@@ -74,10 +74,10 @@ public:
 	struct ID3D12Device* m_device;
 	struct ID3D12Fence* m_fence;
 	
-	UINT m_currentBackBuffer;
-	UINT m_rtvDescriptorSize;
-	UINT m_dsvDescriptorSize;
-	UINT m_cbvSrvUavDescriptorSize;
+	uint32_t m_currentBackBuffer;
+	uint32_t m_rtvDescriptorSize;
+	uint32_t m_dsvDescriptorSize;
+	uint32_t m_cbvSrvUavDescriptorSize;
 
 	RevEngineMain();
 	~RevEngineMain() {};
@@ -85,8 +85,8 @@ public:
 public:
 
 	HWND m_windowHandle;
-	UINT32 m_currentWindowWidth;
-	UINT32 m_currentWindowHeight;
+	uint32_t m_currentWindowWidth;
+	uint32_t m_currentWindowHeight;
 
 	class RevShaderManager* m_shaderInstance;
 	class RevModelManager* m_modelManager;
@@ -96,6 +96,7 @@ public:
 	class RevWorldLoader* m_worldLoader = nullptr;
 	class RevWorld* m_activeWorld = nullptr;
 	class RevUIManager* m_uiManager = nullptr;
+	class RevInputManager* m_inputManager = nullptr;
 
 	struct RevFrameSnapshotData* m_snapshotData = nullptr;
 

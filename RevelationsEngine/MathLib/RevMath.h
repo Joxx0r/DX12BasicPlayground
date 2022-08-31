@@ -99,10 +99,10 @@ inline RevQuat RevRotationMatrixToQuaternion(const RevMatrix& matrix)
 		// the only issue is we can't square root a negative matrix so we need to find the biggest index for each given one and then we can calculate it
 		// once we know one, we can just find out the other ones
 
-		UINT biggestIndex = matrix.FindBiggestDiagonalAxis();
-		UINT matrixIndex = biggestIndex * 5;
-		UINT biggestIndexOne = biggestIndex + 1 > 2 ? 0 : biggestIndex + 1;
-		UINT biggestIndexTwo = biggestIndexOne + 1 > 2 ? 0 : biggestIndexOne + 1;
+		uint32_t biggestIndex = matrix.FindBiggestDiagonalAxis();
+		uint32_t matrixIndex = biggestIndex * 5;
+		uint32_t biggestIndexOne = biggestIndex + 1 > 2 ? 0 : biggestIndex + 1;
+		uint32_t biggestIndexTwo = biggestIndexOne + 1 > 2 ? 0 : biggestIndexOne + 1;
 
 		float a = matrix.m_m[matrixIndex];
 		float b = matrix.m_m[biggestIndexOne * 5];

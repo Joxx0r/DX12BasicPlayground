@@ -9,6 +9,7 @@
 #include "RevCamera.h"
 #include "RevRenderManager.h"
 #include "RevEngineEditorMain.h"
+#include "RevInputManager.h"
 #include "RevWorldLoader.h"
 #include "RevWorld.h"
 #include "RevUIManager.h"
@@ -60,7 +61,7 @@ void RevEngineMain::Draw(float deltaTime)
 	s_instance->DrawInternal(deltaTime);
 }
 
-void RevEngineMain::Resize(UINT width, UINT height)
+void RevEngineMain::Resize(uint32_t width, uint32_t height)
 {
 	assert(s_instance);
 	s_instance->ResizeInteral(width, height);
@@ -139,6 +140,8 @@ void RevEngineMain::InitializeInternal(const RevInitializationData& initializati
 	m_uiManager = new RevUIManager();
 	m_uiManager->Initialize(RevEngineMain::s_instance->m_windowHandle);
 
+	m_inputManager = new RevInputManager();
+	
 	LoadWorld("3");
 }
 
@@ -183,10 +186,10 @@ void RevEngineMain::CreateD3D(const RevInitializationData& initializationData)
 #if defined(DEBUG) || defined(_DEBUG) 
 	// Enable the D3D12 debug layer.
 	{
-		//ID3D12Debug* debugController;
+		ID3D12Debug* debugController;
 
-		//D3D12GetDebugInterface(IID_PPV_ARGS(&debugController));
-	//	debugController->EnableDebugLayer();
+		D3D12GetDebugInterface(IID_PPV_ARGS(&debugController));
+		debugController->EnableDebugLayer();
 	}
 #endif
 
@@ -292,23 +295,12 @@ void RevEngineMain::CreateD3D(const RevInitializationData& initializationData)
 
 void RevEngineMain::FlushCommandQueue()
 {
-	// Advance the fence value to mark commands up to this fence point.
 	m_currentFence++;
-
-	// Add an instruction to the command queue to set a new fence point.  Because we 
-	// are on the GPU timeline, the new fence point won't be set until the GPU finishes
-	// processing all the commands prior to this Signal().
 	RevThrowIfFailed(m_commandQueue->Signal(m_fence, m_currentFence));
-
-	// Wait until the GPU has completed commands up to this fence point.
 	if (m_fence->GetCompletedValue() < m_currentFence)
 	{
 		HANDLE eventHandle = CreateEventEx(nullptr, false, false, EVENT_ALL_ACCESS);
-
-		// Fire event when GPU hits current fence.  
 		RevThrowIfFailed(m_fence->SetEventOnCompletion(m_currentFence, eventHandle));
-
-		// Wait until the GPU hits current fence event is fired.
 		WaitForSingleObject(eventHandle, INFINITE);
 		CloseHandle(eventHandle);
 	}
@@ -370,9 +362,7 @@ void RevEngineMain::DrawInternal(float deltaTime)
 	render.m_worldToRender = m_activeWorld;
 	render.m_width = m_currentWindowWidth;
 	render.m_height = m_currentWindowHeight;
-
 	m_renderManager->DrawFrame(render);
-
 	m_uiManager->CopySRV(m_renderManager->m_heapData->m_resource[0]);
 
 	
@@ -470,7 +460,6 @@ void RevEngineMain::LoadWorldInternal(const char* path)
 	assert(m_activeWorld == nullptr);
 	assert(m_worldLoader);
 	m_activeWorld = m_worldLoader->LoadWorld(path);
-
 }
 
 void RevEngineMain::ReloadWorldInteral()

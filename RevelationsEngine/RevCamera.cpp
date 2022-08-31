@@ -1,7 +1,7 @@
-#pragma once
 #include "stdafx.h"
 #include "RevCamera.h"
 #include "RevFrameResource.h"
+#include "RevInputManager.h"
 #include "RevTypes.h"
 #include "MathLib/RevMath.h"
 
@@ -65,7 +65,6 @@ void RevCamera::Initialize()
 #endif
 }
 
-
 void RevCamera::UpdateLocation(float deltaTime)
 {
 #if !USE_D3D_MATH || USE_MODIFIED_MATH
@@ -74,8 +73,7 @@ void RevCamera::UpdateLocation(float deltaTime)
 	RevVector3 up = m_view.GetAxis(RevMatrixAxis::Up);
 
 	RevVector3 currentLocation = m_view.GetLocation();
-	extern bool GBlockGameInput;
-	if (!GBlockGameInput)
+	if (RevInputManager::IsInputEnabled(EYInputType::Game))
 	{
 		float movementSpeed = GMovementSpeed;
 
@@ -187,7 +185,7 @@ void RevCamera::UpdateRendererData(class RevUploadBuffer<struct PassConstants>* 
 	mMainPassCB.DeltaTime = 0.01f;
 	mMainPassCB.m_debugValue = GTextureSample;
 	
-	UINT32 width, height;
+	uint32_t width, height;
 	RevEngineFunctions::FindWindowWidthHeight(&width, &height);
 	mMainPassCB.m_windowWidth = (float)width;
 	mMainPassCB.m_windowHeight = (float)height;
