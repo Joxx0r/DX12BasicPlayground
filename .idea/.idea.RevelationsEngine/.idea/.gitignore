@@ -1,0 +1,13 @@
+﻿# Default ignored files
+/shelf/
+/workspace.xml
+# Rider ignored files
+/projectSettingsUpdater.xml
+/contentModel.xml
+/modules.xml
+/.idea.RevelationsEngine.iml
+# Datasource local storage ignored files
+/../../../../../../../:\Code\OldD3D\DX12BasicPlayground\.idea\.idea.RevelationsEngine\.idea/dataSources/
+/dataSources.local.xml
+# Editor-based HTTP Client requests
+/httpRequests/

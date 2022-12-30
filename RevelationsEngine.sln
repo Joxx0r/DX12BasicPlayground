@@ -1,9 +1,14 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26430.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.32929.386
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RevelationsEngine", "RevelationsEngine\RevelationsEngine.vcxproj", "{D9AE5F13-12C6-480E-B59B-5724831CC878}"
+EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "RevGame", "RevGame\RevGame.vcxproj", "{11ADBD8E-F4E2-4C84-873D-8D16D4CFFDD0}"
+	ProjectSection(ProjectDependencies) = postProject
+		{D9AE5F13-12C6-480E-B59B-5724831CC878} = {D9AE5F13-12C6-480E-B59B-5724831CC878}
+	EndProjectSection
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +26,19 @@ Global
 		{D9AE5F13-12C6-480E-B59B-5724831CC878}.Release|x64.Build.0 = Release|x64
 		{D9AE5F13-12C6-480E-B59B-5724831CC878}.Release|x86.ActiveCfg = Release|Win32
 		{D9AE5F13-12C6-480E-B59B-5724831CC878}.Release|x86.Build.0 = Release|Win32
+		{11ADBD8E-F4E2-4C84-873D-8D16D4CFFDD0}.Debug|x64.ActiveCfg = Debug|x64
+		{11ADBD8E-F4E2-4C84-873D-8D16D4CFFDD0}.Debug|x64.Build.0 = Debug|x64
+		{11ADBD8E-F4E2-4C84-873D-8D16D4CFFDD0}.Debug|x86.ActiveCfg = Debug|Win32
+		{11ADBD8E-F4E2-4C84-873D-8D16D4CFFDD0}.Debug|x86.Build.0 = Debug|Win32
+		{11ADBD8E-F4E2-4C84-873D-8D16D4CFFDD0}.Release|x64.ActiveCfg = Release|x64
+		{11ADBD8E-F4E2-4C84-873D-8D16D4CFFDD0}.Release|x64.Build.0 = Release|x64
+		{11ADBD8E-F4E2-4C84-873D-8D16D4CFFDD0}.Release|x86.ActiveCfg = Release|Win32
+		{11ADBD8E-F4E2-4C84-873D-8D16D4CFFDD0}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5BC5C483-C21E-4E90-945D-0A7F8C9788F9}
 	EndGlobalSection
 EndGlobal

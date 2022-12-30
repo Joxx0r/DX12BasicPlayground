@@ -132,9 +132,6 @@
     <ClInclude Include="RevEngineFunctions.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RevRendererScene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="RevLightManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -148,6 +145,18 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RevArchive.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RevDefines.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RevInputManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RevScene.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RevUITypes.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -221,9 +230,6 @@
     <ClCompile Include="RevEngineFunctions.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RevRendererScene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RevLightManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -234,6 +240,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RevArchive.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RevInputManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RevScene.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RevUITypes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
