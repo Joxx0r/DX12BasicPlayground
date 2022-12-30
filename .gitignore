@@ -37,9 +37,9 @@
 *.idb
 *.tlog
 *.ilk
-
-
 /.vs/*
 /Symbols/*
 /RevelationsEngine/x64/*
 /RevelationsEngine/Debug/*
+*.idea
+Bin/imgui.ini

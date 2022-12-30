@@ -1,0 +1,14 @@
+Programming
+
+-> Get basic understanding of where I'm at with current implementation
+-> Organize code more in folders (seems that all are in one location)
+* Define feature ares and execute based on that
+-> Cleanup code and make sure that its nicer
+* Go through each header and see that varibles are properly defined
+
+Additionall things I could be doing:
+
+Additional reserach I can improve upon:
+Version upgrades
+-> D3D Version
+-> Windows
