@@ -147,6 +147,6 @@ void RevModel::BuildShadersAndInputLayout()
 	{
 		char buffer[512];
 		sprintf(buffer, "Non supported model type of %i", (UINT8)m_type);
-		assert(0 && "Non supported model type");
+		DEBUG_ASSERT(0 && "Non supported model type");
 	}
 }

@@ -36,19 +36,19 @@ namespace rapidxml
         
         reference operator *() const
         {
-            assert(m_node);
+            DEBUG_ASSERT(m_node);
             return *m_node;
         }
 
         pointer operator->() const
         {
-            assert(m_node);
+            DEBUG_ASSERT(m_node);
             return m_node;
         }
 
         node_iterator& operator++()
         {
-            assert(m_node);
+            DEBUG_ASSERT(m_node);
             m_node = m_node->next_sibling();
             return *this;
         }
@@ -62,7 +62,7 @@ namespace rapidxml
 
         node_iterator& operator--()
         {
-            assert(m_node && m_node->previous_sibling());
+            DEBUG_ASSERT(m_node && m_node->previous_sibling());
             m_node = m_node->previous_sibling();
             return *this;
         }
@@ -115,19 +115,19 @@ namespace rapidxml
         
         reference operator *() const
         {
-            assert(m_attribute);
+            DEBUG_ASSERT(m_attribute);
             return *m_attribute;
         }
 
         pointer operator->() const
         {
-            assert(m_attribute);
+            DEBUG_ASSERT(m_attribute);
             return m_attribute;
         }
 
         attribute_iterator& operator++()
         {
-            assert(m_attribute);
+            DEBUG_ASSERT(m_attribute);
             m_attribute = m_attribute->next_attribute();
             return *this;
         }
@@ -141,7 +141,7 @@ namespace rapidxml
 
         attribute_iterator& operator--()
         {
-            assert(m_attribute && m_attribute->previous_attribute());
+            DEBUG_ASSERT(m_attribute && m_attribute->previous_attribute());
             m_attribute = m_attribute->previous_attribute();
             return *this;
         }

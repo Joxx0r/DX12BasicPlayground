@@ -125,7 +125,7 @@ public:
 
 	virtual void Alloc(UINT size)
 	{
-		assert(0 && "NO ALLOC");
+		DEBUG_ASSERT(0 && "NO ALLOC");
 	}
 
 	virtual void Serialize(void* inputData, UINT size);

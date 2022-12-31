@@ -160,7 +160,7 @@ public:
 			else
 			{
 				static float invalidOperator = 0.0f;
-				assert(0 && "Invalid operator");
+				DEBUG_ASSERT(0 && "Invalid operator");
 				return invalidOperator;
 			}
 	}
@@ -179,7 +179,7 @@ public:
 			else
 			{
 				static float invalidOperator = 0.0f;
-				assert(0 && "Invalid operator");
+				DEBUG_ASSERT(0 && "Invalid operator");
 				return invalidOperator;
 			}
 	}

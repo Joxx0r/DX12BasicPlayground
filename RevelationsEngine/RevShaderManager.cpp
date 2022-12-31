@@ -6,7 +6,7 @@
 
 void RevShaderManager::Initialize()
 {
-	assert(m_shaders == nullptr);
+	DEBUG_ASSERT(m_shaders == nullptr);
 	//do some implementions later
 	const int sizeofShader = sizeof(RevShader) * AMOUNT_OF_SHADER_MALLOC;
 	m_shaders = (RevShader*)malloc(sizeofShader);
@@ -31,7 +31,7 @@ RevShader* RevShaderManager::GetShaderInternal(const RevShaderRequestData& data)
 	}
 	if (shaderIndex >= AMOUNT_OF_SHADER_MALLOC)
 	{
-		assert(0 && "Increase amount of shaders required");
+		DEBUG_ASSERT(0 && "Increase amount of shaders required");
 	}
 
 	RevShader shader = {};

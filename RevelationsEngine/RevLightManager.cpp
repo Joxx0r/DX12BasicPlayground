@@ -116,8 +116,8 @@ void RevLightManager::ManageLights(
 	RevModelFrameRender& renderEntry,
 	struct RevDescriptorRuntimeData* m_heapData)
 {
-	assert(toView);
-	assert(world);
+	DEBUG_ASSERT(toView);
+	DEBUG_ASSERT(world);
 	std::vector<struct RevLight*>& lights = world->m_lights;
 	const RevMatrix& viewMatrix = toView->m_view;
 

@@ -174,6 +174,7 @@
     <ClInclude Include="rapidxml\rapidxml_iterators.hpp" />
     <ClInclude Include="rapidxml\rapidxml_print.hpp" />
     <ClInclude Include="rapidxml\rapidxml_utils.hpp" />
+    <ClInclude Include="RevAssert.h" />
     <ClInclude Include="RevDefines.h" />
     <ClInclude Include="RevEngineEditorManager.h" />
     <ClInclude Include="RevEngineFunctions.h" />

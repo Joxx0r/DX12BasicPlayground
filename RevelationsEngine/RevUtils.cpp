@@ -117,8 +117,8 @@ void RevUtils::CreateModelGeometry(
 {
 
 	ID3D12Device* device = RevEngineFunctions::FindDevice();
-	assert(nVertex > 0);
-	assert(vStride > 0);
+	DEBUG_ASSERT(nVertex > 0);
+	DEBUG_ASSERT(vStride > 0);
 
 	const UINT vbByteSize = nVertex * vStride;
 	const UINT ibByteSize = nIndex * sizeof(UINT);

@@ -5,6 +5,8 @@
 #include "RevGameMain.h"
 #include "RevEngineMain.h"
 #include <d3d12.h>
+
+#include "RevAssert.h"
 #include "RevInputManager.h"
 
 #define MAX_LOADSTRING 100
@@ -58,7 +60,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	initializationData.m_instance = hInstance;
 	initializationData.m_windowWidth = 1920;
 	initializationData.m_windowHeight = 1080;
-	initializationData.m_engineMode = RevEngineMode::Editor;
+	initializationData.m_engineMode = RevEngineMode::Game;
 	RevEngineMain::Create(initializationData);
 
 	MSG msg = {};

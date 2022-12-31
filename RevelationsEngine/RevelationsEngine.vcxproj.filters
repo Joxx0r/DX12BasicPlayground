@@ -165,6 +165,9 @@
     <ClInclude Include="RevEngineManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="RevAssert.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="stdafx.cpp">

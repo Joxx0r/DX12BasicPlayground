@@ -16,13 +16,13 @@
 #include <malloc.h>
 #include <memory.h>
 #include <tchar.h>
-#include <assert.h>
 
 #include <d3d12.h>
 #include <d3dx12.h>
 #include <stdio.h>
 #include <stdint.h>
 
+#include "RevAssert.h"
 #include "RevTypes.h"
 #include "RevEngineFunctions.h"
 #include "RevDefines.h"
@@ -45,7 +45,7 @@
 	{  \
 		char buffer[5000] = { '\0' };	\
 		sprintf(buffer, "return code: %i %s %i", (int)hr__, __FILE__, __LINE__); \
-		assert(0 && buffer); \
+		DEBUG_ASSERT(0 && buffer); \
 	} \
 }
 #endif

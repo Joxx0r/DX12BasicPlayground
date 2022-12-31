@@ -223,7 +223,7 @@ RevFont* RevUIManager::FindFontFromType(RevFontType type)
 	RevUIManager* manager = RevEngineFunctions::FindUIManager();
 	if( !manager)
 	{
-		assert(false && "Unable to get manager");
+		DEBUG_ASSERT(false && "Unable to get manager");
 		return nullptr;
 	}
 	for(uint32_t index = 0; index < manager->m_fonts.size(); index++ )

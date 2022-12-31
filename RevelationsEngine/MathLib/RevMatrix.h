@@ -1,5 +1,5 @@
 #pragma once
-#include <assert.h>
+#include "RevAssert.h"
 #include "RevVector.h"
 #include <math.h>
 #include <intrin.h>
@@ -194,7 +194,7 @@ public:
 			return RevVector3(m_m[8], m_m[9], m_m[10]);
 		default:
 			static RevVector3 returnVector(0.0f, 0.0f, 0.0f);
-			assert(0 && "invalid vector");
+			DEBUG_ASSERT(false);
 			return returnVector;
 		};
 	}

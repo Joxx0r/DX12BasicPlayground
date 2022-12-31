@@ -475,7 +475,7 @@ namespace rapidxml
         //! \return Pointer to allocated char array. This pointer will never be NULL.
         Ch *allocate_string(const Ch *source = 0, std::size_t size = 0)
         {
-            assert(source || size);     // Either source or size (or both) must be specified
+            DEBUG_ASSERT(source || size);     // Either source or size (or both) must be specified
             if (size == 0)
                 size = internal::measure(source) + 1;
             Ch *result = static_cast<Ch *>(allocate_aligned(size * sizeof(Ch)));
@@ -551,7 +551,7 @@ namespace rapidxml
         //! \param ff Free function, or 0 to restore default function
         void set_allocator(alloc_func *af, free_func *ff)
         {
-            assert(m_begin == m_static_memory && m_ptr == align(m_begin));    // Verify that no memory is allocated yet
+            DEBUG_ASSERT(m_begin == m_static_memory && m_ptr == align(m_begin));    // Verify that no memory is allocated yet
             m_alloc_func = af;
             m_free_func = ff;
         }
@@ -583,7 +583,7 @@ namespace rapidxml
             if (m_alloc_func)   // Allocate memory using either user-specified allocation function or global operator new[]
             {
                 memory = m_alloc_func(size);
-                assert(memory); // Allocator is not allowed to return 0, on failure it must either throw, stop the program or use longjmp
+                DEBUG_ASSERT(memory); // Allocator is not allowed to return 0, on failure it must either throw, stop the program or use longjmp
             }
             else
             {
@@ -957,7 +957,7 @@ namespace rapidxml
         //! \return Pointer to found child, or 0 if not found.
         xml_node<Ch> *last_node(const Ch *name = 0, std::size_t name_size = 0, bool case_sensitive = true) const
         {
-            assert(m_first_node);  // Cannot query for last child if node has no children
+            DEBUG_ASSERT(m_first_node);  // Cannot query for last child if node has no children
             if (name)
             {
                 if (name_size == 0)
@@ -980,7 +980,7 @@ namespace rapidxml
         //! \return Pointer to found sibling, or 0 if not found.
         xml_node<Ch> *previous_sibling(const Ch *name = 0, std::size_t name_size = 0, bool case_sensitive = true) const
         {
-            assert(this->m_parent);     // Cannot query for siblings if node has no parent
+            DEBUG_ASSERT(this->m_parent);     // Cannot query for siblings if node has no parent
             if (name)
             {
                 if (name_size == 0)
@@ -1003,7 +1003,7 @@ namespace rapidxml
         //! \return Pointer to found sibling, or 0 if not found.
         xml_node<Ch> *next_sibling(const Ch *name = 0, std::size_t name_size = 0, bool case_sensitive = true) const
         {
-            assert(this->m_parent);     // Cannot query for siblings if node has no parent
+            DEBUG_ASSERT(this->m_parent);     // Cannot query for siblings if node has no parent
             if (name)
             {
                 if (name_size == 0)

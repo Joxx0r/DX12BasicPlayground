@@ -59,13 +59,13 @@ void RevEngineMain::Update(float deltaTime)
 
 void RevEngineMain::Draw(float deltaTime)
 {
-	assert(s_instance);
+	DEBUG_ASSERT(s_instance);
 	s_instance->DrawInternal(deltaTime);
 }
 
 void RevEngineMain::Resize(uint32_t width, uint32_t height)
 {
-	assert(s_instance);
+	DEBUG_ASSERT(s_instance);
 	s_instance->ResizeInteral(width, height);
 }
 
@@ -187,7 +187,7 @@ void RevEngineMain::CreateEngineWindow(const RevInitializationData& initializati
 
 	if (!m_windowHandle)
 	{
-		assert(0 && "Failed creating window");
+		DEBUG_ASSERT(0 && "Failed creating window");
 		return;
 	}
 
@@ -471,8 +471,8 @@ void RevEngineMain::LoadWorldInternal(const char* path)
 		m_activeWorld = nullptr;
 	}
 
-	assert(m_activeWorld == nullptr);
-	assert(m_worldLoader);
+	DEBUG_ASSERT(m_activeWorld == nullptr);
+	DEBUG_ASSERT(m_worldLoader);
 	m_activeWorld = m_worldLoader->LoadWorld(path);
 }
 
@@ -505,9 +505,9 @@ void RevEngineMain::ResizeInteral(UINT windowWidth, UINT windowHeight)
 	m_currentWindowWidth = windowWidth;
 	m_currentWindowHeight = windowHeight;
 
-	assert(m_device);
-	assert(m_swapChain);
-	assert(m_directCmdListAlloc);
+	DEBUG_ASSERT(m_device);
+	DEBUG_ASSERT(m_swapChain);
+	DEBUG_ASSERT(m_directCmdListAlloc);
 
 	// Flush before changing any resources.
 	FlushCommandQueue();

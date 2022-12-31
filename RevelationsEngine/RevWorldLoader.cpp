@@ -59,7 +59,7 @@ void LoadLights(RevWorld* world, const char* baseFileName)
 		doc.parse<0>(&buffer[0]);
 		// Find our root node
 		root_node = doc.first_node("light-instances");
-		assert(root_node != nullptr);
+		DEBUG_ASSERT(root_node != nullptr);
 		
 		for (xml_node<> * instanceNode = root_node->first_node("light-instance"); instanceNode; instanceNode = instanceNode->next_sibling())
 		{
@@ -110,7 +110,7 @@ RevWorld* RevWorldLoader::LoadWorld(const char* fileName)
 		doc.parse<0>(&buffer[0]);
 		// Find our root node
 		root_node = doc.first_node("object-instances");
-		assert(root_node != nullptr);
+		DEBUG_ASSERT(root_node != nullptr);
 
 		// Iterate over the brewerys
 		for (xml_node<> * instanceNode = root_node->first_node("object-instance"); instanceNode; instanceNode = instanceNode->next_sibling())
