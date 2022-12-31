@@ -14,7 +14,6 @@
 #include "RevInputManager.h"
 #include "RevWorldLoader.h"
 #include "RevWorld.h"
-#include "RevUIManager.h"
 #include "RevModel.h"
 
 #define REV_WINDOW_MENU_NAME "RevEngine"
@@ -143,9 +142,6 @@ void RevEngineMain::InitializeInternal(const RevInitializationData& initializati
 
 	m_worldLoader = new RevWorldLoader();
 	m_worldLoader->Initialize();
-
-	m_uiManager = new RevUIManager();
-	m_uiManager->Initialize(RevEngineMain::s_instance->m_windowHandle);
 
 	m_inputManager = new RevInputManager();
 
@@ -377,7 +373,6 @@ void RevEngineMain::DrawInternal(float deltaTime)
 	render.m_width = m_currentWindowWidth;
 	render.m_height = m_currentWindowHeight;
 	m_renderManager->DrawFrame(render);
-	m_uiManager->CopySRV(m_renderManager->m_heapData->m_resource[0]);
 
 	
 #if DRAW_GAME_TO_BUFFER
@@ -413,7 +408,7 @@ void RevEngineMain::DrawInternal(float deltaTime)
 	// Specify the buffers we are going to render to.
 	m_commandList->OMSetRenderTargets(1, &CurrentBackBufferView(), true, &DepthStencilView());
 
-	m_uiManager->Draw();
+	m_mainManger->Draw(deltaTime);
 
 	// Indicate a state transition on the resource usage.
 	m_commandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(CurrentBackBuffer(),

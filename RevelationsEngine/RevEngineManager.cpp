@@ -5,6 +5,7 @@
 #include "RevEngineMain.h"
 #include "RevConsole.h"
 #include "RevInputManager.h"
+#include "RevRenderManager.h"
 #include "RevUIManager.h"
 
 //
@@ -75,6 +76,8 @@ void RevEngineManager::Initialize()
 {
 	//currently does nothing
 	m_console = new RevConsole();
+	m_uiManager = new RevUIManager();
+	m_uiManager->Initialize(RevEngineMain::s_instance->m_windowHandle);
 }
 
 
@@ -105,6 +108,15 @@ void RevEngineManager::Update(float deltaTime, void* hwnd)
 	if (m_isImguiEnabled)
 	{
 		ImGui::End();
+	}
+}
+
+void RevEngineManager::Draw(float deltaTime)
+{
+	if(m_isImguiEnabled)
+	{
+		m_uiManager->CopySRV(RevEngineFunctions::FindRenderManager()->m_heapData->m_resource[0]);
+		m_uiManager->Draw();
 	}
 }
 

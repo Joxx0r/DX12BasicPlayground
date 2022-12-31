@@ -28,6 +28,7 @@ public:
 	static struct RevFrameResource* FindFrameResource(INT32 frameIndex);
 	static class RevModelManager* FindModelManager();
 	static class RevUIManager* FindUIManager();
+	static class RevRenderManager* FindRenderManager();
 	static class RevInputManager* FindInputManager();
 	static RevEngineMode FindEngineMode();
 	static void FlushCommandQueue();

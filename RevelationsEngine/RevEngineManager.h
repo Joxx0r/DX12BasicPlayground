@@ -7,6 +7,7 @@ public:
 
 	virtual void Initialize();
 	void Update(float deltaTime, void* hwnd);
+	void Draw(float deltaTime);
 
 	void DrawDebugFrame();
 
@@ -20,8 +21,11 @@ protected:
 public:
 
 	class RevConsole* m_console = nullptr;
+	class RevUIManager* m_uiManager = nullptr;
+
 
 protected:
 
 	bool m_isImguiEnabled = true;
+
 };

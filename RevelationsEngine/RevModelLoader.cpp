@@ -255,7 +255,7 @@ void LoadAnimatedModel(const struct aiScene* scene, RevModel* newModel, const ch
 			RevAnimationChannel animationChannel = {};
 			animationChannel.m_nodeName = channel->mNodeName.C_Str();
 
-			assert(channel->mNumPositionKeys == channel->mNumRotationKeys
+			REV_ASSERT(channel->mNumPositionKeys == channel->mNumRotationKeys
 				&& channel->mNumPositionKeys == channel->mNumScalingKeys);
 			animationChannel.m_keyFrames = std::vector<RevKeyFrame>(channel->mNumPositionKeys);
 
@@ -277,7 +277,7 @@ void LoadAnimatedModel(const struct aiScene* scene, RevModel* newModel, const ch
 				aiQuatKey rotationKey = channel->mRotationKeys[keyFrameIndex];
 				aiVectorKey scaleKey = channel->mScalingKeys[keyFrameIndex];
 
-				assert(locationKey.mTime == rotationKey.mTime
+				REV_ASSERT(locationKey.mTime == rotationKey.mTime
 					&& locationKey.mTime == scaleKey.mTime);
 
 				newKeyFrame.m_time = (float)locationKey.mTime;
@@ -462,7 +462,7 @@ RevModel* RevModelLoader::LoadModel(const char* path)
 	{
 #if USE_ASSIMP
 		const struct aiScene* scene = aiImportFile(path, 0);
-		assert(scene);
+		REV_ASSERT(scene);
 
 		type = scene->HasAnimations() ? RevModelType::Animated : RevModelType::Normal;
 		if (type == RevModelType::Normal)
@@ -474,7 +474,7 @@ RevModel* RevModelLoader::LoadModel(const char* path)
 			LoadAnimatedModel(scene, newModel, path);
 		}
 #else
-		assert(0 && "Not using assimp and dont have proepr context");
+		REV_ASSERT(0 && "Not using assimp and dont have proepr context");
 #endif
 	}
 

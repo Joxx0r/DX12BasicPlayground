@@ -624,7 +624,7 @@ public:
 
 		float det = m_m[0] * inv[0] + m_m[1] * inv[4] + m_m[2] * inv[8] + m_m[3] * inv[12];
 
-		assert(det != 0);
+		REV_ASSERT(det != 0);
 
 		det = 1.0 / det;
 		RevMatrix returnMatrix;

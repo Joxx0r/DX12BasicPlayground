@@ -3,6 +3,7 @@
 #include "MathLib/RevMath.h"
 #include "RevTypes.h"
 #include "MicrosoftDDSLoader.h"
+#include "RevEngineManager.h"
 #include "RevUtils.h"
 #include "RevModelManager.h"
 
@@ -464,7 +465,12 @@ class RevModelManager* RevEngineFunctions::FindModelManager()
 
 RevUIManager* RevEngineFunctions::FindUIManager()
 {
-	return RevEngineMain::s_instance->m_uiManager;
+	return RevEngineMain::s_instance->m_mainManger->m_uiManager;
+}
+
+RevRenderManager* RevEngineFunctions::FindRenderManager()
+{
+	return RevEngineMain::s_instance->m_renderManager;
 }
 
 RevInputManager* RevEngineFunctions::FindInputManager()

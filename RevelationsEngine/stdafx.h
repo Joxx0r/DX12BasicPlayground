@@ -45,7 +45,7 @@
 	{  \
 		char buffer[5000] = { '\0' };	\
 		sprintf(buffer, "return code: %i %s %i", (int)hr__, __FILE__, __LINE__); \
-		DEBUG_ASSERT(0 && buffer); \
+		REV_ASSERT(0 && buffer); \
 	} \
 }
 #endif

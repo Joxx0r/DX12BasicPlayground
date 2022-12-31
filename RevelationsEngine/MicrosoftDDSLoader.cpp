@@ -1221,7 +1221,7 @@ namespace
 				// Note there's no way for a legacy Direct3D 9 DDS to express a '1D' texture
 			}
 
-			assert(BitsPerPixel(format) != 0);
+			REV_ASSERT(BitsPerPixel(format) != 0);
 		}
 
 		// Bound sizes (for security purposes we don't trust DDS file metadata larger than the Direct3D hardware requirements)

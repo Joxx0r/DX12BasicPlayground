@@ -26,7 +26,7 @@
 // Define assertion handler.
 #ifndef IM_ASSERT
 #include <assert.h>
-#define IM_ASSERT(_EXPR)    assert(_EXPR)
+#define IM_ASSERT(_EXPR)    REV_ASSERT(_EXPR)
 #endif
 
 // Helpers

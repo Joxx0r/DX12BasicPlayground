@@ -92,14 +92,13 @@ public:
 	uint32_t m_currentWindowWidth;
 	uint32_t m_currentWindowHeight;
 
-	class RevShaderManager* m_shaderInstance;
-	class RevModelManager* m_modelManager;
-	class RevCamera* m_camera;
-	class RevRenderManager* m_renderManager;
+	class RevShaderManager* m_shaderInstance = nullptr;
+	class RevModelManager* m_modelManager = nullptr;
+	class RevCamera* m_camera = nullptr;
+	class RevRenderManager* m_renderManager = nullptr;
 	class RevEngineManager* m_mainManger = nullptr;
 	class RevWorldLoader* m_worldLoader = nullptr;
 	class RevWorld* m_activeWorld = nullptr;
-	class RevUIManager* m_uiManager = nullptr;
 	class RevInputManager* m_inputManager = nullptr;
 	
 	struct RevFrameSnapshotData* m_snapshotData = nullptr;

@@ -235,7 +235,7 @@ RevFont* RevUIManager::FindFontFromType(RevFontType type)
 		}
 	}
 	
-	assert(false && "Failed finding font for type");
+	REV_ASSERT(false && "Failed finding font for type");
 	return nullptr;
 }
 
