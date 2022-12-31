@@ -17,6 +17,9 @@ struct RevInitializationData
 
 	uint32_t  m_windowWidth;
 	uint32_t  m_windowHeight;
+
+	RevEngineMode m_engineMode;
+	
 };
 
 
@@ -36,6 +39,7 @@ public:
 	static void LoadWorld(const char* filePath);
 	static void ReloadCurrentWorld();
 	static void DrawMainPass( float deltaTime );
+	
 public:
 
 	void InitializeInternal(const RevInitializationData& initializationData);
@@ -105,4 +109,6 @@ public:
 
 	struct ID3D12DescriptorHeap* m_cbvHeap = nullptr;
 
+	RevEngineMode m_engineMode;
+	
 };

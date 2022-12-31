@@ -1,9 +1,7 @@
 #pragma once
 
-#include <vector>
-#include "RevUploadBuffer.h"
-#include "DirectXMath.h"
 #include "RevInstance.h"
+#include <vector>
 #include <string>
 
 class RevWorld

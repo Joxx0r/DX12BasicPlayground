@@ -97,6 +97,7 @@ void RevEngineMain::InitializeInternal(const RevInitializationData& initializati
 {
 	m_currentWindowWidth = initializationData.m_windowWidth;
 	m_currentWindowHeight = initializationData.m_windowHeight;
+	m_engineMode = initializationData.m_engineMode;
 
 	CreateEngineWindow(initializationData);
 	CreateD3D(initializationData);
@@ -142,7 +143,7 @@ void RevEngineMain::InitializeInternal(const RevInitializationData& initializati
 
 	m_inputManager = new RevInputManager();
 	
-	LoadWorld("3");
+	LoadWorldInternal("3");
 }
 
 void RevEngineMain::CreateEngineWindow(const RevInitializationData& initializationData)

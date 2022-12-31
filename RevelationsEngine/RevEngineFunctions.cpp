@@ -472,6 +472,11 @@ RevInputManager* RevEngineFunctions::FindInputManager()
 	return RevEngineMain::s_instance->m_inputManager;
 }
 
+RevEngineMode RevEngineFunctions::FindEngineMode()
+{
+	return RevEngineMain::s_instance->m_engineMode;
+}
+
 void RevEngineFunctions::FlushCommandQueue()
 {
 	RevEngineMain::s_instance->FlushCommandQueue();

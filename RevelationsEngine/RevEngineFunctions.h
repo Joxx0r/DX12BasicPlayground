@@ -1,7 +1,8 @@
 #pragma once
 
-enum class RevEditorActions : UINT8;
-	
+enum class RevEditorActions : uint8_t;
+//enum class RevEngineMode : uint8_t;
+
 class RevEngineFunctions
 {
 public:
@@ -28,6 +29,7 @@ public:
 	static class RevModelManager* FindModelManager();
 	static class RevUIManager* FindUIManager();
 	static class RevInputManager* FindInputManager();
+	static RevEngineMode FindEngineMode();
 	static void FlushCommandQueue();
 	static float GetAspectRatio();
 	static RevVector2 GetMouseDelta(bool reset = true);
@@ -53,5 +55,6 @@ public:
 			UINT height, 
 			UINT64 format, 
 			UINT64 clearValue);
+	
 
 };

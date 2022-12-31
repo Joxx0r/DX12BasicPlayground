@@ -302,3 +302,11 @@ struct RevAnimatedNodelInitializationData
 
 	void Serialize(class RevArchive& archive);
 };
+
+enum class RevEngineMode : uint8_t
+{
+	None,
+	Editor,
+	Game,
+	MAX
+};
