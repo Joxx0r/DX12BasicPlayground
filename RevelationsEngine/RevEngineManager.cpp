@@ -99,11 +99,8 @@ void RevEngineManager::Update(float deltaTime, void* hwnd)
 	// Hide OS mouse cursor if ImGui is drawing it
 	SetCursor(io.MouseDrawCursor ? NULL : LoadCursor(NULL, IDC_ARROW));
 	// Start the frame
-	if (m_isImguiEnabled)
-	{
-		ImGui::NewFrame();
-		m_console->Update();
-	}
+	ImGui::NewFrame();
+	m_console->Update();
 	UpdateInternal(deltaTime, hwnd);
 }
 
@@ -111,15 +108,11 @@ void RevEngineManager::Draw(float deltaTime)
 {
 	m_uiManager->CopySRV(RevEngineFunctions::FindRenderManager()->m_heapData->m_resource[0]);
 	m_uiManager->Draw();
-	if (m_isImguiEnabled)
-	{
-		ImGui::EndFrame();
-	}
+	ImGui::EndFrame();
 }
 
 void RevEngineManager::DrawDebugFrame()
 {
-
 	RevFrameSnapshotData* snapshotData = RevEngineFunctions::FindEngineRuntimeSnapshotData();
 	snapshotData->m_mouseDelta = RevEngineFunctions::GetMouseDelta();
 	const ImVec2 window_pos = ImVec2(5.0f, 25.0f);

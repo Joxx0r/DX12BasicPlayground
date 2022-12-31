@@ -24,8 +24,4 @@ public:
 	class RevUIManager* m_uiManager = nullptr;
 
 
-protected:
-
-	bool m_isImguiEnabled = true;
-
 };
