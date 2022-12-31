@@ -4,7 +4,7 @@
 #include "RevWorldLoader.h"
 #include "imgui/imgui.h"
 
-bool GUsePropertyEditor = true;
+bool GUsePropertyEditor = false;
 std::string GSelectedInstance;
 
 void RevEngineEditorManager::Initialize()
@@ -98,9 +98,8 @@ void RevEngineEditorManager::UpdateInternal(float deltaTime, void* hwnd)
 				ImGui::PushItemWidth(-1);
 				index++;
 				ImGui::PopItemWidth();
-
-
 				ImGui::AlignTextToFramePadding();
+
 				std::string fullPath = objectType.m_instancePath;
 
 				size_t lastPath = fullPath.find_last_of('\\') + 1;

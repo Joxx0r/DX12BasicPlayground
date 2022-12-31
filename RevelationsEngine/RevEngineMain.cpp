@@ -151,7 +151,7 @@ void RevEngineMain::InitializeInternal(const RevInitializationData& initializati
 	}
 	else
 	{
-		LoadWorldInternal("empty");	
+		LoadWorldInternal("engine_editor_default");	
 	}
 }
 

@@ -105,18 +105,15 @@ void RevEngineManager::Update(float deltaTime, void* hwnd)
 		m_console->Update();
 	}
 	UpdateInternal(deltaTime, hwnd);
-	if (m_isImguiEnabled)
-	{
-		ImGui::End();
-	}
 }
 
 void RevEngineManager::Draw(float deltaTime)
 {
-	if(m_isImguiEnabled)
+	m_uiManager->CopySRV(RevEngineFunctions::FindRenderManager()->m_heapData->m_resource[0]);
+	m_uiManager->Draw();
+	if (m_isImguiEnabled)
 	{
-		m_uiManager->CopySRV(RevEngineFunctions::FindRenderManager()->m_heapData->m_resource[0]);
-		m_uiManager->Draw();
+		ImGui::EndFrame();
 	}
 }
 

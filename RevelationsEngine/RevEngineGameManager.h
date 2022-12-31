@@ -7,6 +7,10 @@ class RevEngineGameManager : public RevEngineManager
 public:
 	RevEngineGameManager()
 	{
-		m_isImguiEnabled = false;
+		m_isImguiEnabled = true;
 	}
+
+protected:
+
+	virtual void UpdateInternal(float deltaTime, void* hwnd);
 };
