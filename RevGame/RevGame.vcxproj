@@ -79,10 +79,16 @@
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
     <LibraryPath>..\Include\assimp\lib\x64;$(LibraryPath)</LibraryPath>
+    <OutDir>..\bin\</OutDir>
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
+    <IntDir>..\Symbols\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
     <LibraryPath>..\Include\assimp\lib\x64;$(LibraryPath)</LibraryPath>
+    <OutDir>..\bin\</OutDir>
+    <TargetName>$(ProjectName)_$(Configuration)</TargetName>
+    <IntDir>..\Symbols\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>

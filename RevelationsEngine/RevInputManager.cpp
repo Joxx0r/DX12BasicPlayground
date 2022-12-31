@@ -11,7 +11,7 @@ bool RevInputManager::IsInputEnabled(EYInputType desiredType)
         }
         if(desiredType == EYInputType::Game)
         {
-            return !manager->m_blockingContexts.size() > 0;
+            return !(manager->m_blockingContexts.size() > 0);
         }
     }
     
