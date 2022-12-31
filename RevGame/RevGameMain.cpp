@@ -58,7 +58,7 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 	initializationData.m_instance = hInstance;
 	initializationData.m_windowWidth = 1920;
 	initializationData.m_windowHeight = 1080;
-	initializationData.m_engineMode = RevEngineMode::Editor;
+	initializationData.m_engineMode = RevEngineMode::Game;
 	RevEngineMain::Create(initializationData);
 
 	MSG msg = {};
@@ -99,8 +99,6 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 		{
 			GApplicationIsRunning = false;
 		}
-
-
 	}
 
 	return 0;

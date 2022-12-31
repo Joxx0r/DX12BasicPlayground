@@ -142,8 +142,15 @@ void RevEngineMain::InitializeInternal(const RevInitializationData& initializati
 	m_uiManager->Initialize(RevEngineMain::s_instance->m_windowHandle);
 
 	m_inputManager = new RevInputManager();
-	
-	LoadWorldInternal("3");
+
+	if(m_engineMode == RevEngineMode::Editor)
+	{
+		LoadWorldInternal("engine_editor_default");		
+	}
+	else
+	{
+		LoadWorldInternal("empty");	
+	}
 }
 
 void RevEngineMain::CreateEngineWindow(const RevInitializationData& initializationData)
