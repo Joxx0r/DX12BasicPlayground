@@ -117,7 +117,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\Include\assimp\include\;..\Include\D3DX12\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -148,7 +148,7 @@
       <Optimization>MaxSpeed</Optimization>
       <FunctionLevelLinking>true</FunctionLevelLinking>
       <IntrinsicFunctions>true</IntrinsicFunctions>
-      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions);_CRT_SECURE_NO_WARNINGS</PreprocessorDefinitions>
+      <PreprocessorDefinitions>NDEBUG;_WINDOWS;%(PreprocessorDefinitions);</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\Include\assimp\include\;..\Include\D3DX12\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -175,7 +175,10 @@
     <ClInclude Include="rapidxml\rapidxml_print.hpp" />
     <ClInclude Include="rapidxml\rapidxml_utils.hpp" />
     <ClInclude Include="RevDefines.h" />
+    <ClInclude Include="RevEngineEditorManager.h" />
     <ClInclude Include="RevEngineFunctions.h" />
+    <ClInclude Include="RevEngineGameManager.h" />
+    <ClInclude Include="RevEngineManager.h" />
     <ClInclude Include="RevEnums.h" />
     <ClInclude Include="RevInputManager.h" />
     <ClInclude Include="RevLightManager.h" />
@@ -183,7 +186,6 @@
     <ClInclude Include="RevUITypes.h" />
     <ClInclude Include="RevWorldLoader.h" />
     <ClInclude Include="RevConsole.h" />
-    <ClInclude Include="RevEngineEditorMain.h" />
     <ClInclude Include="imgui\stb_rect_pack.h" />
     <ClInclude Include="imgui\stb_textedit.h" />
     <ClInclude Include="imgui\stb_truetype.h" />
@@ -216,14 +218,16 @@
     <ClCompile Include="MathLib\RevMath.cpp" />
     <ClCompile Include="RevAnimation.cpp" />
     <ClCompile Include="RevArchive.cpp" />
+    <ClCompile Include="RevEngineEditorManager.cpp" />
     <ClCompile Include="RevEngineFunctions.cpp" />
+    <ClCompile Include="RevEngineGameManager.cpp" />
+    <ClCompile Include="RevEngineManager.cpp" />
     <ClCompile Include="RevInputManager.cpp" />
     <ClCompile Include="RevLightManager.cpp" />
     <ClCompile Include="RevScene.cpp" />
     <ClCompile Include="RevUITypes.cpp" />
     <ClCompile Include="RevWorldLoader.cpp" />
     <ClCompile Include="RevConsole.cpp" />
-    <ClCompile Include="RevEngineEditorMain.cpp" />
     <ClCompile Include="MicrosoftDDSLoader.cpp" />
     <ClCompile Include="RevCamera.cpp" />
     <ClCompile Include="RevelationsEngine.cpp" />

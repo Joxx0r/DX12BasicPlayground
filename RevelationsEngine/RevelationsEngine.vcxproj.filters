@@ -99,9 +99,6 @@
     <ClInclude Include="imgui\stb_truetype.h">
       <Filter>Header Files</Filter>
     </ClInclude>
-    <ClInclude Include="RevEngineEditorMain.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="RevConsole.h">
       <Filter>Header Files</Filter>
     </ClInclude>
@@ -157,6 +154,15 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RevUITypes.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RevEngineGameManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RevEngineEditorManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RevEngineManager.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
@@ -218,9 +224,6 @@
     <ClCompile Include="imgui\imgui_draw.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="RevEngineEditorMain.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="RevConsole.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
@@ -249,6 +252,15 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RevUITypes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RevEngineGameManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RevEngineEditorManager.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="RevEngineManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>

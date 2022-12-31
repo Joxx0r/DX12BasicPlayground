@@ -96,12 +96,12 @@ public:
 	class RevModelManager* m_modelManager;
 	class RevCamera* m_camera;
 	class RevRenderManager* m_renderManager;
-	class RevEngineEditorMain* m_editor = nullptr;
+	class RevEngineManager* m_mainManger = nullptr;
 	class RevWorldLoader* m_worldLoader = nullptr;
 	class RevWorld* m_activeWorld = nullptr;
 	class RevUIManager* m_uiManager = nullptr;
 	class RevInputManager* m_inputManager = nullptr;
-
+	
 	struct RevFrameSnapshotData* m_snapshotData = nullptr;
 
 	std::vector<struct RevFrameResource*> m_frameResource;

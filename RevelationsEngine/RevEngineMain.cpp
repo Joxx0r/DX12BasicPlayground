@@ -7,8 +7,10 @@
 #include "RevInstance.h"
 #include "RevFrameResource.h"
 #include "RevCamera.h"
+#include "RevEngineEditorManager.h"
+#include "RevEngineGameManager.h"
 #include "RevRenderManager.h"
-#include "RevEngineEditorMain.h"
+#include "RevEngineManager.h"
 #include "RevInputManager.h"
 #include "RevWorldLoader.h"
 #include "RevWorld.h"
@@ -80,7 +82,7 @@ XMFLOAT2 RevEngineMain::GetRenderTargetSize()
 
 LRESULT RevEngineMain::ManageWindowsMessage(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam)
 {
-	return RevEngineEditorMain::ManageWindowsMessage(hwnd, msg, wParam, lParam);
+	return RevEngineManager::ManageWindowsMessage(hwnd, msg, wParam, lParam);
 }
 
 void RevEngineMain::LoadWorld(const char* filePath)
@@ -126,14 +128,18 @@ void RevEngineMain::InitializeInternal(const RevInitializationData& initializati
 	RevThrowIfFailed(m_device->CreateDescriptorHeap(&cbvHeapDesc,
 		IID_PPV_ARGS(&m_cbvHeap)));
 
-
-
 	m_snapshotData = new RevFrameSnapshotData();
 	m_renderManager = new RevRenderManager();
 	m_renderManager->Initialize();
-
-	m_editor = new RevEngineEditorMain();
-	m_editor->Initialize();
+	if(m_engineMode == RevEngineMode::Editor)
+	{
+		m_mainManger = new RevEngineEditorManager();
+	}
+	else
+	{
+		m_mainManger = new RevEngineGameManager();
+	}
+	m_mainManger->Initialize();
 
 	m_worldLoader = new RevWorldLoader();
 	m_worldLoader->Initialize();
@@ -438,7 +444,7 @@ void RevEngineMain::UpdateInteral(float deltaTime)
 {
 	UpdateFrameSnapshotData(deltaTime);
 
-	m_editor->Update(deltaTime, m_windowHandle);
+	m_mainManger->Update(deltaTime, m_windowHandle);
 }
 
 void RevEngineMain::UpdateFrameSnapshotData(float deltaTime)
