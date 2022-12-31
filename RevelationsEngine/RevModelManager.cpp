@@ -57,7 +57,7 @@ RevModelEntry* RevModelManager::FindOrCreateModelByPathInternal(const char* file
 
 	if (modelindex >= AMOUNT_OF_MODELS_ALLOC)
 	{
-		DEBUG_ASSERT(0 && "Increase amount of models loaded");
+		REV_ASSERT(0 && "Increase amount of models loaded");
 	}
 
 	RevModelEntry model = {};

@@ -124,7 +124,7 @@ void RevEngineFunctions::CreateSRVRTVDescriptorHeap(
 
 		}
 
-		DEBUG_ASSERT(newResource);
+		REV_ASSERT(newResource);
 		out->m_resource.push_back(newResource);
 
 		if (heapCreation.m_isRtv)
@@ -163,7 +163,7 @@ struct RevDescriptorHeapIncrementSizeData* RevEngineFunctions::FindIncrementSize
 
 void RevEngineFunctions::FindWindowWidthHeight(uint32_t* outX, uint32_t* outY)
 {
-	DEBUG_ASSERT(outX != nullptr && outY != nullptr);
+	REV_ASSERT(outX != nullptr && outY != nullptr);
 	*outX = RevEngineMain::s_instance->m_currentWindowWidth;
 	*outY = RevEngineMain::s_instance->m_currentWindowHeight;
 }
@@ -353,7 +353,7 @@ void LoadTexturesForModelData(RevTextureInitializationData& initializationData, 
 	const UINT numTexturePaths = initializationData.m_nTexturePaths;
 	if (numTexturePaths  > 0)
 	{
-		DEBUG_ASSERT(numTexturePaths == 4);
+		REV_ASSERT(numTexturePaths == 4);
 		RevEngineFunctions::LoadTexture(initializationData.m_diffuseTexturePath, &outData->m_diffuseTexture);
 		RevEngineFunctions::LoadTexture(initializationData.m_normalTexturePath, &outData->m_normalTexture );
 		RevEngineFunctions::LoadTexture(initializationData.m_substanceTexturePath, &outData->m_substanceTexture);

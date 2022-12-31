@@ -19,14 +19,14 @@ void RevInstance::Initialize(const RevMatrix& transform, uint32_t index, const c
 	m_cbufferIndex = index;
 	m_world = transform;
 	m_modelHandle = RevModelManager::FindModel(modelPath)->m_handle;
-	DEBUG_ASSERT(m_modelHandle != UINT32_MAX);
+	REV_ASSERT(m_modelHandle != UINT32_MAX);
 }
 
 void RevInstance::Update(struct RevFrameResource* resource, float deltaTime)
 {
 	m_deltaTime += deltaTime *GAnimationRateScale;
 	RevModel* entry = RevModelManager::FindModelByHandle(m_modelHandle);
-	DEBUG_ASSERT(entry);
+	REV_ASSERT(entry);
 	if (entry->m_type == RevModelType::Animated)
 	{
 		ObjectConstantsAnimated objConstants;
@@ -52,6 +52,6 @@ void RevInstance::Draw(RevModelFrameRender& param)
 {
 	param.m_startIndex = m_cbufferIndex;
 	RevModel* entry = RevModelManager::FindModelByHandle(m_modelHandle);
-	DEBUG_ASSERT(entry);
+	REV_ASSERT(entry);
 	entry->Draw(param);
 }

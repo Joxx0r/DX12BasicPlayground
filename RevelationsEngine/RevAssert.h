@@ -26,7 +26,7 @@ static void CheckAssert(bool expression)
 #define DEBUG_ASSERT_ENABLED 1
 
 #if DEBUG_ASSERT_ENABLED
-#define DEBUG_ASSERT(Expr) \
+#define REV_ASSERT(Expr) \
 CheckAssert(!!(Expr))
 #else
 #define DEBUG_ASSERT(Expr)

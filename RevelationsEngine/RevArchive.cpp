@@ -6,9 +6,9 @@
 
 void RevArchiveLoader::Serialize(void* inputData, UINT size)
 {
-	DEBUG_ASSERT(inputData != nullptr);
+	REV_ASSERT(inputData != nullptr);
 	unsigned char* bufferData = GetMemory(size);
-	DEBUG_ASSERT(bufferData != nullptr);
+	REV_ASSERT(bufferData != nullptr);
 	memcpy(inputData, bufferData, size);
 }
 
@@ -21,9 +21,9 @@ void RevArchiveLoader::SerializeBinaryData(void** inputData, UINT size)
 
 void RevArchiveSaver::Serialize(void* inputData, UINT size)
 {
-	DEBUG_ASSERT(inputData != nullptr);
+	REV_ASSERT(inputData != nullptr);
 	unsigned char* bufferData = GetMemory(size);
-	DEBUG_ASSERT(bufferData != nullptr);
+	REV_ASSERT(bufferData != nullptr);
 	memcpy(bufferData, inputData, size);
 }
 

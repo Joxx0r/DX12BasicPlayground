@@ -194,7 +194,7 @@ public:
 			return RevVector3(m_m[8], m_m[9], m_m[10]);
 		default:
 			static RevVector3 returnVector(0.0f, 0.0f, 0.0f);
-			DEBUG_ASSERT(false);
+			REV_ASSERT(false);
 			return returnVector;
 		};
 	}

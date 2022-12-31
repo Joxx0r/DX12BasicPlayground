@@ -20,7 +20,7 @@ void RevWorld::Draw(RevModelFrameRender& render)
 
 void RevWorld::UpdateRendererData(struct RevFrameResource* resource, float deltaTime)
 {
-	DEBUG_ASSERT(m_instances.size() < AMOUNT_OF_MAX_INSTANCES);
+	REV_ASSERT(m_instances.size() < AMOUNT_OF_MAX_INSTANCES);
 	for (INT32 index = 0; index < m_instances.size(); index++)
 	{
 		m_instances[index]->Update(resource, deltaTime);

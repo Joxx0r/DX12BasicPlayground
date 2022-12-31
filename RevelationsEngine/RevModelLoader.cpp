@@ -246,11 +246,11 @@ void LoadAnimatedModel(const struct aiScene* scene, RevModel* newModel, const ch
 		animationModelInstanceData.m_name = animation->mName.C_Str();
 		
 		animationModelInstanceData.m_duration = (float)animation->mDuration;
-		DEBUG_ASSERT(animation->mNumChannels != 0);
+		REV_ASSERT(animation->mNumChannels != 0);
 		for (UINT channelIndex = 0; channelIndex < animation->mNumChannels; channelIndex++)
 		{
 			aiNodeAnim* channel = animation->mChannels[channelIndex];
-			DEBUG_ASSERT(channel);
+			REV_ASSERT(channel);
 
 			RevAnimationChannel animationChannel = {};
 			animationChannel.m_nodeName = channel->mNodeName.C_Str();

@@ -109,7 +109,7 @@ inline RevQuat RevRotationMatrixToQuaternion(const RevMatrix& matrix)
 		float c = matrix.m_m[biggestIndexTwo * 5];
 
 		returnQuat.m_v[biggestIndex] = (sqrtf((a - b - c)) + 1) / 2;
-		DEBUG_ASSERT(returnQuat.m_v[biggestIndex] != 0);
+		REV_ASSERT(returnQuat.m_v[biggestIndex] != 0);
 		returnQuat.m_v[biggestIndexOne] = (matrix[0 + biggestIndexOne] + matrix[4 + (biggestIndex)]) / (4 * returnQuat.m_v[biggestIndex]);
 		returnQuat.m_v[biggestIndexTwo] = (matrix[0 + biggestIndexTwo] + matrix[8 + biggestIndex]) / (4 * returnQuat.m_v[biggestIndex]);
 		returnQuat.m_real = (matrix[4 + biggestIndexTwo] - matrix[8 + biggestIndexOne]) / (4 * returnQuat.m_v[biggestIndex]);
