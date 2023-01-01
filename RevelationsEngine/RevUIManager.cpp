@@ -13,6 +13,7 @@ ID3D12Resource* m_uploadBuffer = nullptr;
 bool GRenderPhysics = false;
 bool GRenderFull = true;
 bool GRenderWireFrame = false;
+bool GDrawGameWindow = true;
 
 // dxgi, device, cmd queue, cmd allocator
 // command lists genereation with vsh,psh
@@ -501,8 +502,11 @@ void RevUIManager::InitializeRootSignature()
 
 void RevUIManager::Draw()
 {
-	DrawGameWindow();
-
+	if(GDrawGameWindow)
+	{
+		DrawGameWindow();
+	}
+	
 	ID3D12GraphicsCommandList* commandList = RevEngineFunctions::FindCommandList();
 	commandList->SetPipelineState(m_modelData->m_pso);
 
@@ -510,8 +514,7 @@ void RevUIManager::Draw()
 	commandList->SetDescriptorHeaps(_countof(descriptorHeaps), descriptorHeaps);
 	commandList->SetGraphicsRootSignature(m_modelData->m_rootSignature);
 
-	commandList->SetGraphicsRootDescriptorTable(0,
-		m_srvHeap->GetGPUDescriptorHandleForHeapStart());
+	commandList->SetGraphicsRootDescriptorTable(0,m_srvHeap->GetGPUDescriptorHandleForHeapStart());
 
 	ImGui::Render();
 }

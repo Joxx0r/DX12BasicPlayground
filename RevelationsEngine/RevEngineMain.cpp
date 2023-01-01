@@ -21,7 +21,7 @@
 #define REV_WINDOW_TITLE "RevEngine"
 
 #define DRAW_ONLY_UI 0
-#define DRAW_GAME_TO_BUFFER 0
+#define DRAW_GAME_TO_BUFFER 1
 
 bool GBlockGameInput = false;
 
@@ -153,6 +153,9 @@ void RevEngineMain::InitializeInternal(const RevInitializationData& initializati
 	{
 		LoadWorldInternal("engine_editor_default");	
 	}
+
+	extern bool GDrawGameWindow;
+	GDrawGameWindow = m_engineMode == RevEngineMode::Editor;
 }
 
 void RevEngineMain::CreateEngineWindow(const RevInitializationData& initializationData)
@@ -374,26 +377,23 @@ void RevEngineMain::DrawInternal(float deltaTime)
 	render.m_height = m_currentWindowHeight;
 	m_renderManager->DrawFrame(render);
 
-	
-#if DRAW_GAME_TO_BUFFER
+	extern bool GDrawGameWindow;
+	if(!GDrawGameWindow)
+	{
+		m_renderManager->CopyFinalResultToBackBuffer(CurrentBackBuffer());
 
-	m_renderManager->CopyFinalResultToBackBuffer(CurrentBackBuffer());
+		m_commandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(CurrentBackBuffer(),
+			D3D12_RESOURCE_STATE_COPY_DEST, D3D12_RESOURCE_STATE_RENDER_TARGET));
+	}
+	else
+	{
+		m_commandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(CurrentBackBuffer(),
+			D3D12_RESOURCE_STATE_COPY_DEST, D3D12_RESOURCE_STATE_RENDER_TARGET));
 
-	m_commandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(CurrentBackBuffer(),
-		D3D12_RESOURCE_STATE_COPY_DEST, D3D12_RESOURCE_STATE_RENDER_TARGET));
-
-	float normalClearColor[] = { 0.0f, 0.0f, 0.0f, 0.0f };
-	m_commandList->ClearRenderTargetView(
-		CurrentBackBufferView(), normalClearColor, 0, nullptr);
-#else
-
-	m_commandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(CurrentBackBuffer(),
-		D3D12_RESOURCE_STATE_COPY_DEST, D3D12_RESOURCE_STATE_RENDER_TARGET));
-	
-	float normalClearColor[] = { 0.0f, 0.0f, 0.0f, 0.0f };
-	m_commandList->ClearRenderTargetView(
-		CurrentBackBufferView(), normalClearColor, 0, nullptr);
-#endif
+		float normalClearColor[] = { 0.0f, 0.0f, 0.0f, 0.0f };
+		m_commandList->ClearRenderTargetView(
+			CurrentBackBufferView(), normalClearColor, 0, nullptr);
+	}
 #else
 
 	m_commandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(CurrentBackBuffer(),

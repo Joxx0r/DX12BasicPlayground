@@ -100,14 +100,13 @@ public:
 	class RevWorldLoader* m_worldLoader = nullptr;
 	class RevWorld* m_activeWorld = nullptr;
 	class RevInputManager* m_inputManager = nullptr;
-	
+	struct ID3D12DescriptorHeap* m_cbvHeap = nullptr;
+
 	struct RevFrameSnapshotData* m_snapshotData = nullptr;
 
 	std::vector<struct RevFrameResource*> m_frameResource;
 	UINT m_currentFrameResourceIndex = 0;
-
-	struct ID3D12DescriptorHeap* m_cbvHeap = nullptr;
-
+	
 	RevEngineMode m_engineMode;
 	
 };

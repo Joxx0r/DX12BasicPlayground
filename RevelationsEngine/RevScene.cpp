@@ -14,7 +14,7 @@ void RevScene::Initialize()
 	ID3D12GraphicsCommandList* commandList = RevEngineFunctions::FindCommandList();
 	RevThrowIfFailed(commandList->Reset(RevEngineFunctions::FindCommandAllocator(), nullptr));
 
-	m_modelData = new RevModelData();
+	m_fullscreenModelData = new RevModelData();
 	m_heapData = new RevDescriptorRuntimeData();
 	
 	{
@@ -51,7 +51,7 @@ void RevScene::Initialize()
 		slotRootParameter[1].InitAsDescriptorTable(1, &secondTexTable, D3D12_SHADER_VISIBILITY_PIXEL);
 		slotRootParameter[2].InitAsConstantBufferView(1);
 		slotRootParameter[3].InitAsDescriptorTable(1, &thirdTexTAble, D3D12_SHADER_VISIBILITY_PIXEL);
-		RevUtils::CreateModelRootDescription(&slotRootParameter[0], ARRAYSIZE(slotRootParameter), m_modelData);
+		RevUtils::CreateModelRootDescription(&slotRootParameter[0], ARRAYSIZE(slotRootParameter), m_fullscreenModelData);
 	}
 
 
@@ -79,22 +79,22 @@ void RevScene::Initialize()
 			sizeof(vertices[0]),
 			&indices[0],
 			ARRAYSIZE(indices),
-			m_modelData);
+			m_fullscreenModelData);
 	}
 
 	RevPSOInitializationData initializationData = {};
 	//pso for fullscreen pass
 	{
-		m_modelData->m_shader = RevShaderManager::GetShader(L"Shaders\\FullscreenTest.hlsl");
-		m_modelData->m_inputLayout =
+		m_fullscreenModelData->m_shader = RevShaderManager::GetShader(L"Shaders\\FullscreenTest.hlsl");
+		m_fullscreenModelData->m_inputLayout =
 		{
 			{ "POSITION", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
 		};
-		initializationData.m_shader = m_modelData->m_shader;
-		initializationData.m_inputLayoutData = m_modelData->m_inputLayout.data();
-		initializationData.m_nInputLayout = (UINT)m_modelData->m_inputLayout.size();
-		initializationData.m_rootSignature = m_modelData->m_rootSignature;
-		initializationData.m_pso = &m_modelData->m_pso;
+		initializationData.m_shader = m_fullscreenModelData->m_shader;
+		initializationData.m_inputLayoutData = m_fullscreenModelData->m_inputLayout.data();
+		initializationData.m_nInputLayout = (UINT)m_fullscreenModelData->m_inputLayout.size();
+		initializationData.m_rootSignature = m_fullscreenModelData->m_rootSignature;
+		initializationData.m_pso = &m_fullscreenModelData->m_pso;
 		initializationData.m_numRenderTargets = 1;
 		initializationData.m_useDepth = false;
 		initializationData.m_useStencil = false;
@@ -152,14 +152,14 @@ void RevScene::DrawPostProcess(struct RevModelFrameRender& renderEntry)
 	renderEntry.m_commandList->OMSetRenderTargets(1, &handle, true, nullptr);
 
 	renderEntry.m_commandList->DrawIndexedInstanced(
-		m_modelData->m_indexCount,
+		m_fullscreenModelData->m_indexCount,
 		1, 0, 0, 0);*/
 }
 
 void RevScene::DrawToMainRTVWithoutDepth(struct RevModelFrameRender& renderEntry)
 {
 	renderEntry.m_commandList->DrawIndexedInstanced(
-		m_modelData->m_indexCount,
+		m_fullscreenModelData->m_indexCount,
 		1, 0, 0, 0);
 }
 
@@ -186,8 +186,8 @@ void RevScene::PostMainPassRender(struct RevModelFrameRender& renderEntry)
 	ID3D12DescriptorHeap* descriptorHeaps[] = { m_heapData->m_srvDescriptorHeap };
 	renderEntry.m_commandList->SetDescriptorHeaps(_countof(descriptorHeaps), descriptorHeaps);
 
-	renderEntry.m_commandList->SetPipelineState(m_modelData->m_pso);
-	renderEntry.m_commandList->SetGraphicsRootSignature(m_modelData->m_rootSignature);
+	renderEntry.m_commandList->SetPipelineState(m_fullscreenModelData->m_pso);
+	renderEntry.m_commandList->SetGraphicsRootSignature(m_fullscreenModelData->m_rootSignature);
 	renderEntry.m_commandList->SetGraphicsRootDescriptorTable(0,
 		m_heapData->m_srvDescriptorHeap->GetGPUDescriptorHandleForHeapStart());
 	D3D12_GPU_DESCRIPTOR_HANDLE descriptorHeap = m_heapData->m_srvDescriptorHeap->GetGPUDescriptorHandleForHeapStart();
@@ -200,7 +200,7 @@ void RevScene::PostMainPassRender(struct RevModelFrameRender& renderEntry)
 		2,
 		RevEngineFunctions::FindFrameResource(renderEntry.m_currentRenderFrameResourceIndex)->m_passCB->Resource()->GetGPUVirtualAddress());
 
-	renderEntry.m_commandList->IASetVertexBuffers(0, 1, &m_modelData->VertexBufferView());
-	renderEntry.m_commandList->IASetIndexBuffer(&m_modelData->IndexBufferView());
+	renderEntry.m_commandList->IASetVertexBuffers(0, 1, &m_fullscreenModelData->VertexBufferView());
+	renderEntry.m_commandList->IASetIndexBuffer(&m_fullscreenModelData->IndexBufferView());
 	renderEntry.m_commandList->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
 }

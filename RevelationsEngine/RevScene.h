@@ -25,7 +25,7 @@ public:
 	void DrawToMainRTVWithDepth(struct RevModelFrameRender& renderEntry);
 	void PostMainPassRender(struct RevModelFrameRender& renderEntry);
 
-	struct RevModelData* m_modelData = nullptr;
+	struct RevModelData* m_fullscreenModelData = nullptr;
 	CD3DX12_CPU_DESCRIPTOR_HANDLE m_srvCPU;
 	CD3DX12_GPU_DESCRIPTOR_HANDLE m_srvGPU;
 
