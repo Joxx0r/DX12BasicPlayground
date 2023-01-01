@@ -4,7 +4,7 @@
 #include "RevWorldLoader.h"
 #include "imgui/imgui.h"
 
-bool GUsePropertyEditor = false;
+bool GUsePropertyEditor = true;
 std::string GSelectedInstance;
 
 void RevEngineEditorManager::Initialize()
@@ -22,7 +22,7 @@ void RevEngineEditorManager::UpdateInternal(float deltaTime, void* hwnd)
 			{
 				//when we can load full level xml
 			}
-
+			
 			if (ImGui::MenuItem("Save Model"))
 			{
 				RevEngineFunctions::RequestEditorAction(RevEditorActions::SaveModel);
@@ -128,5 +128,6 @@ void RevEngineEditorManager::UpdateInternal(float deltaTime, void* hwnd)
 
 		RevFrameSnapshotData* snapshotData = RevEngineFunctions::FindEngineRuntimeSnapshotData();
 		snapshotData->m_mouseDelta = RevEngineFunctions::GetMouseDelta();
+		ImGui::End();
 	}
 }

@@ -96,8 +96,10 @@ void RevEngineManager::Update(float deltaTime, void* hwnd)
 	io.KeyCtrl = (GetKeyState(VK_CONTROL) & 0x8000) != 0;
 	io.KeyShift = (GetKeyState(VK_SHIFT) & 0x8000) != 0;
 	io.KeyAlt = (GetKeyState(VK_MENU) & 0x8000) != 0;
+
 	// Hide OS mouse cursor if ImGui is drawing it
 	SetCursor(io.MouseDrawCursor ? NULL : LoadCursor(NULL, IDC_ARROW));
+
 	// Start the frame
 	ImGui::NewFrame();
 	m_console->Update();
