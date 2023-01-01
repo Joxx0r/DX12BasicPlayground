@@ -94,12 +94,12 @@ public:
 
 	class RevShaderManager* m_shaderInstance = nullptr;
 	class RevModelManager* m_modelManager = nullptr;
-	class RevCamera* m_camera = nullptr;
 	class RevRenderManager* m_renderManager = nullptr;
 	class RevEngineManager* m_mainManger = nullptr;
 	class RevWorldLoader* m_worldLoader = nullptr;
 	class RevWorld* m_activeWorld = nullptr;
 	class RevInputManager* m_inputManager = nullptr;
+	class RevController* m_controller = nullptr;
 	struct ID3D12DescriptorHeap* m_cbvHeap = nullptr;
 
 	struct RevFrameSnapshotData* m_snapshotData = nullptr;

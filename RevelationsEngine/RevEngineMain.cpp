@@ -6,7 +6,7 @@
 #include "RevModelManager.h"
 #include "RevInstance.h"
 #include "RevFrameResource.h"
-#include "RevCamera.h"
+#include "RevController.h"
 #include "RevEngineEditorManager.h"
 #include "RevEngineGameManager.h"
 #include "RevRenderManager.h"
@@ -20,7 +20,6 @@
 #define REV_WINDOW_CLASS_NAME "RevelationsEngine"
 #define REV_WINDOW_TITLE "RevEngine"
 
-#define DRAW_ONLY_UI 0
 #define DRAW_GAME_TO_BUFFER 1
 
 bool GBlockGameInput = false;
@@ -110,8 +109,8 @@ void RevEngineMain::InitializeInternal(const RevInitializationData& initializati
 	m_modelManager = new RevModelManager();
 	m_modelManager->Initialize();
 
-	m_camera = new RevCamera();
-	m_camera->Initialize();
+	m_controller = new RevController();
+	m_controller->Initialize();
 
 	for (UINT resourceIndex = 0; resourceIndex < REV_FRAME_RESOURCE_COUNT; resourceIndex++)
 	{
@@ -323,11 +322,6 @@ void RevEngineMain::FlushCommandQueue()
 
 void RevEngineMain::DrawInternal(float deltaTime)
 {
-	//DO NOT TOUCH FENCE GPU MEMORY 
-#if !DRAW_ONLY_UI
-	m_camera->UpdateLocation(deltaTime);
-#endif
-
 	RevFrameResource* frameResource = m_frameResource[m_currentFrameResourceIndex];
 	// Wait until the GPU has completed commands up to this fence point.
 	if (m_fence->GetCompletedValue() < frameResource->Fence)
@@ -344,14 +338,11 @@ void RevEngineMain::DrawInternal(float deltaTime)
 
 	// Reuse the memory associated with command recording.
 	// We can only reset when the associated command lists have finished execution on the GPU.
-	RevThrowIfFailed(
-		frameResource->CmdListAlloc->Reset());
+	RevThrowIfFailed(frameResource->CmdListAlloc->Reset());
 
 	// A command list can be reset after it has been added to the command queue via ExecuteCommandList.
 	// Reusing the command list reuses memory.
-	RevThrowIfFailed(m_commandList->Reset(
-		frameResource->CmdListAlloc, nullptr));
-
+	RevThrowIfFailed(m_commandList->Reset(frameResource->CmdListAlloc, nullptr));
 
 	// Indicate a state transition on the resource usage.
 	m_commandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(CurrentBackBuffer(),
@@ -359,10 +350,7 @@ void RevEngineMain::DrawInternal(float deltaTime)
 	// Clear the back buffer and depth buffer.
 	m_commandList->ClearDepthStencilView(DepthStencilView(), D3D12_CLEAR_FLAG_DEPTH | D3D12_CLEAR_FLAG_STENCIL, 1.0f, 0, 0, nullptr);
 
-#if !DRAW_ONLY_UI
-	//FINE TO TOUCH GPU MEMORY FOR FRAME RESOURCE
-	m_camera->UpdateRendererData(frameResource->m_passCB);
-
+	m_controller->Update(deltaTime);
 	if (m_activeWorld)
 	{
 		m_activeWorld->UpdateRendererData(frameResource, deltaTime);
@@ -375,6 +363,8 @@ void RevEngineMain::DrawInternal(float deltaTime)
 	render.m_worldToRender = m_activeWorld;
 	render.m_width = m_currentWindowWidth;
 	render.m_height = m_currentWindowHeight;
+
+	m_controller->Draw(deltaTime, render);
 	m_renderManager->DrawFrame(render);
 
 	extern bool GDrawGameWindow;
@@ -391,19 +381,8 @@ void RevEngineMain::DrawInternal(float deltaTime)
 			D3D12_RESOURCE_STATE_COPY_DEST, D3D12_RESOURCE_STATE_RENDER_TARGET));
 
 		float normalClearColor[] = { 0.0f, 0.0f, 0.0f, 0.0f };
-		m_commandList->ClearRenderTargetView(
-			CurrentBackBufferView(), normalClearColor, 0, nullptr);
+		m_commandList->ClearRenderTargetView(CurrentBackBufferView(), normalClearColor, 0, nullptr);
 	}
-#else
-
-	m_commandList->ResourceBarrier(1, &CD3DX12_RESOURCE_BARRIER::Transition(CurrentBackBuffer(),
-		D3D12_RESOURCE_STATE_COPY_DEST, D3D12_RESOURCE_STATE_RENDER_TARGET));
-
-	float normalClearColor[] = { 0.0f, 0.0f, 0.0f, 0.0f };
-	m_commandList->ClearRenderTargetView(
-		CurrentBackBufferView(), normalClearColor, 0, nullptr);
-
-#endif
 
 	// Specify the buffers we are going to render to.
 	m_commandList->OMSetRenderTargets(1, &CurrentBackBufferView(), true, &DepthStencilView());

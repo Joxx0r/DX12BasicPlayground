@@ -175,6 +175,7 @@
     <ClInclude Include="rapidxml\rapidxml_print.hpp" />
     <ClInclude Include="rapidxml\rapidxml_utils.hpp" />
     <ClInclude Include="RevAssert.h" />
+    <ClInclude Include="RevController.h" />
     <ClInclude Include="RevDefines.h" />
     <ClInclude Include="RevEngineEditorManager.h" />
     <ClInclude Include="RevEngineFunctions.h" />
@@ -220,6 +221,7 @@
     <ClCompile Include="MathLib\RevMath.cpp" />
     <ClCompile Include="RevAnimation.cpp" />
     <ClCompile Include="RevArchive.cpp" />
+    <ClCompile Include="RevController.cpp" />
     <ClCompile Include="RevEngineEditorManager.cpp" />
     <ClCompile Include="RevEngineFunctions.cpp" />
     <ClCompile Include="RevEngineGameManager.cpp" />

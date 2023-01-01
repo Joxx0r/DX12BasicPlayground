@@ -15,13 +15,12 @@ INT32 GTextureSample = 10;
 const float FOV = 45;
 const float farz = 1000.0f;
 
-RevVector3 GCameraDefaultLocaton(0, 1, 4);
-
-void RevCamera::Initialize()
+void RevCamera::Initialize(const RevVector& startLocation)
 {
-	m_x = GCameraDefaultLocaton.X();
-	m_y = GCameraDefaultLocaton.Y();
-	m_z = GCameraDefaultLocaton.Z();
+	m_startLocation = startLocation;
+	m_x = startLocation.X();
+	m_y = startLocation.Y();
+	m_z = startLocation.Z();
 
 #if !USE_D3D_MATH
 	XMMATRIX proj = XMMatrixPerspectiveFovLH(FOV * REV_ANGLE_TO_RADIAN , RevEngineFunctions::GetAspectRatio(), 1.0f, farz);
@@ -274,9 +273,9 @@ void RevCamera::UpdateRendererData(class RevUploadBuffer<struct PassConstants>* 
 
 void RevCamera::ResetPosition()
 {
-	m_x = GCameraDefaultLocaton.X();
-	m_y = GCameraDefaultLocaton.Y();
-	m_z = GCameraDefaultLocaton.Z();
+	m_x = m_startLocation.X();
+	m_y = m_startLocation.Y();
+	m_z = m_startLocation.Z();
 
 #if !USE_D3D_MATH
 	RevVector3 pos = RevVector3(m_x, m_y, m_z);

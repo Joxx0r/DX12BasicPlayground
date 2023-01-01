@@ -631,12 +631,6 @@ void RevUIManager::DrawGameWindow()
 			extern float GAnimationRateScale;
 			ImGui::SliderFloat("RateScale", &GAnimationRateScale, 0.0f, 1.f);
 
-
-			extern RevVector3 GCameraDefaultLocaton;
-			ImGui::InputFloat("StartPositionX", &GCameraDefaultLocaton[0]);
-			ImGui::InputFloat("StartPositionY", &GCameraDefaultLocaton[1]);
-			ImGui::InputFloat("StartPositionZ", &GCameraDefaultLocaton[2]);
-
 			if (ImGui::MenuItem("ResetCameraPosition"))
 			{
 				RevEngineFunctions::FindCamera()->ResetPosition();

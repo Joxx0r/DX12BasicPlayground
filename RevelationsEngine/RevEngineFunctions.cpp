@@ -3,6 +3,7 @@
 #include "MathLib/RevMath.h"
 #include "RevTypes.h"
 #include "MicrosoftDDSLoader.h"
+#include "RevController.h"
 #include "RevEngineManager.h"
 #include "RevUtils.h"
 #include "RevModelManager.h"
@@ -206,7 +207,7 @@ class RevShaderManager* RevEngineFunctions::FindRevShaderManager()
 
 class RevCamera* RevEngineFunctions::FindCamera()
 {
-	return RevEngineMain::s_instance->m_camera;
+	return RevEngineMain::s_instance->m_controller->m_camera;
 }
 
 struct RevFrameSnapshotData* RevEngineFunctions::FindEngineRuntimeSnapshotData()
