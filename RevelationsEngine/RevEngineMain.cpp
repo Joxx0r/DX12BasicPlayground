@@ -155,6 +155,11 @@ void RevEngineMain::InitializeInternal(const RevInitializationData& initializati
 
 	extern bool GDrawGameWindow;
 	GDrawGameWindow = m_engineMode == RevEngineMode::Editor;
+	//todo johlander cleanup this code (for now only one instance is active so we use that one)
+	if(m_activeWorld->m_instances.size() > 0)
+	{
+		m_controller->SetInstance(m_activeWorld->m_instances[0]);
+	}
 }
 
 void RevEngineMain::CreateEngineWindow(const RevInitializationData& initializationData)

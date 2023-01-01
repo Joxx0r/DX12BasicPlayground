@@ -182,7 +182,7 @@ public:
 		return RevVector3(m_m[12], m_m[13], m_m[14]);
 	}
 
-	RevVector3 GetAxis(RevMatrixAxis axis)
+	const RevVector3 GetAxis(RevMatrixAxis axis) const
 	{
 		switch (axis)
 		{

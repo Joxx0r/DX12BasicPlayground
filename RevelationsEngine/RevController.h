@@ -8,7 +8,7 @@ class RevController
 public:
 
 	void Initialize();
-	void SetInstance();
+	void SetInstance(RevInstance* inInstance);
 	void Update(float deltaTime);
 	void Draw(float deltaTime, struct RevModelFrameRender& renderEntry);
 

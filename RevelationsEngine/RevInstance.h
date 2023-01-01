@@ -26,7 +26,7 @@ public:
 	uint32_t m_modelHandle = UINT32_MAX;
 	class RevUploadBuffer<ObjectConstants>* m_objectConstantBuffer = nullptr;
 
-	RevMatrix m_world;
+	RevMatrix m_transform;
 	uint32_t m_cbufferIndex = 0;
 
 	float m_deltaTime = 0.0f;

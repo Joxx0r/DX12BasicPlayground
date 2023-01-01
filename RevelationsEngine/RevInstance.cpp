@@ -10,14 +10,14 @@ float GAnimationRateScale = 1.0f;
 
 RevInstance::RevInstance()
 {
-	m_world.Identity();
+	m_transform.Identity();
 	m_deltaTime = 0.0f;
 }
 
 void RevInstance::Initialize(const RevMatrix& transform, uint32_t index, const char* modelPath)
 {
 	m_cbufferIndex = index;
-	m_world = transform;
+	m_transform = transform;
 	m_modelHandle = RevModelManager::FindModel(modelPath)->m_handle;
 	REV_ASSERT(m_modelHandle != UINT32_MAX);
 }
@@ -30,7 +30,7 @@ void RevInstance::Update(struct RevFrameResource* resource, float deltaTime)
 	if (entry->m_type == RevModelType::Animated)
 	{
 		ObjectConstantsAnimated objConstants;
-		objConstants.WorldViewProj = m_world.Transpose();
+		objConstants.WorldViewProj = m_transform.Transpose();
 
 		RevAnimationUpdateData updateData(&objConstants.m_bones[0],entry->m_modelData->m_bones, m_deltaTime);
 		RevEngineFunctions::RequestAnimationUpdate(updateData, entry->m_modelData->m_animationInstances[0]);
@@ -43,7 +43,7 @@ void RevInstance::Update(struct RevFrameResource* resource, float deltaTime)
 	else
 	{
 		ObjectConstants objConstants;
-		objConstants.WorldViewProj = m_world.Transpose();
+		objConstants.WorldViewProj = m_transform.Transpose();
 		resource->m_objectCB->CopyData(m_cbufferIndex, objConstants);
 	}
 }

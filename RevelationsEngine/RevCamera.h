@@ -9,12 +9,14 @@ using namespace DirectX;
 class RevCamera
 {
 public:
-	void Initialize(const RevVector& startLocation);
+	void Initialize(const RevVector3& inStartLocation, const RevVector3& towadsLocation);
+
+	void UpdateLookAt(const RevVector3& lookTowardsLocation);
 
 	void UpdateLocation(float deltaTime);
+
 	void UpdateRendererData(class RevUploadBuffer<struct PassConstants>* passConstant);
 	void ResetPosition();
-
 	void UpdateD3DView();
 
 
@@ -35,7 +37,7 @@ private:
 
 	void UpdateViewInternal();
 
-	RevVector m_startLocation = {};
+	RevVector3 m_startLocation = {};
 
 	float m_x = 0.0f;
 	float m_y = 15.0f;

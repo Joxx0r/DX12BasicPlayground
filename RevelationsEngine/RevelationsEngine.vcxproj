@@ -219,6 +219,7 @@
     <ClCompile Include="imgui\imgui.cpp" />
     <ClCompile Include="imgui\imgui_draw.cpp" />
     <ClCompile Include="MathLib\RevMath.cpp" />
+    <ClCompile Include="MathLib\RevVector.cpp" />
     <ClCompile Include="RevAnimation.cpp" />
     <ClCompile Include="RevArchive.cpp" />
     <ClCompile Include="RevController.cpp" />

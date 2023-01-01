@@ -7,9 +7,19 @@ void RevController::Initialize()
 {
 	REV_ASSERT(m_camera == nullptr);
 	m_camera = new RevCamera();
-	const RevVector cameraDefaultLocation(0, 1, 4);
-	m_camera->Initialize(cameraDefaultLocation);
+	const RevVector3 cameraDefaultLocation(0, 10, -4);
+	m_camera->Initialize(cameraDefaultLocation, RevVector3::ZeroVector);
 
+}
+
+void RevController::SetInstance(RevInstance* inInstance)
+{
+	m_instance = inInstance;
+	if(m_camera != nullptr)
+	{
+		const RevVector3 cameraDefaultLocation(0, 10, -4);
+		m_camera->Initialize(cameraDefaultLocation, inInstance->m_transform.GetLocation());
+	}
 }
 
 void RevController::Update(float deltaTime)

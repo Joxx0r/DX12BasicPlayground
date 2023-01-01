@@ -15,26 +15,34 @@ INT32 GTextureSample = 10;
 const float FOV = 45;
 const float farz = 1000.0f;
 
-void RevCamera::Initialize(const RevVector& startLocation)
+void RevCamera::Initialize(const RevVector3& inStartLocation, const RevVector3& towadsLocation)
 {
-	m_startLocation = startLocation;
-	m_x = startLocation.X();
-	m_y = startLocation.Y();
-	m_z = startLocation.Z();
+	m_startLocation = inStartLocation;
+	m_x = m_startLocation.X();
+	m_y = m_startLocation.Y();
+	m_z = m_startLocation.Z();
+	UpdateLookAt(towadsLocation);
+}
 
+void RevCamera::UpdateLookAt(const RevVector3& lookTowardsLocation)
+{
 #if !USE_D3D_MATH
-	XMMATRIX proj = XMMatrixPerspectiveFovLH(FOV * REV_ANGLE_TO_RADIAN , RevEngineFunctions::GetAspectRatio(), 1.0f, farz);
+	XMMATRIX proj = XMMatrixPerspectiveFovLH(FOV * REV_ANGLE_TO_RADIAN, RevEngineFunctions::GetAspectRatio(), 1.0f, farz);
 
 	XMFLOAT4X4 d3d_m_view;
 	XMStoreFloat4x4(&d3d_m_view, proj);
 	m_proj.Load(&d3d_m_view.m[0][0]);
+	RevVector3 cameraLocation = RevVector3(m_x, m_y, m_z);
+	RevVector3 towardsLocation = lookTowardsLocation;
 
+	if(cameraLocation == towardsLocation)
+	{
+		//move location one step forward to make sure non nan
+		towardsLocation.m_v[2] += 1;
+	}
 
-	RevVector3 pos = RevVector3(m_x, m_y, m_z);
-	RevVector3 towards = (RevVector3(m_x, m_y, m_z - 1) - pos);
-	towards.Normalize();
-	m_view = RevCreateLookAt(towards);
-	m_view.SetLocation(pos);
+	m_view = RevCreateLookAt((lookTowardsLocation - cameraLocation).Normalize());
+	m_view.SetLocation(cameraLocation);
 #else
 #if USE_MODIFIED_MATH
 	XMMATRIX proj = XMMatrixPerspectiveFovLH(FOV * REV_ANGLE_TO_RADIAN, RevEngineFunctions::GetAspectRatio(), 1.0f, farz);
@@ -46,7 +54,7 @@ void RevCamera::Initialize(const RevVector& startLocation)
 
 	RevVector3 pos = RevVector(m_x, m_y, m_z, 1.0f);
 	RevVector3 towards = (RevVector(m_x, m_y, m_z - 1) - pos);
-	towards.Normalize();
+	towards.NormalizeSelf();
 	m_view = RevCreateLookAt(towards);
 	m_view.SetLocation(pos);
 #else
@@ -280,13 +288,9 @@ void RevCamera::ResetPosition()
 #if !USE_D3D_MATH
 	RevVector3 pos = RevVector3(m_x, m_y, m_z);
 	RevVector3 towards = (RevVector3(m_x, m_y, m_z - 1) - pos);
-	towards.Normalize();
-	m_view = RevCreateLookAt(towards);
-	m_view.SetLocation(pos);
+	UpdateLookAt(towards);
 #else
-
 	UpdateD3DView();
-
 #endif
 }
 

@@ -35,6 +35,8 @@ public:
 
 	float m_v[2];
 
+	static RevVector2 ZeroVector;
+
 };
 class RevVector3
 {
@@ -77,7 +79,7 @@ public:
 		return sqrtf(LengthSquared());
 	}
 
-	void Normalize()
+	void NormalizeSelf()
 	{
 		const float desiredLength = Length();
 		if (desiredLength > 0.f)
@@ -87,6 +89,20 @@ public:
 				m_v[index] = m_v[index] / desiredLength;
 			}
 		}
+	}
+
+	RevVector3 Normalize() const
+	{
+		const float desiredLength = Length();
+		RevVector3 normalizeV = *this;
+		if (desiredLength > 0.f)
+		{
+			for (INT32 index = 0; index < ARRAYSIZE(m_v); index++)
+			{
+				normalizeV.m_v[index] = m_v[index] / desiredLength;
+			}
+		}
+		return normalizeV;
 	}
 
 	float Dot(const RevVector3& vector) const
@@ -160,6 +176,18 @@ public:
 		return returnVector;
 	}
 
+	bool operator==(const RevVector3& vector) const
+	{
+		for (uint32_t index = 0; index < ARRAYSIZE(m_v); index++)
+		{
+			if(m_v[index] != vector.m_v[index])
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+
 	
 	void operator-=(const RevVector3 vector)
 	{
@@ -197,9 +225,9 @@ public:
 		return _mm_setr_ps(m_v[0], m_v[1], m_v[2], 0);
 	}
 	
-
-
 	float m_v[3];
+
+	static RevVector3 ZeroVector;
 
 };
 
@@ -290,6 +318,28 @@ public:
 		return returnVector;
 	}
 
+	RevVector operator*(const RevVector3& vector) const
+	{
+		RevVector returnVector = {};
+		for (INT32 index = 0; index < 3; index++)
+		{
+			returnVector[index] = m_v[index] * vector[index];
+		}
+		returnVector.m_v[3] = m_v[3];
+		return returnVector;
+	}
+
+	RevVector operator+=(const RevVector3& vector) const
+	{
+		RevVector returnVector = {};
+		for (INT32 index = 0; index < 3; index++)
+		{
+			returnVector[index] = m_v[index] + vector[index];
+		}
+		returnVector.m_v[3] = m_v[3];
+		return returnVector;
+	}
+
 	float X() const
 	{
 		return m_v[0];
@@ -308,6 +358,8 @@ public:
 		return m_v[3];
 	}
 
-
 	float m_v[4];
+
+	static RevVector ZeroVector;
 };
+

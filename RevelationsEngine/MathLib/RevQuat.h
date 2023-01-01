@@ -14,7 +14,6 @@ public:
 
 	RevQuat(float radian, RevVector3 axis)
 	{
-
 		//this creates a unit quaternion and can be proven in this way for UNIT quatenerions
 		//the length is always 1  with simple ||v||2 + ||real||2 == 1;
 		//if we plot the real part as y = cos(x) then we can use trigmetric identities
@@ -72,7 +71,7 @@ public:
 		return Conjugate();
 	}
 
-	RevQuat Identity()
+	RevQuat Identity() const
 	{
 		//see * operator about explaining how this identity work.
 		RevQuat returnQuat;
