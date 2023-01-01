@@ -1,7 +1,8 @@
 #pragma once
 
-class RevCamera;
+
 class RevInstance;
+class RevCamera;
 
 class RevController
 {
@@ -15,4 +16,10 @@ public:
 	RevCamera* m_camera = nullptr;
 	RevInstance* m_instance = nullptr;
 
+private:
+
+	void RefreshInitialization();
+
 ;};
+
+

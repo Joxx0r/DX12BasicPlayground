@@ -13,7 +13,7 @@ public:
 
 	void UpdateLookAt(const RevVector3& lookTowardsLocation);
 
-	void UpdateLocation(float deltaTime);
+	void Update(float deltaTime);
 
 	void UpdateRendererData(class RevUploadBuffer<struct PassConstants>* passConstant);
 	void ResetPosition();

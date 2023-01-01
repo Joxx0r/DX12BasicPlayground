@@ -21,6 +21,7 @@ public:
 
 	void Initialize(const class RevMatrix& transform, UINT index, const char* modelPath);
 	void Update(struct RevFrameResource* resource, float deltaTime);
+	void UpdateLocationInput(float deltaTime, const RevInputData& inputData);
 	void Draw(struct RevModelFrameRender& param);
 
 	uint32_t m_modelHandle = UINT32_MAX;

@@ -72,71 +72,12 @@ void RevCamera::UpdateLookAt(const RevVector3& lookTowardsLocation)
 #endif
 }
 
-void RevCamera::UpdateLocation(float deltaTime)
+void RevCamera::Update(float deltaTime)
 {
 #if !USE_D3D_MATH || USE_MODIFIED_MATH
-	RevVector3 forward = m_view.GetAxis(RevMatrixAxis::Forward);
-	RevVector3 right = m_view.GetAxis(RevMatrixAxis::Right);
-	RevVector3 up = m_view.GetAxis(RevMatrixAxis::Up);
-
-	RevVector3 currentLocation = m_view.GetLocation();
-	if (RevInputManager::IsInputEnabled(EYInputType::Game))
-	{
-		float movementSpeed = GMovementSpeed;
-
-		float rotationSpeed = GRotationSpeed;
-		if ((GetKeyState(REV_VK_A) >> 15) & 1)
-		{
-			currentLocation += -right * movementSpeed * deltaTime;
-		}
-
-		if ((GetKeyState(REV_VK_D) >> 15) & 1)
-		{
-			currentLocation += right * movementSpeed* deltaTime;
-		}
-
-		if ((GetKeyState(REV_VK_Q) >> 15) & 1)
-		{
-			currentLocation += -up * movementSpeed* deltaTime;
-		}
-
-		if ((GetKeyState(REV_VK_E) >> 15) & 1)
-		{
-			currentLocation += up* movementSpeed* deltaTime;
-		}
-
-		if ((GetKeyState(REV_VK_W) >> 15) & 1)
-		{
-			currentLocation += forward* movementSpeed* deltaTime;
-		}
-
-		if ((GetKeyState(REV_VK_S) >> 15) & 1)
-		{
-			currentLocation += -forward* movementSpeed* deltaTime;
-		}
-
-		if ((GetKeyState(VK_UP) >> 15) & 1)
-		{
-			m_view = RevCreateRotationFromX(-rotationSpeed * deltaTime) * m_view;
-		}
-		if ((GetKeyState(VK_DOWN) >> 15) & 1)
-		{
-			m_view = RevCreateRotationFromX(rotationSpeed * deltaTime) * m_view;
-		}
-		if ((GetKeyState(VK_RIGHT) >> 15) & 1)
-		{
-			m_view = RevCreateRotationFromY(rotationSpeed * deltaTime) * m_view;
-		}
-		if ((GetKeyState(VK_LEFT) >> 15) & 1)
-		{
-			m_view = RevCreateRotationFromY(-rotationSpeed * deltaTime) * m_view;
-		}
-	}
-	
-	m_view.SetLocation(currentLocation);
 
 	RevFrameSnapshotData* data = RevEngineFunctions::FindEngineRuntimeSnapshotData();
-	data->m_cameraLocation = currentLocation;
+	data->m_cameraLocation = m_view.GetLocation();
 
 #else
 	extern bool GBlockGameInput;

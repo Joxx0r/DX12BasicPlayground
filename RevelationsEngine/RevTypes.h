@@ -310,3 +310,13 @@ enum class RevEngineMode : uint8_t
 	Game,
 	MAX
 };
+
+struct RevInputData
+{
+	bool m_forwardButtonActive = false;
+	bool m_backwardsButtonActive = false;
+	bool m_rightButtonActive = false;
+	bool m_leftButtonActive = false;
+	bool m_upButtonActive = false;
+	bool m_downButtonActive = false;
+};

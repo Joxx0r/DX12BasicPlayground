@@ -4,9 +4,13 @@
 #include "RevFrameResource.h"
 #include "RevModel.h"
 #include "RevAnimation.h"
+#include "RevInputManager.h"
+#include "RevMovementFunctions.h"
 #include "RevTypes.h"
 
 float GAnimationRateScale = 1.0f;
+float GMovementSpeed2 = 50;
+
 
 RevInstance::RevInstance()
 {
@@ -46,6 +50,12 @@ void RevInstance::Update(struct RevFrameResource* resource, float deltaTime)
 		objConstants.WorldViewProj = m_transform.Transpose();
 		resource->m_objectCB->CopyData(m_cbufferIndex, objConstants);
 	}
+}
+
+void RevInstance::UpdateLocationInput(float deltaTime, const RevInputData& inputData)
+{
+	const RevVector3 finalLocation = RevMovementFunctions::CalculateMovementChangeBasedOnInput(m_transform, 50, deltaTime, inputData);
+	m_transform.SetLocation(finalLocation);
 }
 
 void RevInstance::Draw(RevModelFrameRender& param)
