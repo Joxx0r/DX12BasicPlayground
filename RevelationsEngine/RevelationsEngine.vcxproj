@@ -117,7 +117,7 @@
       <PrecompiledHeader>Use</PrecompiledHeader>
       <WarningLevel>Level3</WarningLevel>
       <Optimization>Disabled</Optimization>
-      <PreprocessorDefinitions>_DEBUG;_WINDOWS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>_DEBUG;_WINDOWS;_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalIncludeDirectories>..\Include\assimp\include\;..\Include\D3DX12\</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
@@ -180,6 +180,7 @@
     <ClInclude Include="RevEngineFunctions.h" />
     <ClInclude Include="RevEngineGameManager.h" />
     <ClInclude Include="RevEngineManager.h" />
+    <ClInclude Include="RevEngineMinimal.h" />
     <ClInclude Include="RevEnums.h" />
     <ClInclude Include="RevInputManager.h" />
     <ClInclude Include="RevLightManager.h" />
