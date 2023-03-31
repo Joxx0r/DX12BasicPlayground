@@ -15,6 +15,7 @@
 #include "RevWorldLoader.h"
 #include "RevWorld.h"
 #include "RevModel.h"
+#include "RevPhysicsManager.h"
 
 #define REV_WINDOW_MENU_NAME "RevEngine"
 #define REV_WINDOW_CLASS_NAME "RevelationsEngine"
@@ -111,6 +112,9 @@ void RevEngineMain::InitializeInternal(const RevInitializationData& initializati
 
 	m_controller = new RevController();
 	m_controller->Initialize();
+	
+	m_physicsManager = new RevPhysicsManager();
+	m_physicsManager->Initialize();
 
 	for (UINT resourceIndex = 0; resourceIndex < REV_FRAME_RESOURCE_COUNT; resourceIndex++)
 	{

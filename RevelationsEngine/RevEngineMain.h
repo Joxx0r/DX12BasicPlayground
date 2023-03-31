@@ -100,6 +100,7 @@ public:
 	class RevWorld* m_activeWorld = nullptr;
 	class RevInputManager* m_inputManager = nullptr;
 	class RevController* m_controller = nullptr;
+	class RevPhysicsManager* m_physicsManager = nullptr;
 	struct ID3D12DescriptorHeap* m_cbvHeap = nullptr;
 
 	struct RevFrameSnapshotData* m_snapshotData = nullptr;
