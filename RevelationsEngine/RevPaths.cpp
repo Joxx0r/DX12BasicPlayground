@@ -4,9 +4,9 @@
 #define CONCATENATE(e1, e2) e1 ## e2
 #define PREFIX_L(s) CONCATENATE(L, s)
 
-#define REV_CONTENT_PATH "..\\Content\\"
+#define REV_CONTENT_PATH "..\\..\\Content\\"
 #define REV_CONTENT_PATH_W(s) CONCATENATE(L, s)
-#define REV_LEVEL_PATH "..\\Content\\Data\\Level\\"
+#define REV_LEVEL_PATH "..\\..\\Content\\Data\\Level\\"
 
 std::string RevPaths::GetContentPath()
 {

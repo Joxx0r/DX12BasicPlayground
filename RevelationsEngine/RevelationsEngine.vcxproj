@@ -97,7 +97,7 @@
     <OutDir>..\Include\EngineLibs\</OutDir>
     <IntDir>..\Symbols\$(Configuration)\$(ProjectName)\</IntDir>
     <IncludePath>$(IncludePath)</IncludePath>
-    <LibraryPath>..\Include\assimp\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>..\Include\assimp\lib\x64;..\Include\px\lib\x64\release\;$(LibraryPath)</LibraryPath>
     <TargetName>$(ProjectName)_$(Configuration)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
