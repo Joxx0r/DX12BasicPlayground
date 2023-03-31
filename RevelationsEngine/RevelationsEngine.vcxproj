@@ -195,6 +195,7 @@
     <ClInclude Include="RevInputManager.h" />
     <ClInclude Include="RevLightManager.h" />
     <ClInclude Include="RevMovementFunctions.h" />
+    <ClInclude Include="RevPaths.h" />
     <ClInclude Include="RevPhysicsManager.h" />
     <ClInclude Include="RevScene.h" />
     <ClInclude Include="RevUITypes.h" />
@@ -241,6 +242,7 @@
     <ClCompile Include="RevInputManager.cpp" />
     <ClCompile Include="RevLightManager.cpp" />
     <ClCompile Include="RevMovementFunctions.cpp" />
+    <ClCompile Include="RevPaths.cpp" />
     <ClCompile Include="RevPhysicsManager.cpp" />
     <ClCompile Include="RevScene.cpp" />
     <ClCompile Include="RevUITypes.cpp" />

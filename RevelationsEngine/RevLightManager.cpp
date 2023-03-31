@@ -5,6 +5,7 @@
 #include "RevWorld.h"
 #include "RevCamera.h"
 #include "RevFrameResource.h"
+#include "RevPaths.h"
 
 #define REV_MAX_LIGHT 500
 
@@ -85,7 +86,7 @@ void RevLightManager::Initialize()
 	RevUtils::CreateModelRootDescription(&slotRootParameter[0], ARRAYSIZE(slotRootParameter), m_modelData);
 
 	HRESULT hr = S_OK;
-	m_modelData->m_shader = RevShaderManager::GetShader(L"Shaders\\light.hlsl");
+	m_modelData->m_shader = RevShaderManager::GetShader(RevPaths::AddContentPathWChar(L"Shaders\\light.hlsl").c_str());
 	m_modelData->m_inputLayout =
 	{
 		{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },

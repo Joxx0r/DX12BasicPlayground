@@ -4,12 +4,11 @@
 
 struct RevGameObjectType
 {
-	char m_name[512];
-	char m_instancePath[512];
+	std::string m_name;
+	std::string m_instancePath;
 
 	RevGameObjectType()
 	{
-		memset(this, 0, sizeof(RevGameObjectType));
 	}
 };
 

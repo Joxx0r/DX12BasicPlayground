@@ -3,6 +3,7 @@
 #include "RevUtils.h"
 #include "RevShadermanager.h"
 #include "RevFrameResource.h"
+#include "RevPaths.h"
 
 
 bool RevModel::Initialize(RevModelType type)
@@ -118,7 +119,7 @@ void RevModel::BuildShadersAndInputLayout()
 {
 	if (m_type == RevModelType::Normal)
 	{
-		m_modelData->m_shader = RevShaderManager::GetShader(L"Shaders\\color.hlsl");
+		m_modelData->m_shader = RevShaderManager::GetShader(RevPaths::AddContentPathWChar(L"Shaders\\color.hlsl").c_str());
 		m_modelData->m_inputLayout =
 		{
 			{ "POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },
@@ -131,7 +132,7 @@ void RevModel::BuildShadersAndInputLayout()
 	else
 	if(m_type == RevModelType::Animated)
 	{
-		m_modelData->m_shader = RevShaderManager::GetShader(L"Shaders\\color_animated.hlsl");
+		m_modelData->m_shader = RevShaderManager::GetShader(RevPaths::AddContentPathWChar(L"Shaders\\color_animated.hlsl").c_str());
 		m_modelData->m_inputLayout =
 		{
 			{ "POSITION",		0,	DXGI_FORMAT_R32G32B32_FLOAT,	0, 0,	D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },

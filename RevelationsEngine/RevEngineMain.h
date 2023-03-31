@@ -37,7 +37,6 @@ public:
 	static XMFLOAT2 GetRenderTargetSize();
 	static LRESULT ManageWindowsMessage(HWND hwnd, UINT msg, WPARAM wParam, LPARAM lParam);
 	static void LoadWorld(const char* filePath);
-	static void ReloadCurrentWorld();
 	static void DrawMainPass( float deltaTime );
 	
 public:
@@ -54,7 +53,6 @@ public:
 	void UpdateFrameSnapshotData(float deltaTime);
 
 	void LoadWorldInternal(const char* path);
-	void ReloadWorldInteral();
 
 	void DrawMainPassInternal(float deltaTime);
 

@@ -8,6 +8,7 @@
 #include <array>
 #include "RevUIManager.h"
 #include "RevLightManager.h"
+#include "RevPaths.h"
 
 void RevScene::Initialize()
 {
@@ -85,7 +86,7 @@ void RevScene::Initialize()
 	RevPSOInitializationData initializationData = {};
 	//pso for fullscreen pass
 	{
-		m_fullscreenModelData->m_shader = RevShaderManager::GetShader(L"Shaders\\FullscreenTest.hlsl");
+		m_fullscreenModelData->m_shader = RevShaderManager::GetShader(RevPaths::AddContentPathWChar(L"Shaders\\FullscreenTest.hlsl").c_str());
 		m_fullscreenModelData->m_inputLayout =
 		{
 			{ "POSITION", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 0, D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },

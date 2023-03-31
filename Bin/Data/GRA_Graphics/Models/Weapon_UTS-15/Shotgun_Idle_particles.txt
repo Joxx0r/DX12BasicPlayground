@@ -1,1 +1,0 @@
-0 1 1 0.28 -0.15 1.4 "Data\GRA_Shaders\ParticleFiles\MuzzleFlash03.xml" "MuzzleFlash03" 0  0.949813  0.017365  0.312335  0  0.998458  -0.0555115  -0.312818  0.0527255  0.948349 

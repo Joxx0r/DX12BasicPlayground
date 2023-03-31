@@ -1,1 +1,0 @@
-0 1 0.2085 0.25 -0.1 0.9 "Data\GRA_Shaders\ParticleFiles\MuzzleFlash02.xml" "MuzzleFlash02" 0  0.236389  -0.0702964  -0.969112  0  0.99738  -0.0723468  0.971658  0.017102  0.23577 0 2 0.291667 -0.3 -0.1 0.92 "Data\GRA_Shaders\ParticleFiles\MuzzleFlash02.xml" "MuzzleFlash02" 0  0.236389  -0.0702964  -0.969112  0  0.99738  -0.0723468  0.971658  0.017102  0.23577 

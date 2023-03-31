@@ -1,6 +1,0 @@
-nrOfAnims: 3
-
-Shoot: "Data\GRA_Graphics\Models\Blaster_PH\Blaster_Shoot.dae"  loop : 1
-Reload: "Data\GRA_Graphics\Models\Blaster_PH\Blaster_Reload.dae"  loop : 0
-Up: "Data\GRA_Graphics\Models\Blaster_PH\Blaster_Up.dae"  loop : 0
-Down: "Data\GRA_Graphics\Models\Blaster_PH\Blaster_Down.dae"  loop : 0

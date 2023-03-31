@@ -1,0 +1,7 @@
+nrOfAnims: 3
+
+Shoot: "Data\GRA_Graphics\Models\Weapon_UTS-15\Shotgun_Attack.dae"  loop : 0
+Shoot2: "Data\GRA_Graphics\Models\Weapon_UTS-15\Shotgun_Attack.dae"  loop : 0
+Reload: "Data\GRA_Graphics\Models\Weapon_UTS-15\Shotgun_Reload.dae"  loop : 0
+
+

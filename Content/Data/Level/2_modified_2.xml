@@ -1,0 +1,23 @@
+<?xml version="1.0" ?>
+<object-instances>
+	<object-instance pos-x="68.5147394139" pos-y="-0.00723510503632" pos-z="-27.3873168261" rot-x="-0.0" rot-y="1.57079632679" rot-z="0.0" type="Door01Wall"/>
+	<object-instance pos-x="69.0147394139" pos-y="-0.00723510503632" pos-z="-31.3873168261" rot-x="-0.0" rot-y="-1.57079632679" rot-z="0.0" type="Door01"/>
+	<object-instance pos-x="53.0" pos-y="5.0" pos-z="24.0" rot-x="-0.0" rot-y="1.57079632679" rot-z="0.0" type="Door01Wall"/>
+	<object-instance pos-x="53.0" pos-y="5.0" pos-z="24.0" rot-x="-0.0" rot-y="1.57079632679" rot-z="0.0" type="Door01"/>
+	<object-instance pos-x="68.5" pos-y="5.0" pos-z="28.0" rot-x="-0.0" rot-y="1.57079632679" rot-z="0.0" type="Door01"/>
+	<object-instance pos-x="68.5" pos-y="5.0" pos-z="28.0" rot-x="-0.0" rot-y="1.57079632679" rot-z="0.0" type="Door01Wall"/>
+	<object-instance pos-x="60.9025574316" pos-y="-0.0492953072659" pos-z="-3.45008359398" rot-x="-0.0" rot-y="0.0" rot-z="0.0" type="Door01"/>
+	<object-instance pos-x="60.9025574316" pos-y="-0.0492953072659" pos-z="-3.45008359398" rot-x="-0.0" rot-y="0.0" rot-z="0.0" type="Door01Wall"/>
+	<object-instance pos-x="107.99760174" pos-y="-0.00717167048134" pos-z="-15.0045440617" rot-x="-0.0" rot-y="0.0" rot-z="0.0" type="Door01"/>
+	<object-instance pos-x="107.99760174" pos-y="-0.00717167048134" pos-z="-15.0045440617" rot-x="-0.0" rot-y="0.0" rot-z="0.0" type="Door01Wall"/>
+	<object-instance pos-x="57.0" pos-y="-0.0492953072659" pos-z="-39.5" rot-x="-0.0" rot-y="-1.57079632679" rot-z="0.0" type="Door01"/>
+	<object-instance pos-x="56.4433458685" pos-y="-0.0492953072659" pos-z="-35.5" rot-x="0.0" rot-y="1.57079632679" rot-z="0.0" type="Door01Wall"/>
+	<object-instance pos-x="79.5" pos-y="5.0" pos-z="20.0" rot-x="-0.0" rot-y="1.57079632679" rot-z="0.0" type="Door01Wall"/>
+	<object-instance pos-x="79.5" pos-y="5.0" pos-z="20.0" rot-x="-0.0" rot-y="1.57079632679" rot-z="0.0" type="Door01"/>
+	<object-instance pos-x="148.0" pos-y="-0.0492953072659" pos-z="-20.0" rot-x="-0.0" rot-y="-1.57079632679" rot-z="0.0" type="Door01"/>
+	<object-instance pos-x="147.5" pos-y="-0.0492953072659" pos-z="-16.0" rot-x="0.0" rot-y="1.57079632679" rot-z="0.0" type="Door01Wall"/>
+	<object-instance pos-x="167.0" pos-y="0.0" pos-z="-20.0" rot-x="-0.0" rot-y="0.0" rot-z="0.0" type="RedWall01BorderOut"/>
+	<object-instance pos-x="163.5" pos-y="0.0" pos-z="-28.5" rot-x="-0.0" rot-y="-1.57079632679" rot-z="0.0" type="RedWall01BorderOut"/>
+	<object-instance pos-x="166.5" pos-y="-0.0492953072659" pos-z="-20.5" rot-x="0.0" rot-y="3.14159265359" rot-z="0.0" type="Door01Wall"/>
+	<object-instance pos-x="167.0" pos-y="-0.0492953072659" pos-z="-24.5" rot-x="-0.0" rot-y="-3.14159265359" rot-z="0.0" type="Door01"/>
+</object-instances>

@@ -1,0 +1,5 @@
+nrOfAnims: 3
+
+run: "Data\GRA_Graphics\Models\Raptor\dualBlasterMove.dae"  loop : 1
+attack:  "Data\GRA_Graphics\Models\Raptor\dualBlasterAttack.dae" loop : 1
+death:  "Data\GRA_Graphics\Models\Raptor\dualBlasterDeath.dae" loop : 1

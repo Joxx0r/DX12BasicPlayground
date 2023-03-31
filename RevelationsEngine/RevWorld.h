@@ -15,5 +15,4 @@ public:
 
 	std::vector<class RevInstance*> m_instances;
 	std::vector<struct RevLight*> m_lights;
-	std::string m_currentWorldPath;
 };

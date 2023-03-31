@@ -1,6 +1,0 @@
-nrOfAnims: 3
-
-run: "Data\GRA_Graphics\Models\LF_lightdog\ONA_lightdog_move.dae"  loop : 1
-attack:  "Data\GRA_Graphics\Models\LF_lightdog\ONA_lightdog_attack.dae" loop : 1
-death:  "Data\GRA_Graphics\Models\LF_lightdog\ONA_lightdog_die.dae" loop : 0
-

@@ -1,1 +1,0 @@
-0 0 4 -2 2 -0.5 "Data\GRA_Shaders\ParticleFiles\fanSmoke.xml" "fanSmoke" 1  -0.0560186  0.238236  0.96959  0  0.971115  -0.238611  -0.99843  -0.0133666  -0.0544005 

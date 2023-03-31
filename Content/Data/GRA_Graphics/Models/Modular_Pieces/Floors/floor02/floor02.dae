@@ -1,0 +1,357 @@
+<?xml version="1.0" encoding="utf-8"?>
+<COLLADA xmlns="http://www.collada.org/2005/11/COLLADASchema" version="1.4.1">
+  <asset>
+    <contributor>
+      <author>ga026</author>
+      <authoring_tool>OpenCOLLADA2010 x64</authoring_tool>
+      <comments>
+			ColladaMaya export options: 
+			bakeTransforms=0;relativePaths=0;copyTextures=1;exportTriangles=1;exportCgfxFileReferences=1;
+			isSampling=0;curveConstrainSampling=0;removeStaticCurves=0;exportPolygonMeshes=1;exportLights=0;
+			exportCameras=0;exportJointsAndSkin=0;exportAnimations=0;exportInvisibleNodes=0;exportDefaultCameras=0;
+			exportTexCoords=1;exportNormals=1;exportNormalsPerVertex=1;exportVertexColors=1;exportVertexColorsPerVertex=1;
+			exportTexTangents=1;exportTangents=0;exportReferencedMaterials=0;exportMaterialsOnly=0;
+			exportXRefs=1;dereferenceXRefs=1;exportCameraAsLookat=0;cameraXFov=0;cameraYFov=1;doublePrecision=0
+		</comments>
+      <source_data>file:///C:/Users/ga026/Documents/maya/projects/RTS/untitled</source_data>
+    </contributor>
+    <created>2013-03-14T18:15:41</created>
+    <modified>2013-03-14T18:15:41</modified>
+    <unit name="meter" meter="1"/>
+    <up_axis>Y_UP</up_axis>
+  </asset>
+  <library_materials>
+    <material id="blinn5" name="blinn5">
+      <instance_effect url="#blinn5-fx"/>
+    </material>
+  </library_materials>
+  <library_effects>
+    <effect id="blinn5-fx">
+      <profile_COMMON>
+        <newparam sid="file63-surface">
+          <surface type="2D">
+            <init_from>file63</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="file63-sampler">
+          <sampler2D>
+            <source>file63-surface</source>
+          </sampler2D>
+        </newparam>
+        <newparam sid="file64-surface">
+          <surface type="2D">
+            <init_from>file64</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="file64-sampler">
+          <sampler2D>
+            <source>file64-surface</source>
+          </sampler2D>
+        </newparam>
+        <newparam sid="file65-surface">
+          <surface type="2D">
+            <init_from>file65</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="file65-sampler">
+          <sampler2D>
+            <source>file65-surface</source>
+          </sampler2D>
+        </newparam>
+        <newparam sid="file66-surface">
+          <surface type="2D">
+            <init_from>file66</init_from>
+          </surface>
+        </newparam>
+        <newparam sid="file66-sampler">
+          <sampler2D>
+            <source>file66-surface</source>
+          </sampler2D>
+        </newparam>
+        <technique sid="common">
+          <phong>
+            <emission>
+              <color>0 0 0 1</color>
+            </emission>
+            <ambient>
+              <texture texture="file63-sampler" texcoord="TEX0">
+                <extra>
+                  <technique profile="OpenCOLLADAMaya">
+                    <blend_mode>NONE</blend_mode>
+                    <coverageU>1</coverageU>
+                    <coverageV>1</coverageV>
+                    <fast>0</fast>
+                    <mirrorU>0</mirrorU>
+                    <mirrorV>0</mirrorV>
+                    <noiseU>0</noiseU>
+                    <noiseV>0</noiseV>
+                    <offsetU>0</offsetU>
+                    <offsetV>0</offsetV>
+                    <repeatU>1</repeatU>
+                    <repeatV>1</repeatV>
+                    <rotateFrame>0</rotateFrame>
+                    <rotateUV>0</rotateUV>
+                    <stagger>0</stagger>
+                    <translateFrameU>0</translateFrameU>
+                    <translateFrameV>0</translateFrameV>
+                    <wrapU>1</wrapU>
+                    <wrapV>1</wrapV>
+                  </technique>
+                </extra>
+              </texture>
+            </ambient>
+            <diffuse>
+              <texture texture="file64-sampler" texcoord="TEX1">
+                <extra>
+                  <technique profile="OpenCOLLADAMaya">
+                    <blend_mode>NONE</blend_mode>
+                    <coverageU>1</coverageU>
+                    <coverageV>1</coverageV>
+                    <fast>0</fast>
+                    <mirrorU>0</mirrorU>
+                    <mirrorV>0</mirrorV>
+                    <noiseU>0</noiseU>
+                    <noiseV>0</noiseV>
+                    <offsetU>0</offsetU>
+                    <offsetV>0</offsetV>
+                    <repeatU>1</repeatU>
+                    <repeatV>1</repeatV>
+                    <rotateFrame>0</rotateFrame>
+                    <rotateUV>0</rotateUV>
+                    <stagger>0</stagger>
+                    <translateFrameU>0</translateFrameU>
+                    <translateFrameV>0</translateFrameV>
+                    <wrapU>1</wrapU>
+                    <wrapV>1</wrapV>
+                  </technique>
+                </extra>
+              </texture>
+            </diffuse>
+            <specular>
+              <texture texture="file65-sampler" texcoord="TEX3">
+                <extra>
+                  <technique profile="OpenCOLLADAMaya">
+                    <blend_mode>NONE</blend_mode>
+                    <coverageU>1</coverageU>
+                    <coverageV>1</coverageV>
+                    <fast>0</fast>
+                    <mirrorU>0</mirrorU>
+                    <mirrorV>0</mirrorV>
+                    <noiseU>0</noiseU>
+                    <noiseV>0</noiseV>
+                    <offsetU>0</offsetU>
+                    <offsetV>0</offsetV>
+                    <repeatU>1</repeatU>
+                    <repeatV>1</repeatV>
+                    <rotateFrame>0</rotateFrame>
+                    <rotateUV>0</rotateUV>
+                    <stagger>0</stagger>
+                    <translateFrameU>0</translateFrameU>
+                    <translateFrameV>0</translateFrameV>
+                    <wrapU>1</wrapU>
+                    <wrapV>1</wrapV>
+                  </technique>
+                </extra>
+              </texture>
+            </specular>
+            <shininess>
+              <float>1.245731</float>
+            </shininess>
+            <reflective>
+              <color>0 0 0 1</color>
+            </reflective>
+            <reflectivity>
+              <float>0.5</float>
+            </reflectivity>
+            <transparent opaque="RGB_ZERO">
+              <color>0 0 0 1</color>
+            </transparent>
+            <transparency>
+              <float>1</float>
+            </transparency>
+          </phong>
+          <extra>
+            <technique profile="OpenCOLLADAMaya">
+              <bump>
+                <texture texture="file66-sampler" texcoord="TEX2">
+                  <extra>
+                    <technique profile="OpenCOLLADA3dsMax">
+                      <amount>1</amount>
+                      <bumpInterp>0</bumpInterp>
+                    </technique>
+                    <technique profile="OpenCOLLADAMaya">
+                      <blend_mode>NONE</blend_mode>
+                      <coverageU>1</coverageU>
+                      <coverageV>1</coverageV>
+                      <fast>0</fast>
+                      <mirrorU>0</mirrorU>
+                      <mirrorV>0</mirrorV>
+                      <noiseU>0</noiseU>
+                      <noiseV>0</noiseV>
+                      <offsetU>0</offsetU>
+                      <offsetV>0</offsetV>
+                      <repeatU>1</repeatU>
+                      <repeatV>1</repeatV>
+                      <rotateFrame>0</rotateFrame>
+                      <rotateUV>0</rotateUV>
+                      <stagger>0</stagger>
+                      <translateFrameU>0</translateFrameU>
+                      <translateFrameV>0</translateFrameV>
+                      <wrapU>1</wrapU>
+                      <wrapV>1</wrapV>
+                    </technique>
+                  </extra>
+                </texture>
+              </bump>
+            </technique>
+          </extra>
+        </technique>
+      </profile_COMMON>
+    </effect>
+  </library_effects>
+  <library_images>
+    <image id="file64" name="file64">
+      <init_from>./floor02_albedo.dds</init_from>
+      <extra>
+        <technique profile="OpenCOLLADAMaya">
+          <dgnode_type>kFile</dgnode_type>
+          <image_sequence>0</image_sequence>
+          <originalMayaNodeId>file64</originalMayaNodeId>
+        </technique>
+      </extra>
+    </image>
+    <image id="file66" name="file66">
+      <init_from>./floor02_normal.dds</init_from>
+      <extra>
+        <technique profile="OpenCOLLADAMaya">
+          <dgnode_type>kFile</dgnode_type>
+          <image_sequence>0</image_sequence>
+          <originalMayaNodeId>file66</originalMayaNodeId>
+        </technique>
+      </extra>
+    </image>
+    <image id="file63" name="floor02_file63">
+      <init_from>./floor02_roughness_AO_emissive.dds</init_from>
+      <extra>
+        <technique profile="OpenCOLLADAMaya">
+          <dgnode_type>kFile</dgnode_type>
+          <image_sequence>0</image_sequence>
+          <originalMayaNodeId>floor02_file63</originalMayaNodeId>
+        </technique>
+      </extra>
+    </image>
+    <image id="file65" name="file65">
+      <init_from>./floor02_substance.dds</init_from>
+      <extra>
+        <technique profile="OpenCOLLADAMaya">
+          <dgnode_type>kFile</dgnode_type>
+          <image_sequence>0</image_sequence>
+          <originalMayaNodeId>file65</originalMayaNodeId>
+        </technique>
+      </extra>
+    </image>
+  </library_images>
+  <library_geometries>
+    <geometry id="pPlane57Shape" name="pPlane57Shape">
+      <mesh>
+        <source id="pPlane57Shape-positions" name="pPlane57Shape-positions">
+          <float_array id="pPlane57Shape-positions-array" count="24">0 -0.311538 -2 0 -0.311538 0 2 -0.311538 -2 2 -0.311538 0 0 0 0 2 0 0 0 0 -2 2 0 -2</float_array>
+          <technique_common>
+            <accessor source="#pPlane57Shape-positions-array" count="8" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlane57Shape-normals" name="pPlane57Shape-normals">
+          <float_array id="pPlane57Shape-normals-array" count="108">0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1 0 0 -1</float_array>
+          <technique_common>
+            <accessor source="#pPlane57Shape-normals-array" count="36" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlane57Shape-pPlane57Shape-map1" name="pPlane57Shape-pPlane57Shape-map1">
+          <float_array id="pPlane57Shape-pPlane57Shape-map1-array" count="24">0 0 1 0 0 1 1 1 1 0 1 1 0 0 0 1 1 0 1 1 0 0 0 1</float_array>
+          <technique_common>
+            <accessor source="#pPlane57Shape-pPlane57Shape-map1-array" count="12" stride="2">
+              <param name="S" type="float"/>
+              <param name="T" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlane57Shape-textangents">
+          <float_array id="pPlane57Shape-textangents-array" count="108">0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 1 0 0 -0.9880844 0.1539129 0 0 -1 0 0.9880844 -0.1539129 0 0 1 0 -1 0 0 0 0 1 0 0.1539129 -0.9880844 0 -1 0 0 -0.1539129 0.9880844 0 1 0 0 0 -1 0 0 -1 0 0.1539129 0.9880844 0 -1 0 0 -0.1539129 -0.9880844 0 1 0 0 0 1 -1 0 0 0.9880844 0.1539129 0 0 -1 0 -0.9880844 -0.1539129 0 0 1 0 1 0 0</float_array>
+          <technique_common>
+            <accessor source="#pPlane57Shape-textangents-array" count="36" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <source id="pPlane57Shape-texbinormals">
+          <float_array id="pPlane57Shape-texbinormals-array" count="108">1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 1 0 0 0 1 0 -0.1539129 -0.9880844 0 1 0 0 0.1539129 0.9880844 0 -1 0 0 0 -1 0 0 1 0 0 -0.9880844 -0.1539129 0 0 1 0 0.9880844 0.1539129 0 0 -1 0 -1 0 0 1 0 0 -0.9880844 0.1539129 0 0 -1 0 0.9880844 -0.1539129 0 0 1 0 -1 0 0 1 0 0.1539129 -0.9880844 0 -1 0 0 -0.1539129 0.9880844 0 1 0 0 0 -1 0</float_array>
+          <technique_common>
+            <accessor source="#pPlane57Shape-texbinormals-array" count="36" stride="3">
+              <param name="X" type="float"/>
+              <param name="Y" type="float"/>
+              <param name="Z" type="float"/>
+            </accessor>
+          </technique_common>
+        </source>
+        <vertices id="pPlane57Shape-vertices" name="pPlane57Shape-vertices">
+          <input semantic="POSITION" source="#pPlane57Shape-positions"/>
+        </vertices>
+        <triangles material="blinn5SG" count="12">
+          <input semantic="VERTEX" source="#pPlane57Shape-vertices" offset="0"/>
+          <input semantic="NORMAL" source="#pPlane57Shape-normals" offset="1"/>
+          <input semantic="TEXCOORD" source="#pPlane57Shape-pPlane57Shape-map1" offset="2" set="0"/>
+          <input semantic="TEXTANGENT" source="#pPlane57Shape-textangents" offset="3" set="0"/>
+          <input semantic="TEXBINORMAL" source="#pPlane57Shape-texbinormals" offset="3" set="0"/>
+          <p>4 0 8 0 5 1 9 1 6 2 10 2 6 3 10 3 5 4 9 4 7 5 11 5 1 6 4 6 0 7 6 7 3 8 5 8 0 9 6 9 2 10 7 10 3 11 5 11 1 12 1 12 3 13 3 13 4 14 8 14 4 15 8 15 3 16 3 16 5 17 9 17 0 18 0 18 1 19 1 19 6 20 10 20 6 21 10 21 1 22 1 22 4 23 8 23 3 24 3 24 2 25 2 25 5 26 9 26 5 27 9 27 2 28 2 28 7 29 11 29 2 30 2 30 0 31 0 31 7 32 11 32 7 33 11 33 0 34 0 34 6 35 10 35</p>
+        </triangles>
+      </mesh>
+      <extra>
+        <technique profile="OpenCOLLADAMaya">
+          <originalMayaNodeId>pPlane57Shape</originalMayaNodeId>
+          <double_sided>1</double_sided>
+        </technique>
+      </extra>
+    </geometry>
+  </library_geometries>
+  <library_visual_scenes>
+    <visual_scene id="VisualSceneNode" name="untitled">
+      <node id="pPlane57" name="pPlane57" type="NODE">
+        <translate sid="translate">0 0 0</translate>
+        <rotate sid="rotateZ">0 0 1 0</rotate>
+        <rotate sid="rotateY">0 1 0 0</rotate>
+        <rotate sid="rotateX">1 0 0 0</rotate>
+        <scale sid="scale">1 1 1</scale>
+        <instance_geometry url="#pPlane57Shape">
+          <bind_material>
+            <technique_common>
+              <instance_material symbol="blinn5SG" target="#blinn5">
+                <bind_vertex_input semantic="TEX0" input_semantic="TEXCOORD" input_set="0"/>
+                <bind_vertex_input semantic="TEX1" input_semantic="TEXCOORD" input_set="0"/>
+                <bind_vertex_input semantic="TEX2" input_semantic="TEXCOORD" input_set="0"/>
+                <bind_vertex_input semantic="TEX3" input_semantic="TEXCOORD" input_set="0"/>
+              </instance_material>
+            </technique_common>
+          </bind_material>
+        </instance_geometry>
+        <extra>
+          <technique profile="OpenCOLLADAMaya">
+            <originalMayaNodeId>pPlane57</originalMayaNodeId>
+          </technique>
+        </extra>
+      </node>
+    </visual_scene>
+  </library_visual_scenes>
+  <scene>
+    <instance_visual_scene url="#VisualSceneNode"/>
+  </scene>
+</COLLADA>

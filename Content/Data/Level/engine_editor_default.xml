@@ -1,0 +1,4 @@
+<?xml version="1.0" ?>
+<object-instances>
+	<object-instance pos-x="0" pos-y="0" pos-z="0" rot-x="0" rot-y="0" rot-z="0" type="Enemy_9000"/>
+</object-instances>

@@ -7,6 +7,7 @@
 #include "RevEngineManager.h"
 #include "RevUtils.h"
 #include "RevModelManager.h"
+#include "RevPaths.h"
 
 #if USE_IMGUI
 #include "imgui/imgui.h"
@@ -356,10 +357,10 @@ void LoadTexturesForModelData(RevTextureInitializationData& initializationData, 
 	if (numTexturePaths  > 0)
 	{
 		REV_ASSERT(numTexturePaths == 4);
-		RevEngineFunctions::LoadTexture(initializationData.m_diffuseTexturePath, &outData->m_diffuseTexture);
-		RevEngineFunctions::LoadTexture(initializationData.m_normalTexturePath, &outData->m_normalTexture );
-		RevEngineFunctions::LoadTexture(initializationData.m_substanceTexturePath, &outData->m_substanceTexture);
-		RevEngineFunctions::LoadTexture(initializationData.m_roughnessAOEmissivePath, &outData->m_roughnessAoEmissiveTexture);
+		RevEngineFunctions::LoadTexture(RevPaths::AddContentPath(initializationData.m_diffuseTexturePath).c_str(), &outData->m_diffuseTexture);
+		RevEngineFunctions::LoadTexture(RevPaths::AddContentPath(initializationData.m_normalTexturePath).c_str(), &outData->m_normalTexture );
+		RevEngineFunctions::LoadTexture(RevPaths::AddContentPath(initializationData.m_substanceTexturePath).c_str(), &outData->m_substanceTexture);
+		RevEngineFunctions::LoadTexture(RevPaths::AddContentPath(initializationData.m_roughnessAOEmissivePath).c_str(), &outData->m_roughnessAoEmissiveTexture);
 	}
 }
 

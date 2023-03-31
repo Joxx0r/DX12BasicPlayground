@@ -79,8 +79,7 @@ void RevEngineEditorManager::UpdateInternal(float deltaTime, void* hwnd)
 				ImGui::PushID(index);
 				ImGui::AlignTextToFramePadding();
 				char label[512];
-				sprintf(label, "Model%s", objectType.m_name);
-
+				sprintf(label, "Model%s", objectType.m_name.c_str());
 
 				ImGui::Bullet();
 				ImGui::Selectable(label);
@@ -91,7 +90,7 @@ void RevEngineEditorManager::UpdateInternal(float deltaTime, void* hwnd)
 						GSelectedInstance = objectType.m_name;
 						RevEngineMain::s_instance->m_worldLoader->SpawnInstanceToWorld(
 							RevEngineMain::s_instance->m_activeWorld,
-							objectType.m_name);
+							objectType.m_name.c_str());
 					}
 				}
 				ImGui::NextColumn();

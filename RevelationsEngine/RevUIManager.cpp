@@ -4,6 +4,7 @@
 #include "RevShadermanager.h"
 #include "RevUtils.h"
 #include "RevCamera.h"
+#include "RevPaths.h"
 
 struct RevModelData* m_modelData = nullptr;
 struct ID3D12DescriptorHeap* m_srvHeap = nullptr;
@@ -308,8 +309,8 @@ void RevUIManager::Initialize(void* hwnd)
 
 	ImGuiIO& io = ImGui::GetIO();
 	//todo johlander make this a file format that we load.
-	m_fonts.push_back(ConstructFont("Data\\Fonts\\ProggyClean.ttf", RevFontType::ProggyClean));
-	m_fonts.push_back(ConstructFont("Data\\Fonts\\DroidSans.ttf", RevFontType::DroidSans));
+	m_fonts.push_back(ConstructFont(RevPaths::AddContentPath("Data\\Fonts\\ProggyClean.ttf").c_str(), RevFontType::ProggyClean));
+	m_fonts.push_back(ConstructFont(RevPaths::AddContentPath("Data\\Fonts\\DroidSans.ttf").c_str(), RevFontType::DroidSans));
 	io.Fonts->GetTexDataAsRGBA32(&pixels, &width, &height);
 
 	// Create fonts texture
@@ -408,7 +409,7 @@ void RevUIManager::Initialize(void* hwnd)
 
 void RevUIManager::InitializeShaderInputLayout()
 {
-	m_modelData->m_shader = RevShaderManager::GetShader(L"Shaders\\ui.hlsl");
+	m_modelData->m_shader = RevShaderManager::GetShader(RevPaths::AddContentPathWChar(L"Shaders\\ui.hlsl").c_str());
 	m_modelData->m_inputLayout =
 	{
 		{ "POSITION", 0, DXGI_FORMAT_R32G32B32A32_FLOAT, 0, (size_t)(&((ImDrawVert*)0)->pos), D3D12_INPUT_CLASSIFICATION_PER_VERTEX_DATA, 0 },

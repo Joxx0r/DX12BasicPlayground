@@ -1,6 +1,7 @@
 #include "stdafx.h"
 #include "RevConsole.h"
 #include "RevEngineMain.h"
+#include "RevPaths.h"
 #include "imgui/imgui.h"
 
 // Demonstrating creating a simple console window, with scrolling, filtering, completion and history.
@@ -153,7 +154,7 @@ int32_t                   m_historyPos;    // -1: new line, 0..History.Size-1 br
 			char buffer[512];
 			strcpy(&buffer[0], &command_line[5]);
 			AddLog("opening world: %s", buffer);
-			RevEngineMain::LoadWorld(buffer);
+			RevEngineMain::LoadWorld(RevPaths::AddLevelPath(buffer).c_str());
 		}
 		else if (StricmpStart(command_line, "SPEED") == 0)
 		{

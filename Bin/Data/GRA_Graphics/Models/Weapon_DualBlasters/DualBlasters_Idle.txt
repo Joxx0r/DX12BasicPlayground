@@ -1,7 +1,0 @@
-nrOfAnims: 3
-
-Shoot: "Data\GRA_Graphics\Models\Weapon_DualBlasters\DualBlasters_ShootRight.dae"  loop : 0
-Shoot2: "Data\GRA_Graphics\Models\Weapon_DualBlasters\DualBlasters_ShootLeft.dae"  loop : 0
-Reload: "Data\GRA_Graphics\Models\Weapon_DualBlasters\DualBlasters_Reload02.dae"  loop : 0
-Sprint: "Data\GRA_Graphics\Models\Weapon_DualBlasters\DualBlasters_Sprint.dae"  loop : 0
-

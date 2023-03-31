@@ -1,1 +1,0 @@
-0 3 0.25 0 1 0 "Data\GRA_Shaders\ParticleFiles\BloodParticle02.xml" "BloodParticle02" 0  -0.688225  0.222584  0.690509  0  0.951773  -0.306802  -0.725497  -0.211149  -0.655034

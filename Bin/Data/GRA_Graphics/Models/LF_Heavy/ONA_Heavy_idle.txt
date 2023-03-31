@@ -1,6 +1,0 @@
-nrOfAnims: 3
-
-run: "Data\GRA_Graphics\Models\LF_Heavy\ONA_Heavy_Walk.dae"  loop : 1
-attack:  "Data\GRA_Graphics\Models\LF_Heavy\ONA_Heavy_Attack.dae" loop : 1
-death:  "Data\GRA_Graphics\Models\LF_Heavy\ONA_Heavy_Death.dae" loop : 0
-

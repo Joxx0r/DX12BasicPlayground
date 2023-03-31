@@ -15,6 +15,7 @@
 #include "RevWorldLoader.h"
 #include "RevWorld.h"
 #include "RevModel.h"
+#include "RevPaths.h"
 #include "RevPhysicsManager.h"
 
 #define REV_WINDOW_MENU_NAME "RevEngine"
@@ -89,11 +90,6 @@ void RevEngineMain::LoadWorld(const char* filePath)
 	s_instance->LoadWorldInternal(filePath);
 }
 
-void RevEngineMain::ReloadCurrentWorld()
-{
-	s_instance->ReloadWorldInteral();
-}
-
 void RevEngineMain::InitializeInternal(const RevInitializationData& initializationData)
 {
 	m_currentWindowWidth = initializationData.m_windowWidth;
@@ -150,11 +146,11 @@ void RevEngineMain::InitializeInternal(const RevInitializationData& initializati
 
 	if(m_engineMode == RevEngineMode::Editor)
 	{
-		LoadWorldInternal("engine_editor_default");		
+		LoadWorldInternal(RevPaths::AddLevelPath("engine_editor_default").c_str());
 	}
 	else
 	{
-		LoadWorldInternal("engine_editor_default");	
+		LoadWorldInternal(RevPaths::AddLevelPath("engine_editor_default").c_str());
 	}
 
 	extern bool GDrawGameWindow;
@@ -457,12 +453,6 @@ void RevEngineMain::LoadWorldInternal(const char* path)
 	REV_ASSERT(m_activeWorld == nullptr);
 	REV_ASSERT(m_worldLoader);
 	m_activeWorld = m_worldLoader->LoadWorld(path);
-}
-
-void RevEngineMain::ReloadWorldInteral()
-{
-	std::string holderForMemory = m_activeWorld->m_currentWorldPath;
-	LoadWorldInternal(holderForMemory.c_str());
 }
 
 struct ID3D12Resource* RevEngineMain::CurrentBackBuffer() const

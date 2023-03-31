@@ -8,6 +8,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
+
+#include "RevPaths.h"
 #include "rapidxml/rapidxml.hpp"
 #include "Shlwapi.h"
 
@@ -19,7 +21,7 @@ int GBaseSetB = 0;
 
 void RevWorldLoader::Initialize()
 {
-	const char* path = "Data/Level/GameObjects.xml";
+	std::string path = RevPaths::AddLevelPath("GameObjects.xml");
 	xml_document<> doc;
 	xml_node<> * root_node;
 	// Read the xml file into a vector
@@ -35,9 +37,9 @@ void RevWorldLoader::Initialize()
 	for (xml_node<> * brewery_node = root_node->first_node("object-type"); brewery_node; brewery_node = brewery_node->next_sibling())
 	{
 		RevGameObjectType data = {};
-		strcpy(&data.m_name[0], brewery_node->first_attribute("id")->value());
-		strcpy(&data.m_instancePath[0], brewery_node->first_attribute("instance-path")->value());
-		if (PathFileExists(data.m_instancePath))
+		data.m_name = brewery_node->first_attribute("id")->value();
+		data.m_instancePath = RevPaths::AddContentPath(brewery_node->first_attribute("instance-path")->value());
+		if (PathFileExists(data.m_instancePath.c_str()))
 		{
 			m_objectTypes.push_back(data);
 		}
@@ -94,7 +96,6 @@ void LoadLights(RevWorld* world, const char* baseFileName)
 RevWorld* RevWorldLoader::LoadWorld(const char* fileName)
 {
 	RevWorld* world = new RevWorld();
-	world->m_currentWorldPath = fileName;
 	world->m_instances.reserve(1000);
 	xml_document<> doc;
 	xml_node<> * root_node;
@@ -129,7 +130,7 @@ RevWorld* RevWorldLoader::LoadWorld(const char* fileName)
 			for (INT32 index =0; index < m_objectTypes.size(); index++)
 			{
 				const RevGameObjectType& typeInstance = m_objectTypes[index];
-				if (strcmp(typeInstance.m_name, name) == 0)
+				if (strcmp(typeInstance.m_name.c_str(), name) == 0)
 				{
 					type = &m_objectTypes[index];
 					break;
@@ -150,7 +151,7 @@ RevWorld* RevWorldLoader::LoadWorld(const char* fileName)
 
 				m = mRotX * mRotY * mRotZ;
 				m.SetLocation(RevVector(x, y, z));
-				instance->Initialize(m, (UINT)world->m_instances.size(), type->m_instancePath);
+				instance->Initialize(m, (UINT)world->m_instances.size(), type->m_instancePath.c_str());
 				world->m_instances.push_back(instance);
 			}
 		}
@@ -172,7 +173,7 @@ void RevWorldLoader::SpawnInstanceToWorld(class RevWorld* world, const char* nam
 	for (INT32 index = 0; index < m_objectTypes.size(); index++)
 	{
 		const RevGameObjectType& typeInstance = m_objectTypes[index];
-		if (strcmp(typeInstance.m_name, name) == 0)
+		if (strcmp(typeInstance.m_name.c_str(), name) == 0)
 		{
 			type = &m_objectTypes[index];
 			break;
@@ -184,7 +185,7 @@ void RevWorldLoader::SpawnInstanceToWorld(class RevWorld* world, const char* nam
 		RevInstance* instance = new RevInstance();
 		RevMatrix m;
 		m.Identity();
-		instance->Initialize(m, (UINT)world->m_instances.size(), type->m_instancePath);
+		instance->Initialize(m, (UINT)world->m_instances.size(), type->m_instancePath.c_str());
 		world->ReplaceInstance(0, instance);
 	}
 }

@@ -1,0 +1,3 @@
+nrOfAnims: 1
+
+Shoot: "Data\GRA_Graphics\Models\Weapon_ArcBeam\ArcBeam_1920x1280_Shoot.dae"  loop : 1
