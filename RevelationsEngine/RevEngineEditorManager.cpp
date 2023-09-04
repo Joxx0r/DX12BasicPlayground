@@ -32,7 +32,6 @@ void RevEngineEditorManager::UpdateInternal(float deltaTime, void* hwnd)
 
 			if (ImGui::MenuItem("Quit"))
 			{
-				//todo johlander clearner handling later.
 				extern bool GApplicationIsRunning;
 				GApplicationIsRunning = false;
 			}

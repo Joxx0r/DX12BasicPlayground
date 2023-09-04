@@ -1,7 +1,6 @@
 #include "stdafx.h"
 #include "RevEngineManager.h"
 #include "imgui/imgui.h"
-//todo johlander hack because of console
 #include "RevEngineMain.h"
 #include "RevConsole.h"
 #include "RevInputManager.h"
