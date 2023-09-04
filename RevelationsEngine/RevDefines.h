@@ -17,3 +17,5 @@
 #define REV_VK_Q 0x51
 
 #define REV_INDEX_NONE -1
+
+#define WITH_NVIDIA_PHSYX 0

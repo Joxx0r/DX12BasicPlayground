@@ -1,12 +1,13 @@
-﻿
-#include "stdafx.h"
+﻿#include "stdafx.h"
 #include "RevPhysicsManager.h"
 
-#include <ctype.h>
+#if WITH_NVIDIA_PHSYX
+
+//todo johlander resolve dynamic physx include
+//PhysXExtensions_static_64.lib;PhysXPvdSDK_static_64.lib;PhysXVehicle_static_64.lib;PhysXVehicle2_static_64.lib;PhysXCharacterKinematic_static_64.lib;PhysXCooking_64.lib;SnippetUtils_static_64.lib;PVDRuntime_64.lib;SnippetRender_static_64.lib;SceneQuery_static_64.lib;PhysX_64.lib;PhysXCommon_64.lib;PhysXFoundation_64.lib
 #include "PxPhysicsAPI.h"
 
 #define PVD_HOST "127.0.0.1"	//Set this to the IP address of the system running the PhysX Visual Debugger that you want to connect to.
-
 
 using namespace physx;
 
@@ -47,10 +48,12 @@ static void createStack(const PxTransform& t, PxU32 size, PxReal halfExtent)
 	shape->release();
 }
 
+#endif
 
 
 void RevPhysicsManager::Initialize()
 {
+#if WITH_NVIDIA_PHSYX
 	gFoundation = PxCreateFoundation(PX_PHYSICS_VERSION, gAllocator, gErrorCallback);
 	gPvd = PxCreatePvd(*gFoundation);
 	PxPvdTransport* transport = PxDefaultPvdSocketTransportCreate(PVD_HOST, 5425, 10);
@@ -84,10 +87,9 @@ void RevPhysicsManager::Initialize()
 	bool interactive = false;
 	if(!interactive)
 		createDynamic(PxTransform(PxVec3(0,40,100)), PxSphereGeometry(10), PxVec3(0,-50,-100));
-			
+#endif
 }
 
 void RevPhysicsManager::Update(float DeltaTime)
 {
 }
-
