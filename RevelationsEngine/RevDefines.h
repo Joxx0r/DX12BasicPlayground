@@ -18,4 +18,6 @@
 
 #define REV_INDEX_NONE -1
 
-#define WITH_NVIDIA_PHSYX 1
+//todo johlander move to physixs library when needed
+#define WITH_NVIDIA_PHSYX 0
+#define PX_PHYSX_STATIC_LIB 1 //needs to be done for no 

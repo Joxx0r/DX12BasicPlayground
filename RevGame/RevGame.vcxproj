@@ -78,14 +78,14 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
-    <LibraryPath>..\Include\assimp\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>..\Include\px\lib\x64\$(Configuration)\;..\Include\assimp\lib\x64;$(LibraryPath)</LibraryPath>
     <OutDir>..\bin\$(Configuration)\</OutDir>
     <TargetName>$(ProjectName)_$(Configuration)</TargetName>
     <IntDir>..\Symbols\$(Configuration)\$(ProjectName)\</IntDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
-    <LibraryPath>..\Include\assimp\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>..\Include\assimp\lib\x64;..\Include\px\lib\x64\$(Configuration)\;$(LibraryPath)</LibraryPath>
     <OutDir>..\bin\$(Configuration)\</OutDir>
     <TargetName>$(ProjectName)_$(Configuration)</TargetName>
     <IntDir>..\Symbols\$(Configuration)\$(ProjectName)\</IntDir>
@@ -130,7 +130,7 @@
     <Link>
       <SubSystem>Windows</SubSystem>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\Include\EngineLibs\RevelationsEngine_$(Configuration).lib;DXGI.lib;d3d12.lib;assimp.lib;d3dcompiler.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\Include\EngineLibs\RevelationsEngine_$(Configuration).lib;DXGI.lib;d3d12.lib;assimp.lib;d3dcompiler.lib;Shlwapi.lib;PhysXExtensions_static_64.lib;PhysXPvdSDK_static_64.lib;PhysX_static_64.lib;PhysXVehicle_static_64.lib;PhysXVehicle2_static_64.lib;PhysXCharacterKinematic_static_64.lib;PhysXCooking_static_64.lib;PhysXCommon_static_64.lib;PhysXFoundation_static_64.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
@@ -148,7 +148,7 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
-      <AdditionalDependencies>..\Include\EngineLibs\RevelationsEngine_$(Configuration).lib;DXGI.lib;d3d12.lib;assimp.lib;d3dcompiler.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>..\Include\EngineLibs\RevelationsEngine_$(Configuration).lib;DXGI.lib;d3d12.lib;assimp.lib;d3dcompiler.lib;Shlwapi.lib;PhysXExtensions_static_64.lib;PhysXPvdSDK_static_64.lib;PhysX_static_64.lib;PhysXVehicle_static_64.lib;PhysXVehicle2_static_64.lib;PhysXCharacterKinematic_static_64.lib;PhysXCommon_static_64.lib;PhysXFoundation_static_64.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>

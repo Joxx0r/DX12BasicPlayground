@@ -97,7 +97,7 @@
     <OutDir>..\Include\EngineLibs\</OutDir>
     <IntDir>..\Symbols\$(Configuration)\$(ProjectName)\</IntDir>
     <IncludePath>$(IncludePath)</IncludePath>
-    <LibraryPath>..\Include\assimp\lib\x64;..\Include\px\lib\x64\release\;$(LibraryPath)</LibraryPath>
+    <LibraryPath>..\Include\assimp\lib\x64;$(LibraryPath)</LibraryPath>
     <TargetName>$(ProjectName)_$(Configuration)</TargetName>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -164,7 +164,7 @@
       <AdditionalDependencies>DXGI.lib;d3d12.lib;assimp.lib;d3dcompiler.lib;Shlwapi.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
     <Lib>
-      <AdditionalDependencies>PhysX_static_64.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
     </Lib>
   </ItemDefinitionGroup>
   <ItemGroup>
