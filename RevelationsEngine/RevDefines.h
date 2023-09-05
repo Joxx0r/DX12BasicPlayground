@@ -18,4 +18,4 @@
 
 #define REV_INDEX_NONE -1
 
-#define WITH_NVIDIA_PHSYX 0
+#define WITH_NVIDIA_PHSYX 1
