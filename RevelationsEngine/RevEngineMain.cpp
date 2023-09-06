@@ -11,12 +11,12 @@
 #include "RevEngineGameManager.h"
 #include "RevRenderManager.h"
 #include "RevEngineManager.h"
+#include "RevGameState.h"
 #include "RevInputManager.h"
 #include "RevWorldLoader.h"
 #include "RevWorld.h"
 #include "RevModel.h"
 #include "RevPaths.h"
-#include "RevPhysicsManager.h"
 
 #define REV_WINDOW_MENU_NAME "RevEngine"
 #define REV_WINDOW_CLASS_NAME "RevelationsEngine"
@@ -109,9 +109,6 @@ void RevEngineMain::InitializeInternal(const RevInitializationData& initializati
 	m_controller = new RevController();
 	m_controller->Initialize();
 	
-	m_physicsManager = new RevPhysicsManager();
-	m_physicsManager->Initialize();
-
 	for (UINT resourceIndex = 0; resourceIndex < REV_FRAME_RESOURCE_COUNT; resourceIndex++)
 	{
 		m_frameResource.push_back(new RevFrameResource(m_device, 1, AMOUNT_OF_MAX_INSTANCES, 1));
@@ -156,9 +153,9 @@ void RevEngineMain::InitializeInternal(const RevInitializationData& initializati
 	extern bool GDrawGameWindow;
 	GDrawGameWindow = m_engineMode == RevEngineMode::Editor;
 	//todo johlander cleanup this code (for now only one instance is active so we use that one)
-	if(m_activeWorld->m_instances.size() > 0)
+	if(m_activeWorld->m_revGameState->m_gameObjects.size() > 0)
 	{
-		m_controller->SetInstance(m_activeWorld->m_instances[0]);
+		m_controller->SetObject(m_activeWorld->m_revGameState->m_gameObjects[0]);
 	}
 }
 

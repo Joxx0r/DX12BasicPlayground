@@ -92,8 +92,8 @@ int APIENTRY wWinMain(_In_ HINSTANCE hInstance,
 			continue;
 		}
 
-		RevEngineMain::Update(invFrameRate);
-		RevEngineMain::Draw(invFrameRate);
+		RevEngineMain::Update((float)invFrameRate);
+		RevEngineMain::Draw((float)invFrameRate);
 
 		if ((GetKeyState(VK_ESCAPE) >> 15) != 0)
 		{

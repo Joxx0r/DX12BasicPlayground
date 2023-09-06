@@ -8,7 +8,8 @@
 #include <iostream>
 #include <fstream>
 #include <vector>
-
+#include "RevGameState.h"
+#include "RevObject.h"
 #include "RevPaths.h"
 #include "rapidxml/rapidxml.hpp"
 #include "Shlwapi.h"
@@ -96,7 +97,7 @@ void LoadLights(RevWorld* world, const char* baseFileName)
 RevWorld* RevWorldLoader::LoadWorld(const char* fileName)
 {
 	RevWorld* world = new RevWorld();
-	world->m_instances.reserve(1000);
+	world->Initialize();
 	xml_document<> doc;
 	xml_node<> * root_node;
 	// Read the xml file into a vector
@@ -139,7 +140,7 @@ RevWorld* RevWorldLoader::LoadWorld(const char* fileName)
 
 			if (type != nullptr)
 			{
-				RevInstance* instance = new RevInstance();
+				RevObject* revObject = new RevObject();
 				RevMatrix m;
 				m.Identity();
 		
@@ -151,8 +152,8 @@ RevWorld* RevWorldLoader::LoadWorld(const char* fileName)
 
 				m = mRotX * mRotY * mRotZ;
 				m.SetLocation(RevVector(x, y, z));
-				instance->Initialize(m, (UINT)world->m_instances.size(), type->m_instancePath.c_str());
-				world->m_instances.push_back(instance);
+				revObject->Initialize(world, m, (UINT)world->m_revGameState->m_gameObjects.size(), type->m_instancePath.c_str());
+				world->m_revGameState->m_gameObjects.push_back(revObject);
 			}
 		}
 	}
@@ -182,11 +183,11 @@ void RevWorldLoader::SpawnInstanceToWorld(class RevWorld* world, const char* nam
 
 	if (type)
 	{
-		RevInstance* instance = new RevInstance();
+		RevObject* instance = new RevObject();
 		RevMatrix m;
 		m.Identity();
-		instance->Initialize(m, (UINT)world->m_instances.size(), type->m_instancePath.c_str());
-		world->ReplaceInstance(0, instance);
+		instance->Initialize(world, m, (UINT)world->m_revGameState->m_gameObjects.size(), type->m_instancePath.c_str());
+		world->m_revGameState->ReplaceObject(0, instance);
 	}
 }
 

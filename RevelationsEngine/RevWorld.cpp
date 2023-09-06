@@ -1,49 +1,39 @@
 #include "stdafx.h"
 #include "RevWorld.h"
+#include "RevGameState.h"
+#include "RevPhysxWorld.h"
 
-void RevWorld::DestoyWorld()
+RevWorld::RevWorld()
 {
-	for (UINT instanceIndex = 0; instanceIndex < m_instances.size(); instanceIndex++)
-	{
-		delete m_instances[instanceIndex];
-	}
-	m_instances.clear();
+	m_revGameState = nullptr;
+	m_physicsWorld = nullptr;
+}
+
+void RevWorld::Initialize()
+{
+	m_physicsWorld = new RevPhysxWorld();
+	m_physicsWorld->Initialize();
+	
+	m_revGameState = new RevGameState();
+	m_revGameState->Initialize();
 }
 
 void RevWorld::Draw(RevModelFrameRender& render)
 {
-	for (UINT instanceIndex = 0; instanceIndex < m_instances.size(); instanceIndex++)
-	{
-		m_instances[instanceIndex]->Draw(render);
-	}
+	m_revGameState->Draw(render);
 }
 
 void RevWorld::UpdateRendererData(struct RevFrameResource* resource, float deltaTime)
 {
-	REV_ASSERT(m_instances.size() < AMOUNT_OF_MAX_INSTANCES);
-	for (INT32 index = 0; index < m_instances.size(); index++)
-	{
-		m_instances[index]->Update(resource, deltaTime);
-	}
+	REV_ASSERT(m_revGameState->m_gameObjects.size() < AMOUNT_OF_MAX_INSTANCES);
+	m_physicsWorld->Update(deltaTime);
+	m_revGameState->Update(resource, deltaTime);
 }
 
-void RevWorld::ReplaceInstance(UINT index, RevInstance* newInstance)
+void RevWorld::DestoyWorld()
 {
-	if (index < 0)
-	{
-		//log error
-		return;
-	}
-
-	if (index >= 0 && index <= m_instances.size())
-	{
-		delete m_instances[index];
-		newInstance->m_cbufferIndex = index;
-		m_instances[index] = newInstance;
-	}
-	else
-	{
-		newInstance->m_cbufferIndex = (UINT)m_instances.size();
-		m_instances.push_back(newInstance);
-	}
+	m_revGameState->Destroy();
+	delete m_revGameState;
+	m_revGameState = nullptr;
 }
+

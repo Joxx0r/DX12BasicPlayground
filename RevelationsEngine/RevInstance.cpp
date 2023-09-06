@@ -3,14 +3,11 @@
 #include "RevModelManager.h"
 #include "RevFrameResource.h"
 #include "RevModel.h"
-#include "RevAnimation.h"
-#include "RevInputManager.h"
 #include "RevMovementFunctions.h"
 #include "RevTypes.h"
 
 float GAnimationRateScale = 1.0f;
 float GMovementSpeed2 = 50;
-
 
 RevInstance::RevInstance()
 {

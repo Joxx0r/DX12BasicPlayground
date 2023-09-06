@@ -3,6 +3,7 @@
 #include "RevCamera.h"
 #include "RevFrameResource.h"
 #include "RevMovementFunctions.h"
+#include "RevObject.h"
 
 void RevController::Initialize()
 {
@@ -13,17 +14,17 @@ void RevController::Initialize()
 	RefreshInitialization();
 }
 
-void RevController::SetInstance(RevInstance* inInstance)
+void RevController::SetObject(RevObject* InObject)
 {
-	m_instance = inInstance;
+	m_object = InObject;
 	RefreshInitialization();
 }
 
 void RevController::Update(float deltaTime)
 {
-	if(m_instance)
+	if(m_object)
 	{
-		m_instance->UpdateLocationInput(deltaTime, RevMovementFunctions::CalculateCurrentInput());
+		m_object->m_instance->UpdateLocationInput(deltaTime, RevMovementFunctions::CalculateCurrentInput());
 		RefreshInitialization();
 		m_camera->Update(deltaTime);
 	}
@@ -38,9 +39,9 @@ void RevController::Draw(float deltaTime, struct RevModelFrameRender& renderEntr
 
 void RevController::RefreshInitialization()
 {
-	if(m_camera != nullptr && m_instance != nullptr)
+	if(m_camera != nullptr && m_object != nullptr)
 	{
-		RevVector3 cameraDefaultLocation = RevVector3(0, 10, -15) + m_instance->m_transform.GetLocation();
-		m_camera->Initialize(cameraDefaultLocation, m_instance->m_transform.GetLocation());
+		RevVector3 cameraDefaultLocation = RevVector3(0, 10, -15) + m_object->m_instance->m_transform.GetLocation();
+		m_camera->Initialize(cameraDefaultLocation, m_object->m_instance->m_transform.GetLocation());
 	}
 }

@@ -1,18 +1,22 @@
 #pragma once
 
-#include "RevInstance.h"
 #include <vector>
-#include <string>
+
+class RevGameState;
+class RevObject;
+class RevPhysxWorld;
 
 class RevWorld
 {
 public:
-	void DestoyWorld();
+	RevWorld();
+	void Initialize();
 	 
 	void Draw(struct RevModelFrameRender& render);
 	void UpdateRendererData(struct RevFrameResource* resource, float deltaTime);
-	void ReplaceInstance(UINT index, RevInstance* newInstance);
-
-	std::vector<class RevInstance*> m_instances;
+	void DestoyWorld();
+	
+	RevGameState* m_revGameState;
+	RevPhysxWorld* m_physicsWorld;
 	std::vector<struct RevLight*> m_lights;
 };
